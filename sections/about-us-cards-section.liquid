@@ -1,0 +1,142 @@
+{{ 'about-us-cards-section.css' |  asset_url |  stylesheet_tag }}
+<div class="about_us_cards_section" style="background-color: {{ section.settings.background_color }};">
+    <div class="card_about_us">
+        <img src="{{  section.settings.background_img_1 |  image_url }}" alt="">
+        <div class="main_content">
+            <h1 class="title_content" style="color:{{ section.settings.text_color }};">{{  section.settings.title_card_1 }}
+            </h1>
+            <p class="paragraph" style="color:{{ section.settings.color_sub_title_1 }};">{{  section.settings.sub_title_1 }}</p>
+            <a class="action_button_collection" href="{{ section.settings.button_url_1 }}">{{ section.settings.text_cta_1 }}</a>
+        </div>
+    </div>
+    <div class="card_about_us" style="margin-top: 10vh;">
+        <img src="{{  section.settings.background_img_2 |  image_url }}" alt="">
+        <div class="main_content">
+            <h1 class="title_content" style="color:{{ section.settings.text_color }};">{{  section.settings.title_card_2 }}
+            </h1>
+            <p class="paragraph" style="color:{{ section.settings.color_sub_title_2 }};">{{  section.settings.sub_title_2 }}</p>
+            <a class="action_button_collection" href="{{ section.settings.button_url_2 }}">{{ section.settings.text_cta_2 }}</a>
+        </div>
+    </div>
+</div>
+{% style %}
+    .action_button_collection{
+        background-color: {{ section.settings.cta_bg_color }};
+        color: {{ section.settings.cta_text_color  }};
+        border: 0.2rem solid transparent;
+    }
+    .action_button_collection:hover{
+        color: {{ section.settings.cta_text_color_hover }};
+        border-color: {{ section.settings.cta_bg_color }};
+    }
+{% endstyle %}
+{% schema %}
+{
+    "name": "About Us Card",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title_card_1",
+            "label": "Title Card 1",
+            "default": "Our Stores"
+        },
+        {
+            "type": "text",
+            "id": "sub_title_1",
+            "label": "Sub Title Card 1",
+            "default": "Nearest to your home"
+        },
+        {
+            "type": "color",
+            "id": "color_sub_title_1",
+            "label": "Select Color Text Subtitle 1",
+            "default": "#ffffff"
+        },
+        {
+            "type":"image_picker",
+            "id": "background_img_1",
+            "label": "Card 1 Background Image"
+        },
+        {
+            "type": "url",
+            "id": "button_url_1",
+            "label": "Button's 1 Url"
+        },
+        {
+            "type": "text",
+            "id": "title_card_2",
+            "label": "Title Card 2",
+            "default": "Our Stores"
+        },
+        {
+            "type": "text",
+            "id": "sub_title_2",
+            "label": "Sub Title Card 2",
+            "default": "Nearest to your home"
+        },
+        {
+            "type": "color",
+            "id": "color_sub_title_2",
+            "label": "Select Color Text Subtitle 2",
+            "default": "#ffffff"
+        },
+        {
+            "type":"image_picker",
+            "id": "background_img_2",
+            "label": "Card Background Image 2"
+        },
+        {
+            "type": "url",
+            "id": "button_url_2",
+            "label": "Button's 2 Url"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Section Background Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "text",
+            "id": "text_cta_1",
+            "label": "Text CTA Button 1",
+            "default": "DISCOVER"
+        },
+        {
+            "type": "text",
+            "id": "text_cta_2",
+            "label": "Text CTA Button 2",
+            "default": "DISCOVER"
+        },
+        {
+            "type": "color",
+            "id": "cta_bg_color",
+            "label": "CTA Button Background",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "cta_text_color",
+            "label": "CTA Button Text Color",
+            "default": "#152f4e"
+        },
+        {
+            "type": "color",
+            "id": "cta_text_color_hover",
+            "label": "CTA Button Text Color Hover",
+            "default": "#ffffff"
+        }
+        ],
+        "presets": [
+            {
+                "name": "About Us Card"
+            }
+        ]
+}
+{% endschema %}

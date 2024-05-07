@@ -1,0 +1,151 @@
+{
+  "sections": {
+    "banner-hero-title": {
+      "type": "banner-hero-title",
+      "settings": {
+        "text_title": "THE BRAND",
+        "text_color": "#ffffff",
+        "background_color": "#162d4d"
+      }
+    },
+    "banner-simple": {
+      "type": "banner-simple-title",
+      "settings": {
+        "text_title": "We were frustrated with inferior silk, so we designed better ones–and invented thicker silk, too.",
+        "text_color": "#000000",
+        "background_color": "#d5d9da"
+      }
+    },
+    "description-image-text-section": {
+      "type": "description-image-text-section",
+      "settings": {
+        "row_direction": "reverse",
+        "title": "Our Mission for Better Silk",
+        "collection_id": "",
+        "image_desc": "shopify:\/\/shop_images\/Bloomy_nobg_1.png",
+        "paragraph": "<p><strong>There used to be two not-so-great options: cotton or polyester. Yeah, we thought that sucked too. That's why we created Bloomy - a third, better option designed for your body that lets you have both.<\/strong><\/p><p><\/p><p><strong>As industry experts, we know bras and how hard it can be to find one that delivers. We make ones that make you look and feel your best. Join us and trade pillows for ones that love your body back—because your boobs deserve to be happy.<\/strong><\/p>",
+        "color_paragraph": "#000000",
+        "color_text": "#000000",
+        "background": "#bfc3c9",
+        "text_cta_1": "Shop our selection",
+        "cta_bg_color": "#000000",
+        "cta_text_color": "#ffffff"
+      }
+    },
+    "description_image_text_section_9xaeBV": {
+      "type": "description-image-text-section",
+      "settings": {
+        "row_direction": "standard",
+        "title": "Our Mission for Better Silk",
+        "collection_id": "",
+        "image_desc": "shopify:\/\/shop_images\/bloomy-silk-pillowcases.png",
+        "paragraph": "<p><strong>There used to be two not-so-great options: cotton or polyester. Yeah, we thought that sucked too. That's why we created Bloomy - a third, better option designed for your body that lets you have both.<\/strong><\/p><p><strong>As industry experts, we know bras and how hard it can be to find one that delivers. We make ones that make you look and feel your best. Join us and trade pillows for ones that love your body back—because your boobs deserve to be happy.<\/strong><\/p>",
+        "color_paragraph": "#000000",
+        "color_text": "#000000",
+        "background": "#d5d9da",
+        "text_cta_1": "Shop our selection",
+        "cta_bg_color": "#000000",
+        "cta_text_color": "#ffffff"
+      }
+    },
+    "banner-title-subtitle": {
+      "type": "banner-title-subtitle",
+      "settings": {
+        "text_title": "Our Mission for Better Silk",
+        "text_sub_title": "Designed at our HQ in San Francisco & made from premium materials, every style goes through hours of wear testing before it’s given the stamp of boob approval. Comfort & support are guaranteed.",
+        "text_color": "#000000",
+        "background_color": "#bfc3c9"
+      }
+    },
+    "info-cards-section": {
+      "type": "info-cards-section",
+      "blocks": {
+        "info_card_hPiYUT": {
+          "type": "info_card",
+          "settings": {
+            "info_card_image": "shopify:\/\/shop_images\/bloomy-silk-sleep-mask.webp",
+            "info_card_title": "FIT OBSESSED",
+            "info_card_subtitle": "Pure Silk with Precise Sizing™ for a superior sleep."
+          }
+        },
+        "info_card_YpyKE3": {
+          "type": "info_card",
+          "settings": {
+            "info_card_image": "shopify:\/\/shop_images\/women-wearing-bloomy-silk-bonnet.webp",
+            "info_card_title": "FIT OBSESSED",
+            "info_card_subtitle": "Pure Silk with Precise Sizing™ for a superior sleep."
+          }
+        },
+        "info_card_Vknbaz": {
+          "type": "info_card",
+          "settings": {
+            "info_card_image": "shopify:\/\/shop_images\/bloomy-silk-pillowcase-zippered.webp",
+            "info_card_title": "FIT OBSESSED",
+            "info_card_subtitle": "Pure Silk with Precise Sizing™ for a superior sleep."
+          }
+        }
+      },
+      "block_order": [
+        "info_card_hPiYUT",
+        "info_card_YpyKE3",
+        "info_card_Vknbaz"
+      ],
+      "settings": {
+        "text_title": "Why Bloomy",
+        "text_color": "#000000",
+        "background_color": "#d5d9da"
+      }
+    },
+    "description_image_text_section_HhxmVj": {
+      "type": "description-image-text-section",
+      "settings": {
+        "row_direction": "reverse",
+        "title": "Our Mission for Better Silk",
+        "collection_id": "",
+        "image_desc": "shopify:\/\/shop_images\/bloomy-silk-pillowcase-multicolors.webp",
+        "paragraph": "<p><strong>There used to be two not-so-great options: cotton or polyester. Yeah, we thought that sucked too. That's why we created Bloomy - a third, better option designed for your body that lets you have both.<\/strong><\/p><p><strong>As industry experts, we know bras and how hard it can be to find one that delivers. We make ones that make you look and feel your best. Join us and trade pillows for ones that love your body back—because your boobs deserve to be happy.<\/strong><\/p>",
+        "color_paragraph": "#000000",
+        "color_text": "#000000",
+        "background": "#bfc3c9",
+        "text_cta_1": "Shop our selection",
+        "cta_bg_color": "#000000",
+        "cta_text_color": "#ffffff"
+      }
+    },
+    "collectionListFilter": {
+      "type": "collection-list-filter-section",
+      "settings": {
+        "variant_collection_list": "check_us",
+        "top_title": "Experience Bloomy",
+        "bottom_title": "Like our content ?  Check us out!",
+        "card_size": "compact",
+        "show_all_variants": "main_variant",
+        "collection_id": "jackets-collection",
+        "check_color": false,
+        "check_type": false,
+        "background_section": "#ffffff",
+        "title_color": "#1a1a1a",
+        "types_filter_text_color": "#152f4e",
+        "product_desc_text_color": "#152f4e",
+        "product_desc_text_color_secondary": "#152f4e",
+        "cta_text": "SHOP ALL",
+        "cta_text_color_no_hover": "#ffffff",
+        "cta_background_color_no_hover": "#152f4e",
+        "cta_text_color_hover": "#152f4e",
+        "cta_background_color_hover": "#ffffff",
+        "card_price": "#1a1a1a",
+        "card_price_compare": "#a92521"
+      }
+    }
+  },
+  "order": [
+    "banner-hero-title",
+    "banner-simple",
+    "description-image-text-section",
+    "description_image_text_section_9xaeBV",
+    "banner-title-subtitle",
+    "info-cards-section",
+    "description_image_text_section_HhxmVj",
+    "collectionListFilter"
+  ]
+}

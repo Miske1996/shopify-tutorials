@@ -1,0 +1,109 @@
+.info_cards_section_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.info_cards_section_container .title_info_cards {
+  margin-top: 3vw;
+  margin-left: 3vw;
+  font-size: 4vw;
+  letter-spacing: 0.01vw;
+  text-align: center;
+  width: fit-content;
+}
+.info_cards_section_container .cards_container {
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4vw;
+  align-self: center;
+  overflow-x: scroll;
+  gap: 5%;
+  /* Hide scrollbar for IE, Edge and Firefox */
+}
+.info_cards_section_container .cards_container::-webkit-scrollbar {
+  display: none;
+}
+.info_cards_section_container .cards_container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.info_cards_section_container .cards_container .info_card {
+  flex-shrink: 0;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3vw;
+  margin-bottom: 3vw;
+}
+.info_cards_section_container .cards_container .info_card .info_card_image_container {
+  width: 100%;
+  height: 24vw;
+  display: flex;
+}
+.info_cards_section_container .cards_container .info_card .info_card_image_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.info_cards_section_container .cards_container .info_card .info_title {
+  font-size: 3.2vw;
+  text-align: center;
+}
+.info_cards_section_container .cards_container .info_card .info_subtitle {
+  font-size: 1.3vw;
+  width: 80%;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 700px) {
+  .info_cards_section_container .title_info_cards {
+    margin-top: 6vw;
+    margin-left: 5vw;
+    font-size: 8vw;
+    letter-spacing: 0.03vw;
+    width: 90%;
+    text-align: center;
+  }
+  .info_cards_section_container .cards_container {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7vw;
+    align-self: center;
+    gap: 2%;
+  }
+  .info_cards_section_container .cards_container .info_card {
+    flex-shrink: 0;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6vw;
+    margin-bottom: 6vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  .info_cards_section_container .cards_container .info_card .info_card_image_container {
+    width: 100%;
+    height: 90vw;
+    display: flex;
+  }
+  .info_cards_section_container .cards_container .info_card .info_card_image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .info_cards_section_container .cards_container .info_card .info_title {
+    font-size: 6vw;
+    text-align: center;
+  }
+  .info_cards_section_container .cards_container .info_card .info_subtitle {
+    font-size: 4vw;
+    width: 80%;
+    text-align: center;
+    font-weight: 500;
+  }
+}

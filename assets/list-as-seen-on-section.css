@@ -1,0 +1,42 @@
+.list_as_seen_on_section {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+.list_as_seen_on_section .inner_wrapper {
+  width: 100%;
+  height: 15vh;
+  justify-content: space-evenly;
+  display: flex;
+}
+.list_as_seen_on_section .inner_wrapper img {
+  width: 15vw;
+  height: 100%;
+  object-fit: contain;
+  -webkit-user-drag: none; /* WebKit-based browsers */
+  user-select: none; /* Standard syntax */
+}
+
+@media screen and (max-width: 770px) {
+  .list_as_seen_on_section .inner_wrapper {
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 2vh;
+    overflow-x: scroll;
+    /* Hide scrollbar for IE, Edge and Firefox */
+  }
+  .list_as_seen_on_section .inner_wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .list_as_seen_on_section .inner_wrapper {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .list_as_seen_on_section .inner_wrapper img {
+    width: 39vw;
+    flex-shrink: 0;
+    height: fit-content;
+  }
+}

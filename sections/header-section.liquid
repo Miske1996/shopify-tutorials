@@ -1,0 +1,360 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+<sticky-header>
+  <header
+    id="site-header"
+    style="padding-left: 20px;padding-right: 20px;"
+    class="section-header">
+
+    <div class="left_menu_header_container">
+      <div class="more_button_container">
+        <img
+          src="{{ 'more.png' |  asset_url }}"
+          alt=""
+          class="more_button">
+        <img
+          src="{{ 'more_dark.png' |  asset_url }}"
+          alt=""
+          class="more_button dark">
+      </div>
+
+      {% comment %} <div class="search_button_container">
+                          <img src="{{ 'search.png' |  asset_url }}" alt="" class="search_button"> 
+                          <img src="{{ 'search_dark.png' |  asset_url }}" alt="" class="search_button dark"> 
+                    </div> {% endcomment %}
+      {% for link in section.settings.left_nav.links %}
+        {% if forloop.index == 1 %}
+          <a
+            style="background-color:{{ section.settings.action_cutton_bg_color }};color:{{ section.settings.action_cutton_color }};"
+            href="{{ link.url }}"
+            class="menu_title_link">{{ link.title }}</a>
+        {% else %}
+          <a
+            class="menu_title_link link_item"
+            style="color:{{ section.settings.color_text }};"
+            href="{{ link.url }}">{{ link.title }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+
+    <div class="logo_header_container">
+      <a href="{{ routes.root_url }}"><img
+          style="width: {{ section.settings.image_size }}px;"
+          src="{{ section.settings.logo |  image_url  }}"
+          alt=""></a>
+    </div>
+
+
+    <div class="right_menu_header_container">
+      {% for link in section.settings.right_nav.links %}
+        {% if forloop.index == 1 %}
+          <a
+            style="margin-left:auto;color:{{ section.settings.color_text }};"
+            href="{{ link.url }}"
+            class="menu_title_link link_item">{{ link.title }}</a>
+        {% else %}
+          <a
+            href="{{ link.url }}"
+            style="color:{{ section.settings.color_text }};"
+            class="menu_title_link link_item">{{ link.title }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} <div class="img_user">
+                          <img src="{{ 'user.png' |  asset_url }}" alt="" class="user_button"> 
+                          <img src="{{ 'user_dark.png' |  asset_url }}" alt="" class="user_button dark"> 
+                    </div> {% endcomment %}
+
+      <div class="img_bag" >
+        <svg class="bag_button" id="Layer_1" enable-background="new 0 0 32 32" height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><g id="_01"><g><path style="fill: {{ section.settings.svgs_color }};" d="m23.8 30h-15.6c-3.3 0-6-2.7-6-6v-.2l.6-16c.1-3.3 2.8-5.8 6-5.8h14.4c3.2 0 5.9 2.5 6 5.8l.6 16c.1 1.6-.5 3.1-1.6 4.3s-2.6 1.9-4.2 1.9c0 0-.1 0-.2 0zm-15-26c-2.2 0-3.9 1.7-4 3.8l-.6 16.2c0 2.2 1.8 4 4 4h15.8c1.1 0 2.1-.5 2.8-1.3s1.1-1.8 1.1-2.9l-.6-16c-.1-2.2-1.8-3.8-4-3.8z"/></g><g><path style="fill: {{ section.settings.svgs_color }};" d="m16 14c-3.9 0-7-3.1-7-7 0-.6.4-1 1-1s1 .4 1 1c0 2.8 2.2 5 5 5s5-2.2 5-5c0-.6.4-1 1-1s1 .4 1 1c0 3.9-3.1 7-7 7z"/></g></g></svg>
+        <div class="red_dot" {% if cart.item_count == 0  %}
+          style ="display:none;"
+        {% endif %}></div>
+      </div>
+    </div>
+
+  </header> 
+</sticky-header>
+<script>
+  class StickyHeader extends HTMLElement {
+    constructor() {
+      super();
+      this.image_more_header = this.querySelectorAll(".left_menu_header_container .more_button_container img");
+      this.img_bag = this.querySelectorAll(".right_menu_header_container .img_bag svg");
+      this.img_bag.forEach((img) => {    
+        img.addEventListener('click',() => {
+          let cart = document.querySelector("cart-drawer");
+          cart.open();
+        });
+      })
+                
+      this.link_items = this.querySelectorAll(".link_item");
+      this.header = document.querySelector('.section-header');
+      if(`{{ section.settings.header_type }}` == "fixed") {
+        document.addEventListener("DOMContentLoaded", function() {
+          if(document.querySelector(".hero_section_container")){
+            document.querySelector(".hero_section_container").style.marginTop = "0";    
+          }
+                });        
+      }else{
+        document.documentElement.style.setProperty('--header-height', `${
+        this.header.offsetHeight
+      }px`);
+        this.header.classList.add('shopify-section-header-sticky');
+        document.querySelector("#shopify-section-header-section").classList.add("shopify-section-header-sticky")
+      }
+      
+    }
+
+    connectedCallback() {
+      
+      this.headerIsAlwaysSticky = true;
+      this.headerBounds = {};
+      
+     
+      this.currentScrollTop = 0;
+      this.preventReveal = false;
+
+      this.onScrollHandler = this.onScroll.bind(this);
+      this.hideHeaderOnScrollUp = () => this.preventReveal = true;
+
+      this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.addEventListener('scroll', this.onScrollHandler, false);
+      
+      if(window.matchMedia('(max-width: 1080px)').matches || `{{ section.settings.header_type }}` == "fixed" || `{{ template }}` != 'index') {
+        this.image_more_header[0].style.display = "none"
+        this.image_more_header[1].style.display = "block"
+
+        this.img_bag[0].querySelectorAll("path").forEach((p) => {
+          p.style.fill = `{{ section.settings.svgs_color }}`;
+        })
+        // this.img_bag[0].style.display = "none"
+        // this.img_bag[1].style.display = "block"
+          
+        this.link_items.forEach((link_i) => { 
+          link_i.style.color = "{{ section.settings.color_text }}"
+        })
+        document.querySelector("#shopify-section-header-section").style.backgroundColor = `{{ section.settings.background }}`;
+
+        document.querySelector("#shopify-section-header-section").classList.add('scrolled-past-header');
+      }
+
+      this.createObserver();
+    }
+
+  
+
+    disconnectedCallback() {
+      this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.removeEventListener('scroll', this.onScrollHandler);
+    }
+
+    createObserver() {
+      let observer = new IntersectionObserver((entries, observer) => {
+        this.headerBounds = entries[0].intersectionRect;
+        observer.disconnect();
+      });
+
+      observer.observe(this.header);
+    }
+   
+    onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if(!window.matchMedia('(max-width: 1080px)').matches && `{{ section.settings.header_type }}` != "fixed"  && `{{ template }}` == 'index'){ 
+
+      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+        this.image_more_header[0].style.display = "none"
+        this.image_more_header[1].style.display = "block"
+
+        // this.image_search_header[0].style.display = "none"
+        // this.image_search_header[1].style.display = "block"
+
+        // this.img_bag[0].style.display = "none"
+        // this.img_bag[1].style.display = "block"
+
+        this.img_bag[0].querySelectorAll("path").forEach((p) => {
+          p.style.fill = `{{ section.settings.svgs_color }}`;
+        })
+
+        this.link_items.forEach((link_i) => { 
+          link_i.style.color = "{{ section.settings.color_text }}"
+        })
+        document.querySelector("#shopify-section-header-section").style.backgroundColor = `{{ section.settings.background }}`;
+
+        document.querySelector("#shopify-section-header-section").classList.add('scrolled-past-header');
+        if (this.preventHide) return;
+        
+        requestAnimationFrame(this.hide.bind(this)); 
+      } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {       
+        // this.image_more_header.src = `{{ 'more_dark.png' |  file_url }}`
+        this.image_more_header[0].style.display = "none"
+        this.image_more_header[1].style.display = "block"
+
+      
+        // this.img_bag[0].style.display = "none"
+        // this.img_bag[1].style.display = "block"
+        this.img_bag[0].querySelectorAll("path").forEach((p) => {
+          p.style.fill = `{{ section.settings.svgs_color }}`;
+        })
+        this.link_items.forEach((link_i) => {
+          link_i.style.color = "{{ section.settings.color_text }}"
+        })
+
+        this.header.classList.add('scrolled-past-header');
+        document.querySelector("#shopify-section-header-section").style.backgroundColor = `{{ section.settings.background }}`;
+
+        if (!this.preventReveal) {
+          requestAnimationFrame(this.reveal.bind(this));
+        } else {
+          window.clearTimeout(this.isScrolling);
+          this.isScrolling = setTimeout(() => {
+            this.preventReveal = false;  
+          }, 66);
+
+          requestAnimationFrame(this.hide.bind(this));
+        }
+      } else if (scrollTop <= this.headerBounds.top) {
+        // this.image_more_header.src = `{{ 'more.png' |  file_url }}`
+        this.image_more_header[1].style.display = "none"
+        this.image_more_header[0].style.display = "block"
+
+       
+
+        // this.img_bag[1].style.display = "none"
+        // this.img_bag[0].style.display = "block"
+        this.img_bag[0].querySelectorAll("path").forEach((p) => {
+          p.style.fill = `{{ section.settings.svgs_color_transparent }}`;
+        })
+       
+        this.link_items.forEach((link_i) => {
+          link_i.style.color = "white"
+        })
+        document.querySelector("#shopify-section-header-section").style.backgroundColor = "transparent";
+
+        this.header.classList.remove('scrolled-past-header');
+        requestAnimationFrame(this.reset.bind(this));
+      }
+        }else{
+            this.image_more_header[0].style.display = "none"
+        this.image_more_header[1].style.display = "block"
+
+
+        // this.img_bag[0].style.display = "none"
+        // this.img_bag[1].style.display = "block"
+        this.img_bag[0].querySelectorAll("path").forEach((p) => {
+          p.style.fill = `{{ section.settings.svgs_color }}`;
+        })
+        this.link_items.forEach((link_i) => { 
+          link_i.style.color = "{{ section.settings.color_text }}"
+        })
+        document.querySelector("#shopify-section-header-section").style.backgroundColor = `{{ section.settings.background }}`;
+
+        document.querySelector("#shopify-section-header-section").classList.add('scrolled-past-header');
+        }
+      this.currentScrollTop = scrollTop;
+    }
+
+    hide() {
+      if (this.headerIsAlwaysSticky) return;
+      
+      this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
+      this.closeMenuDisclosure();
+      this.closeSearchModal();
+    }
+
+    reveal() {
+      if (this.headerIsAlwaysSticky) return;
+      
+      this.header.classList.add('shopify-section-header-sticky', 'animate');
+      this.header.classList.remove('shopify-section-header-hidden');
+    }
+
+    reset() {
+      if (this.headerIsAlwaysSticky) return;
+      
+      this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
+    }
+
+  }
+
+  customElements.define('sticky-header', StickyHeader);
+</script>
+
+{% schema %}
+  {
+    "name": "Header",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "radio",
+        "label": "Select Header Type",
+        "id": "header_type",
+        "options": [
+          {
+            "value": "sticky",
+            "label": "sticky"
+          }, {
+            "value": "fixed",
+            "label": "fixed"
+          }
+        ],
+        "default": "sticky"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#152F4E"
+      },
+      {
+        "type": "image_picker",
+        "label": "Logo",
+        "id": "logo"
+      }, {
+        "type": "range",
+        "min": 64,
+        "max": 256,
+        "step":2,
+        "id": "image_size",
+        "default": 70,
+        "label": "Select Image Size"
+      }, {
+        "type": "link_list",
+        "id": "left_nav",
+        "label": "Left Navigation"
+      }, {
+        "type": "link_list",
+        "id": "right_nav",
+        "label": "Right Navigation"
+      }, {
+        "type": "color",
+        "id": "action_cutton_color",
+        "label": "Action Button Text Color",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "action_cutton_bg_color",
+        "label": "Action Button Background Color",
+        "default": "#152F4E"
+      },
+      {
+        "type": "color",
+        "id": "svgs_color",
+        "label" : "Choose Color Of SVGs",
+        "default": "#152F4E"
+      },
+      {
+        "type": "color",
+        "id": "svgs_color_transparent",
+        "label" : "Choose Color Of SVGs On Transparent BG",
+        "default": "#ffffff"
+      }
+    ]
+  }
+{% endschema %}

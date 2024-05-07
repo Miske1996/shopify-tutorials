@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "collection": {
+      "type": "collection-section",
+      "settings": {
+        "title_section": "SHOP PURE SILK",
+        "show_title": "hide",
+        "background": "#ffffff",
+        "collection_list_linked": [
+          "skinny-scrunchies",
+          "regular-scrunchies",
+          "large-scrunchies",
+          "mixed-pack-scrunchies"
+        ],
+        "primary_color": "#1a1a1a",
+        "secondary_color": "#ffffff",
+        "title_collection_color": "#ffffff",
+        "product_desc_text_color": "#1a1a1a"
+      }
+    }
+  },
+  "order": [
+    "collection"
+  ]
+}

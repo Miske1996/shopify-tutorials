@@ -1,0 +1,390 @@
+{{ 'collection-section.css' |  asset_url |  stylesheet_tag }}
+{% paginate collection.products by 12 %}
+  {% assign currency_symbol = '' %}
+  {% if shop.currency == 'USD' %}
+    {% assign currency_symbol = '$' %}
+  {% elsif shop.currency == 'EUR' %}
+    {% assign currency_symbol = '€' %}
+  {% elsif shop.currency == 'GBP' %}
+    {% assign currency_symbol = '£' %}
+  {% else %}
+    {% assign currency_symbol = shop.currency %}
+  {% endif %}
+  <collection-section productCardPrimaryColor="{{ section.settings.product_desc_text_color }}" curreny="{{ currency_symbol }}" >
+ 
+    <script type="application/json">
+        [
+        {% for p in collection.products %} 
+          {
+            "id": {{ p.id }},
+            "title": "{{ p.title }}", 
+            "color": "{{ p.metafields.custom.color }}",
+            "variant": "{{ p.metafields.custom.variant_id }}",
+            "price": "{{ p.price | money }}",
+            "url": "{{ p.url }}",
+            "front_image": "{{ p.images[0] | image_url }}",
+            "back_image": "{{ p.images[1] | image_url }}",
+            "variants": {{ p.variants |  json }}, 
+            "type": "{{ p.metafields.custom.type_collection }}",
+            "tags": [{{ p.metafields.custom.tags }}], 
+            "collection": "{{ section.settings.collection_id.title }}",
+            "type_tag": [{{ p.metafields.custom.collections_tags }}],
+            "data_rating" : "{{ p.metafields.loox.avg_rating }}",
+            "data_raters" : "{{ p.metafields.loox.num_reviews }}"
+          }{% if forloop.last %}{% else %},{% endif %}
+        {% endfor %}
+        ]
+    </script>
+    <div class="collection_section">
+    
+    <div class="hero_collection">
+      {% assign s = section.settings.background_img_main |  size %}
+          <img class="hero_img_collection"
+            src="{% if s == 0  %}//jott.com/cdn/shop/files/SETDESIGN_COLORAMA_POCHONS_0015-header-desk.jpg?v=1707214515 {% else %} {{ section.settings.background_img_main |  image_url  }} {% endif %}"
+          >
+       
+        <div class="main_hero_content" {% if section.settings.show_title == "hide" %}
+          style="display: none;"
+        {% endif %}>
+            <h1 class="collection_name" style="color: {{ section.settings.title_collection_color }};">{{ collection.title }} </h1>
+        </div>
+    </div>
+    <div class="horizontal_filter_container">
+        <div class="filter_main_container">
+            <div class="filter_main_btn">
+                <h5 class="filter_txt">FILTER</h5>
+                <img src="{{ 'setting_white.png' |  asset_url }}" alt="" class="filter_icon white">
+                <img src="{{ 'setting_dark.png' |  asset_url }}" alt="" class="filter_icon dark">
+            </div>
+            <div class="filter_horizontal_scroll_container">
+                <div class="scroll_left_container"><img src="{{ 'left_arrow_scroll.png' |  asset_url }}" alt=""></div>
+                <div class="scroll_right_container"><img src="{{ 'right_arrow_scroll.png' |  asset_url }}" alt=""></div>
+                <div class="collection_btns_container">
+            
+                  {% for related_collection in section.settings.collection_list_linked %}
+                    <a class="collection_btn" {% if related_collection.title == collection.title %}
+                      style="color:{{ section.settings.secondary_color }};border: 0.2rem solid transparent;background-color:{{ section.settings.primary_color }};text-decoration: none;"
+                    {% endif %} style="text-decoration: none;" href="{{ related_collection.url }}">
+                        <h5 class="collection_txt">
+                          {{ related_collection.title }}
+                        </h5>
+                    </a>
+                  {% endfor %}
+                    
+                </div>
+               
+            </div>
+            {% comment %} <h5 class="total_products_collection" style="color: {{ section.settings.primary_color }};">{{ collection.products_count }} products</h5> {% endcomment %}
+        </div>
+
+        <div class="filter_tags">
+          {% for filter in collection.filters %}
+          {%- for filter_value in filter.active_values -%}
+            <a class="filter_tag" style="text-decoration: none;" href="{{ filter_value.url_to_remove }}">
+                <img src="{{ 'close_tag.png' |  asset_url }}" alt="" class="close_tag">
+                <h5 class="tag_title">{{ filter_value.label }}</h5>
+            </a>
+          {%- endfor -%}
+        {% endfor %}
+            
+            
+        </div>
+    </div>
+
+    <div class="products_container">
+    </div>
+
+    <div class="pagination">
+        {%- if paginate.pages > 1 -%}
+            {%- if paginate.parts.size > 0 -%}
+                {% for part in paginate.parts %}
+                    {% if part.is_link %}
+                      <a  href="{{ part.url }}" class="pagination_link" >{{ part.title }}</a>   
+                      {% else %}
+                      <a  href="{{ part.url }}"
+                        style="border-bottom: 2px solid {{ section.settings.primary_color }};color:{{ section.settings.primary_color }};"
+                        class="pagination_link" >{{ part.title }}</a>   
+                    {% endif %}
+                      
+                {% endfor %}
+            {% endif %}
+        {%- endif -%}
+    </div>
+    <div class="filter_drawer">
+        <div class="drawer_menu_inner" style="background-color: {{ section.settings.background }};">
+      <div class="close_icon_container">
+        <img src="{{ 'close_icon.png' |  asset_url }}" alt="">
+      </div>
+      <div class="filter_options_container">
+        <form > 
+        <div class="main_links_container">
+            <div
+                class="nav_drawer_main_link">
+                <div class="inner_link inner_link_subtree">
+                    <span class="main_title_link_span" style="color: {{ section.settings.primary_color }};">Sort by:
+                        </span><img
+                    class="arrow_img"
+                    src="{{ 'right-arrow.png' |  asset_url }}"
+                    alt="">
+                </div>
+                <div class="submenu_container">
+
+                <a style="text-decoration: none;" class="sort_buy_line" href="{{ collection.url }}?sort_by=best-selling">
+                    <div class="radio_container">
+                        <div class="inner_radio"></div>
+                    </div>
+                    <h5 class="txt_radio_line" style="color:{{ section.settings.primary_color }}">Best selling</h5>
+                </a>
+                
+                <a  style="text-decoration: none;" class="sort_buy_line" href="{{ collection.url }}?sort_by=price-ascending">
+                    <div class="radio_container">
+                        <div class="inner_radio"></div>
+                    </div>
+                    <h5 class="txt_radio_line" style="color:{{ section.settings.primary_color }}">Price, ascending order</h5>
+                </a>
+                    
+                <a  style="text-decoration: none;" class="sort_buy_line" href="{{ collection.url }}?sort_by=price-descending">
+                    <div class="radio_container">
+                        <div class="inner_radio"></div>
+                    </div>
+                    <h5 class="txt_radio_line" style="color:{{ section.settings.primary_color }}">Price, descending order</h5>
+                </a>
+                    
+                <a  style="text-decoration: none;" class="sort_buy_line" href="{{ collection.url }}?sort_by=created-descending">
+                    <div class="radio_container">
+                        <div class="inner_radio"></div>
+                    </div>
+                    <h5 class="txt_radio_line" style="color:{{ section.settings.primary_color }}">Date, old to new</h5>
+                </a>
+                </div>
+                
+            </div>
+            
+            
+            <div
+                class="nav_drawer_main_link">
+                <div class="inner_link inner_link_subtree">
+                    <span class="main_title_link_span" style="color: {{ section.settings.primary_color }};">Size</span><img
+                    class="arrow_img"
+                    src="{{ 'right-arrow.png' |  asset_url }}"
+                    alt="">
+                </div>
+                <div class="submenu_container">
+                  {% for filter in collection.filters %}
+                    {% if filter.label == "Size" %}
+                      {% for filter_value in filter.values %}
+                        <div class="select_buy_line">
+                          <div class="select_container">
+                            <div class="inner_select"></div></div>
+                        <h5 class="txt_select_line" style="color:{{ section.settings.primary_color }}">{{ filter_value.value }}</h5>
+                        <input 
+                        class="input-select-size"
+                        type="checkbox"
+                        name="{{ filter_value.param_name }}"
+                        value="{{ filter_value.value }}"
+                        id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                        {% if filter_value.active -%}checked{%- endif %}
+                        {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                         >
+                        </div>
+                        
+                      {% endfor %}
+                    {% endif %}  
+                  {% endfor %}
+                </div>
+            </div>
+           
+            <div
+                class="nav_drawer_main_link">
+                <div class="inner_link inner_link_subtree">
+                    <span class="main_title_link_span" style="color: {{ section.settings.primary_color }};">Color</span><img
+                    class="arrow_img"
+                    src="{{ 'right-arrow.png' |  asset_url }}"
+                    alt="">
+                </div>
+                <div class="submenu_container row_wrap">
+                  {% for filter in collection.filters %}
+                    {% if filter.label == "color_filter" %}
+                      {% for filter_value in filter.values %}
+                        <div class="color_buy_line">
+                          <div class="inner_circle" style="background-color: {{ filter_value.value }};"></div>
+                          <input 
+                        class="input-select-color"
+                        type="checkbox"
+                        name="{{ filter_value.param_name }}"
+                        value="{{ filter_value.value }}"
+                        id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                        {% if filter_value.active -%}checked{%- endif %}
+                        {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                         >
+                        </div>                       
+                      {% endfor %}
+                    {% endif %}   
+                  {% endfor %}
+                
+               
+                
+                    
+                </div>
+            </div> 
+           
+        </div>
+        
+        <div class="btns_filter_container_drawer">
+            <a class="btn_filter_drawer_clear" style="text-decoration: none;" href="{{ collection.url }}?sort_by={{ collection.sort_by }}"><h5 class="txt">CLEAR FILTERS</h5></a>
+            <div class="btn_filter_drawer_results"><input class="submit-hidden" type="submit" value="Apply"><h5 class="txt">SEE RESULTS</h5></div>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+    <div class="drawer_menu_overlay"></div>
+    </div>
+    </div>
+</collection-section>
+{% endpaginate %}
+{{ 'collection.js' |  asset_url |  script_tag }}
+{% style %}
+    #shopify-section-{{section.id}} .active .inner_radio{
+      background-color: {{ section.settings.primary_color }};
+      transition: all .1s ease-in;
+    }
+    #shopify-section-{{section.id}} .active .inner_select{
+      background-color: {{ section.settings.primary_color }};
+      transition: all .1s ease-in;
+      }
+    #shopify-section-{{section.id}} .active.color_buy_line{
+      border: 1px solid {{ section.settings.primary_color }};
+      transition: all .1s ease-in;
+    }
+    #shopify-section-{{section.id}} .filter_main_btn{
+      background-color: {{ section.settings.primary_color }};
+      color: {{ section.settings.secondary_color }};
+      border: 0.2rem solid transparent; 
+    }
+    #shopify-section-{{section.id}} .filter_main_btn:hover{
+      transition: background-color .25s ease-in-out;
+      background-color: {{ section.settings.secondary_color }};
+      color: {{ section.settings.primary_color }};
+      border: 0.2rem solid {{ section.settings.primary_color }};
+    }
+    #shopify-section-{{section.id}} .btn_filter_drawer_clear{
+        color:{{ section.settings.primary_color }};
+        border-color : {{ section.settings.primary_color }}20;
+    }
+    #shopify-section-{{section.id}} .btn_filter_drawer_clear:hover{
+    background-color:{{ section.settings.primary_color }};
+    color:{{ section.settings.secondary_color }};
+    transition: all .25s ease-in-out;
+    border: 0.2rem solid transparent;  
+  }
+
+
+  #shopify-section-{{section.id}} .collection_btn{
+        color:{{ section.settings.primary_color }};
+        border-color : {{ section.settings.primary_color }}20;
+    }
+    #shopify-section-{{section.id}} .collection_btn:hover{
+    background-color:{{ section.settings.primary_color }};
+    color:{{ section.settings.secondary_color }};
+    transition: all .25s ease-in-out;
+    border: 0.2rem solid transparent;  
+  }
+  #shopify-section-{{section.id}} .btn_filter_drawer_results{
+      background-color: {{ section.settings.primary_color }};
+      color: {{ section.settings.secondary_color }};
+      border: 0.2rem solid transparent;
+    }
+    #shopify-section-{{section.id}} .btn_filter_drawer_results:hover{
+      transition: background-color .25s ease-in-out;
+      background-color: {{ section.settings.secondary_color }};
+      color: {{ section.settings.primary_color }};
+      border: 0.2rem solid {{ section.settings.primary_color }};
+    }
+
+  #shopify-section-{{ section.id }}   .price_product{
+    color:{{ section.settings.card_price }}  
+  }
+
+  #shopify-section-{{ section.id }}  .price_product_compare{
+    color:{{ section.settings.card_price_compare }}  
+      }
+
+{% endstyle %}
+{% schema %}
+    {
+      "name": "Collection Products",
+      "settings": [ 
+        {
+          "type":"text",
+          "id": "title_section",
+          "label": "Select Collection Title"
+        }, 
+        {
+        "type": "radio",
+        "label": "Show Title",
+        "id": "show_title",
+        "options": [
+          {
+            "value": "show",
+            "label": "show"
+          }, {
+            "value": "hide",
+            "label": "hide"
+          }
+        ],
+        "default": "show"
+      },
+        {
+          "type":"color",
+          "id": "background",
+          "label": "Background Color",
+          "default": "#ffffff"
+      },
+      {
+        "type": "collection_list",
+        "id": "collection_list_linked",
+        "label": "Select Related Collections"
+      },
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Color Primary",
+        "default": "#152F4E"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Color Secondary",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "title_collection_color",
+        "label":"Choose a color for the title collection",
+        "default": "#ffffff"
+      },
+      {
+      "type": "image_picker",
+      "id": "background_img_main",
+      "label": "Add default Background to the Collection"
+      } ,
+      {
+        "type": "color",
+        "id": "product_desc_text_color",
+        "label": "Product Card Text Color Primary",
+        "default": "#152f4e"
+      },
+      {
+        "type": "color",
+        "id": "card_price",
+        "label": "Card Price Color",
+      "default": "#1A1A1A"},
+      {
+        "type": "color",
+        "id": "card_price_compare",
+        "label": "Card Price Compare At Color",
+      "default": "#A92521"}
+        ]
+    }
+    {% endschema %}

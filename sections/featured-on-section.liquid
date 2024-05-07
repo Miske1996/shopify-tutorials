@@ -1,0 +1,45 @@
+{{ 'featured-on-section.css' |  asset_url |  stylesheet_tag }}
+<featured-on>
+<div class="featured_on_container">
+    <div class="featuredons_list_scroll">
+        {% for block in section.blocks %}
+            <a class="featuredon_card">
+            <img src="{{ block.settings.featuredon_img |  image_url  }}" alt="">
+            </a>
+        {% endfor %}
+    </div>
+    <div class="scroll_arrows_container">
+        <div class="left_arrow"><img src="{{ 'left-arrow-blue.png' |  asset_url }}" alt=""></div>
+        <div class="right_arrow"><img src="{{ 'left-arrow-blue.png' |  asset_url }}" alt=""></div>
+    </div>
+</div>
+</featured-on>
+{{ 'featured-on.js' |  asset_url |  script_tag }}
+
+{% schema %}
+{
+    "name": "Featured On List",
+    "settings": [
+        
+        ],
+    "blocks": [
+        {
+            "name": "Featured on",
+            "type": "featuredOn",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "featuredon_img",
+                    "label": "Featured On Image"
+                }
+
+            ]
+        }
+    ],
+        "presets": [
+            {
+                "name": "Featured On"
+            }
+        ]
+}
+{% endschema %}

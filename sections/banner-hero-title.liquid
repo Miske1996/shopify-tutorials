@@ -1,0 +1,34 @@
+{{ 'banner-hero-title.css' |  asset_url |  stylesheet_tag }}
+<div class="banner_hero_title_container" style="background-color: {{ section.settings.background_color }};">
+    <h1 class="title_banner" style="color: {{ section.settings.text_color }};">{{ section.settings.text_title  }}</h1>
+</div>
+{% schema %}
+    {
+        "name": "Banner Hero Title Section",
+        "settings": [
+                {
+                "type": "text",
+                "id": "text_title",
+                "label": "Banner Hero Title",
+                "default": "THE BRAND"
+                },
+                {
+                "type": "color",
+                "id": "text_color",
+                "label": "Banner Hero Title Text Color",
+                "default": "#ffffff"
+                },
+                {
+                "type": "color",
+                "id": "background_color",
+                "label": "Banner Hero Title Background Color",
+                "default": "#162D4D"
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Banner Hero Title"
+                }
+            ]
+    }
+    {% endschema %}

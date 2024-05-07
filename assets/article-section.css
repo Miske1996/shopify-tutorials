@@ -1,0 +1,352 @@
+.article_section_container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-bottom: 5vw;
+}
+.article_section_container .divider {
+  margin-top: 1vw;
+  height: 1.5px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.062745098);
+}
+.article_section_container .date_article {
+  margin-top: 1vw;
+  font-size: 1.2vw;
+  letter-spacing: 0.02vw;
+  color: inherit;
+  font-weight: 500;
+}
+.article_section_container .article_title {
+  width: 90%;
+  font-size: 3.7vw;
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: 0.01vw;
+}
+.article_section_container .main_section_article {
+  width: 100%;
+  display: flex;
+}
+.article_section_container .main_section_article .article_container {
+  width: 72%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5vw;
+}
+.article_section_container .main_section_article .article_container .author_info_article {
+  display: flex;
+  gap: 0.5vw;
+  align-items: center;
+}
+.article_section_container .main_section_article .article_container .author_info_article .author_img {
+  width: 3.5vw;
+  height: 3.5vw;
+  border-radius: 50%;
+  display: flex;
+  overflow: hidden;
+}
+.article_section_container .main_section_article .article_container .author_info_article .author_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.article_section_container .main_section_article .article_container .author_info_article .author_name {
+  display: block;
+  font-size: 1.4vw;
+  color: inherit;
+}
+.article_section_container .main_section_article .article_container .select_input_container {
+  width: 220px;
+  height: 35px;
+  border-radius: 3px;
+  background-color: #fff;
+  border: solid 1px #e3e3e3;
+  padding: 6px 10px 0px 15px;
+  margin-top: 0.8rem;
+  display: flex;
+  position: relative;
+  display: none;
+}
+.article_section_container .main_section_article .article_container .select_input_container .selected_value_container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  align-items: center;
+}
+.article_section_container .main_section_article .article_container .select_input_container .selected_value_container .selected_value {
+  color: #152f4e;
+  font-weight: 600;
+  max-width: 20ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: 1.54;
+  cursor: pointer;
+}
+.article_section_container .main_section_article .article_container .select_input_container .selected_value_container img {
+  width: 10px;
+  height: 10px;
+}
+.article_section_container .main_section_article .article_container .select_input_container:hover {
+  border-color: #6A6C77;
+}
+.article_section_container .main_section_article .article_container .select_input_container .values_container {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 35px;
+  background: #fff;
+  border-radius: 3px;
+  z-index: 10;
+  border: solid 1px #e3e3e3;
+  padding: 4px;
+}
+.article_section_container .main_section_article .article_container .select_input_container .values_container .content_link {
+  padding: 7px 9px 9px 12px;
+  font-size: 12px;
+  color: #737373;
+  cursor: pointer;
+  text-decoration: none;
+}
+.article_section_container .main_section_article .article_container .select_input_container .values_container .content_link:hover {
+  background-color: rgba(21, 47, 78, 0.07);
+}
+.article_section_container .main_section_article .article_container .select_input_container .active_selection {
+  display: flex;
+}
+.article_section_container .main_section_article .article_container .article_content_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3vw;
+}
+.article_section_container .main_section_article .article_container .article_content_container p, .article_section_container .main_section_article .article_container .article_content_container h1, .article_section_container .main_section_article .article_container .article_content_container h2, .article_section_container .main_section_article .article_container .article_content_container div, .article_section_container .main_section_article .article_container .article_content_container img {
+  width: 100%;
+}
+.article_section_container .main_section_article .article_container .article_content_container div {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+.article_section_container .main_section_article .article_container .article_content_container h2 span, .article_section_container .main_section_article .article_container .article_content_container h2 b {
+  font-weight: 600 !important;
+  font-size: 2.5vw;
+}
+.article_section_container .main_section_article .article_container .article_content_container h2 {
+  margin-top: 0.3vw;
+}
+.article_section_container .main_section_article .article_container .article_content_container h1 {
+  margin-top: 4vw;
+}
+.article_section_container .main_section_article .article_container .article_content_container p span, .article_section_container .main_section_article .article_container .article_content_container p b, .article_section_container .main_section_article .article_container .article_content_container p span a {
+  font-size: 1.5vw;
+  color: inherit;
+}
+.article_section_container .main_section_article .article_container .article_content_container ul li span, .article_section_container .main_section_article .article_container .article_content_container ul li b, .article_section_container .main_section_article .article_container .article_content_container ol li span, .article_section_container .main_section_article .article_container .article_content_container ol li b {
+  font-size: 1.5vw;
+}
+.article_section_container .main_section_article .article_container .article_content_container h3 b, .article_section_container .main_section_article .article_container .article_content_container h3 span {
+  font-weight: 500 !important;
+  font-size: 1.6vw;
+}
+.article_section_container .main_section_article .article_container .article_content_container h1 b, .article_section_container .main_section_article .article_container .article_content_container h1 span {
+  font-weight: 700 !important;
+  font-size: 3.5vw;
+}
+.article_section_container .main_section_article .additional_info_container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vw;
+  gap: 4vw;
+}
+.article_section_container .main_section_article .additional_info_container .table_of_contents {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.article_section_container .main_section_article .additional_info_container .table_of_contents .table_of_contents_title {
+  font-weight: 700;
+  font-size: 1.6vw;
+  margin-bottom: 1vw;
+}
+.article_section_container .main_section_article .additional_info_container .table_of_contents .content_link {
+  font-size: 1.3vw;
+  margin-bottom: 0.8vw;
+  width: 20vw;
+  color: inherit;
+  text-decoration: none;
+}
+.article_section_container .main_section_article .additional_info_container .about_author_column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.article_section_container .main_section_article .additional_info_container .about_author_column .author_info_article {
+  display: flex;
+  gap: 0.5vw;
+  align-items: center;
+}
+.article_section_container .main_section_article .additional_info_container .about_author_column .author_info_article .author_img {
+  width: 3.5vw;
+  height: 3.5vw;
+  border-radius: 50%;
+  display: flex;
+  overflow: hidden;
+}
+.article_section_container .main_section_article .additional_info_container .about_author_column .author_info_article .author_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.article_section_container .main_section_article .additional_info_container .about_author_column .author_info_article .author_name {
+  display: block;
+  font-size: 1.4vw;
+  color: inherit;
+}
+.article_section_container .main_section_article .additional_info_container .about_author_column .bio_author {
+  width: 15vw;
+  margin-top: 1vw;
+  font-weight: 500;
+  font-size: 1.2vw;
+}
+.article_section_container .main_section_article .additional_info_container .about_author_column .about_the_author_title {
+  font-weight: 700;
+  font-size: 1.6vw;
+  margin-bottom: 1vw;
+}
+
+@media screen and (max-width: 700px) {
+  .article_section_container {
+    width: 100vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-bottom: 10vw;
+  }
+  .article_section_container .divider {
+    margin-top: 1vw;
+    height: 1.5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.062745098);
+  }
+  .article_section_container .date_article {
+    margin-top: 2vw;
+    font-size: 3.2vw;
+    text-align: center;
+  }
+  .article_section_container .article_title {
+    width: 95%;
+    font-size: 6vw;
+    text-align: center;
+  }
+  .article_section_container .main_section_article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .article_section_container .main_section_article .article_container {
+    width: 100%;
+    height: 100%;
+    padding-top: 2vw;
+    align-items: center;
+  }
+  .article_section_container .main_section_article .article_container .author_info_article {
+    gap: 3vw;
+  }
+  .article_section_container .main_section_article .article_container .author_info_article .author_img {
+    width: 10vw;
+    height: 10vw;
+  }
+  .article_section_container .main_section_article .article_container .author_info_article .author_name {
+    font-size: 3.5vw;
+  }
+  .article_section_container .main_section_article .article_container .select_input_container {
+    display: flex;
+    width: 100%;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container {
+    width: 100%;
+    gap: 1vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container p, .article_section_container .main_section_article .article_container .article_content_container h1, .article_section_container .main_section_article .article_container .article_content_container h2, .article_section_container .main_section_article .article_container .article_content_container div, .article_section_container .main_section_article .article_container .article_content_container img {
+    width: 100%;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container div {
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container h2 span, .article_section_container .main_section_article .article_container .article_content_container h2 b {
+    font-weight: 600 !important;
+    font-size: 7.5vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container h2 {
+    margin-top: 1vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container h1 {
+    margin-top: 10vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container p span, .article_section_container .main_section_article .article_container .article_content_container p b, .article_section_container .main_section_article .article_container .article_content_container p span a {
+    font-size: 4.5vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container ul li span, .article_section_container .main_section_article .article_container .article_content_container ul li b, .article_section_container .main_section_article .article_container .article_content_container ol li span, .article_section_container .main_section_article .article_container .article_content_container ol li b {
+    font-size: 4.5vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container h3 b, .article_section_container .main_section_article .article_container .article_content_container h3 span {
+    font-size: 4.5vw;
+  }
+  .article_section_container .main_section_article .article_container .article_content_container h1 b, .article_section_container .main_section_article .article_container .article_content_container h1 span {
+    font-size: 8vw;
+  }
+  .article_section_container .main_section_article .additional_info_container {
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 14vw;
+    gap: 8vw;
+    width: 100%;
+  }
+  .article_section_container .main_section_article .additional_info_container .table_of_contents {
+    display: none;
+  }
+  .article_section_container .main_section_article .additional_info_container .about_author_column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .article_section_container .main_section_article .additional_info_container .about_author_column .author_info_article {
+    display: flex;
+    gap: 1.5vw;
+    align-items: center;
+  }
+  .article_section_container .main_section_article .additional_info_container .about_author_column .author_info_article .author_img {
+    width: 8vw;
+    height: 8vw;
+  }
+  .article_section_container .main_section_article .additional_info_container .about_author_column .author_info_article .author_name {
+    display: block;
+    font-size: 4vw;
+    color: inherit;
+  }
+  .article_section_container .main_section_article .additional_info_container .about_author_column .bio_author {
+    width: 100%;
+    margin-top: 3vw;
+    font-weight: 500;
+    font-size: 3vw;
+  }
+  .article_section_container .main_section_article .additional_info_container .about_author_column .about_the_author_title {
+    font-weight: 700;
+    font-size: 4.5vw;
+    margin-bottom: 3vw;
+  }
+}

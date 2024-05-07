@@ -1,0 +1,41 @@
+{{ 'banner-title-subtitle.css' |  asset_url |  stylesheet_tag }}
+<div class="banner_title_subtitle_container" style="background-color: {{ section.settings.background_color }};">
+    <h5 style="color: {{ section.settings.text_color }};">{{ section.settings.text_title  }}</h5>
+    <h6 style="color: {{ section.settings.text_color }};">{{ section.settings.text_sub_title  }}</h6>
+</div>
+{% schema %}
+    {
+        "name": "Banner Title/Subtitle ",
+        "settings": [
+                {
+                "type": "text",
+                "id": "text_title",
+                "label": "Banner Title/Subtitle Title",
+                "default": "Our Mission for Better Silk"
+                },
+                {
+                "type": "text",
+                "id": "text_sub_title",
+                "label": "Banner Title/Subtitle Subtitle",
+                "default": "Designed at our HQ in San Francisco & made from premium materials, every style goes through hours of wear testing before it’s given the stamp of boob approval. Comfort & support are guaranteed."
+                },
+                {
+                "type": "color",
+                "id": "text_color",
+                "label": "Banner Title/Subtitle Text Color",
+                "default": "#000000"
+                },
+                {
+                "type": "color",
+                "id": "background_color",
+                "label": "Banner Title/Subtitle Background Color",
+                "default": "#BFC3C9"
+                } 
+            ],
+            "presets": [
+                {
+                    "name": "Banner Title/Subtitle"
+                }
+            ]
+    }
+    {% endschema %}

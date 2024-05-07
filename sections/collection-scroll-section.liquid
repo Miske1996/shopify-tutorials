@@ -1,0 +1,83 @@
+{{ 'collection-scroll-section.css' |  asset_url |  stylesheet_tag }}
+<collection-scroll id="collection-scroll-{{ section.id }}">
+<div id="collection-scroll-container-{{ section.id }}" class="collection_scroll_section" style="background-color:{{ section.settings.background }};">
+    <div class="section_title" style="color: {{ section.settings.text_color }};">{{ section.settings.title }}</div>
+    <div class="section_sub_title" style="color: {{ section.settings.text_color }};">{{ section.settings.subtitle }}</div>
+    <div class="collections_list_scroll">
+        {% for block in section.blocks %}
+            <a class="collection_card" href="{{ block.settings.collection_id.url }}" style="text-decoration: none;">
+                <img src="{{ block.settings.collection_id.featured_image |  image_url  }}" alt="">
+                <span class="title_collection_card" style="color: {{ section.settings.text_color }};">{{ block.settings.collection_id.title }}</span>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="scroll_arrows_container">
+        <div class="left_arrow"><img src="{{ 'left-arrow-blue.png' |  asset_url }}" alt=""></div>
+        <div class="right_arrow"><img src="{{ 'left-arrow-blue.png' |  asset_url }}" alt=""></div>
+    </div>
+</div>
+</collection-scroll>
+{{ 'collection-scroll.js' |  asset_url |  script_tag }}
+
+{% schema %}
+{
+    "name": "Collection Scroll",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "The benefits are real"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Sub Title",
+            "default": "Transform your hair and Skin in just 4 nights!"
+        },
+        {
+            "type":"color",
+            "id": "background_arrows",
+            "label": "Background Color Arrows",
+            "default": "#152f4e"
+        },
+        {
+            "type":"color",
+            "id": "background",
+            "label": "Background Color",
+            "default": "#edf4fd"
+        },
+        {
+            "type":"color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#152f4e"
+        },
+        {
+            "type":"color",
+            "id": "scroll_svg_color",
+            "label": "Scroll SVG color",
+            "default": "#152f4e"
+        }
+        ],
+        "blocks": [
+            {
+                "name": "Slide",
+                "type": "CollectionSlide",
+                "settings": [
+                    {
+                        "type": "collection",
+                        "id": "collection_id",
+                        "label": "Collection Slide"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Collection Scroll"
+            }
+        ]
+}
+{% endschema %}

@@ -1,0 +1,62 @@
+{{ 'contact-us-section.css' |  asset_url |  stylesheet_tag }}
+<div class="contact_us_section_container" style="color: {{ section.settings.text_color }};">
+    {{ page.content }}
+    <div class="from_container">
+    {% form 'contact' %}
+      
+      <div class="inputs_container">
+        <div class="name input_div">
+          <label for="name">Name</label>
+          <input type="text" name="contact[name]" id="name" />
+        </div>
+      
+      
+        <div class="email input_div">
+          <label for="email">Email</label>
+
+          <input type="email" name="contact[email]" id="email" />
+        </div>
+      </div>
+  
+      <div class="message input_div" style="flex-direction: column;display:flex">
+        <label for="message">Message</label>
+        <textarea name="contact[body]" id="message"></textarea>
+      </div>
+    
+      <div class="submit input_div">
+        <input type="submit" value="Send" />
+      </div>
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message">
+          Sent with Success
+        </h2>
+      {% endif %}
+      {{ form.errors | default_errors }}
+    {% endform %}
+    </div>
+</div>
+</div>
+{% schema %}
+    {
+      "name": "Contact Section", 
+      "settings": [
+        {
+          "type": "color",
+          "id": "text_color",
+          "default": "#000000",
+          "label": "Text Color"
+        },
+        {
+          "type": "text",
+          "id": "email_send",
+          "default": "support@bloomy.com",
+          "label": "Email to send to"
+        }
+      ],
+      "presets": [
+          {
+            "name": "Contact Section"
+          }
+        ]
+    }
+{% endschema %}

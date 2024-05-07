@@ -1,0 +1,85 @@
+.latest_blogs_section_container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin-bottom: 3vw;
+}
+.latest_blogs_section_container .posts_title {
+  font-size: 1.6vw;
+  font-weight: 700;
+}
+.latest_blogs_section_container .blog_cards_container {
+  width: 100%;
+  display: flex;
+  gap: 2%;
+  margin-top: 2vw;
+  padding-bottom: 2vw;
+  border-bottom: 1.5px solid #d5d9da;
+}
+.latest_blogs_section_container .blog_cards_container .blog_card {
+  display: flex;
+  flex-direction: column;
+  width: 32%;
+}
+.latest_blogs_section_container .blog_cards_container .blog_card .image_blog {
+  width: 100%;
+  height: 20vw;
+  display: flex;
+}
+.latest_blogs_section_container .blog_cards_container .blog_card .image_blog img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.latest_blogs_section_container .blog_cards_container .blog_card .info_blog {
+  display: flex;
+  gap: 0.3vw;
+  align-items: center;
+  margin-top: 0.5vw;
+}
+.latest_blogs_section_container .blog_cards_container .blog_card .info_blog .date_blog {
+  font-size: 1vw;
+  font-weight: 400;
+}
+.latest_blogs_section_container .blog_cards_container .blog_card .info_blog .min_reads {
+  font-size: 0.8vw;
+  font-weight: 400;
+}
+.latest_blogs_section_container .blog_cards_container .blog_card .blog_title {
+  width: 80%;
+  font-weight: 700;
+  font-size: 1.3vw;
+  margin-top: 0.3vw;
+  color: black;
+}
+
+@media screen and (max-width: 500px) {
+  .latest_blogs_section_container .posts_title {
+    font-size: 4.2vw;
+  }
+  .latest_blogs_section_container .blog_cards_container {
+    flex-direction: column;
+    align-items: center;
+    gap: 8vw;
+  }
+  .latest_blogs_section_container .blog_cards_container .blog_card {
+    width: 95%;
+  }
+  .latest_blogs_section_container .blog_cards_container .blog_card .image_blog {
+    height: 70vw;
+  }
+  .latest_blogs_section_container .blog_cards_container .blog_card .info_blog {
+    gap: 3vw;
+  }
+  .latest_blogs_section_container .blog_cards_container .blog_card .info_blog .date_blog {
+    font-size: 4vw;
+  }
+  .latest_blogs_section_container .blog_cards_container .blog_card .info_blog .min_reads {
+    font-size: 3.2vw;
+  }
+  .latest_blogs_section_container .blog_cards_container .blog_card .blog_title {
+    font-size: 4.6vw;
+  }
+}

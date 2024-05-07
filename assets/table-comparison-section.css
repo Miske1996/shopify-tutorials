@@ -1,0 +1,82 @@
+.table_comparison_section {
+  width: 100vw;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1vw;
+}
+.table_comparison_section .title_table {
+  font-size: 3.3vw;
+  font-weight: bold;
+  margin-top: 3vw;
+}
+.table_comparison_section .sub_title_table {
+  font-size: 1.5vw;
+  font-weight: 400;
+  margin-bottom: 2vw;
+  text-align: center;
+  width: 70%;
+}
+.table_comparison_section .sub_title_table p, .table_comparison_section .sub_title_table h1, .table_comparison_section .sub_title_table h2, .table_comparison_section .sub_title_table h3, .table_comparison_section .sub_title_table h4, .table_comparison_section .sub_title_table h5, .table_comparison_section .sub_title_table h6 {
+  display: block;
+  font-size: inherit;
+  font-weight: 400;
+  color: inherit;
+  cursor: default;
+  pointer-events: all;
+  margin: 0;
+}
+.table_comparison_section .sub_title_table span, .table_comparison_section .sub_title_table li {
+  display: block;
+  font-size: inherit;
+  font-weight: 400;
+  color: inherit;
+  cursor: default;
+  pointer-events: all;
+}
+.table_comparison_section .container_table {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 5vw;
+}
+.table_comparison_section .container_table > div {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table_comparison_section .container_table > div span {
+  font-size: 1.5vw;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  width: 90%;
+}
+.table_comparison_section .container_table > div img {
+  width: 3.5vw;
+  height: 3.5vw;
+}
+
+@media screen and (max-width: 770px) {
+  .table_comparison_section .title_table {
+    font-size: 6.3vw;
+    width: 90%;
+    text-align: center;
+  }
+  .table_comparison_section .sub_title_table {
+    font-size: 3.6vw;
+    width: 90%;
+  }
+  .table_comparison_section .sub_title_table p, .table_comparison_section .sub_title_table h1, .table_comparison_section .sub_title_table h2, .table_comparison_section .sub_title_table h3, .table_comparison_section .sub_title_table h4, .table_comparison_section .sub_title_table h5, .table_comparison_section .sub_title_table h6 {
+    font-size: 3.6vw;
+  }
+  .table_comparison_section .sub_title_table span, .table_comparison_section .sub_title_table li {
+    font-size: 3.6vw;
+  }
+  .table_comparison_section .container_table > div span {
+    font-size: 2.3vw;
+    font-weight: bold;
+    text-align: center;
+  }
+}

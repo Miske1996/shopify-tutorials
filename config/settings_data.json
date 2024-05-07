@@ -1,0 +1,121 @@
+{
+  "current": {
+    "sections": {
+      "menu-drawer-section": {
+        "type": "menu-drawer-section",
+        "settings": {
+          "background": "#ffffff",
+          "color_text": "#1a1a1a",
+          "main_list": "",
+          "info_list": "",
+          "social_media_list": ""
+        }
+      },
+      "header-section": {
+        "type": "header-section",
+        "custom_css": [
+
+        ],
+        "settings": {
+          "header_type": "fixed",
+          "background": "#ffffff",
+          "color_text": "#1a1a1a",
+          "logo": "shopify:\/\/shop_images\/Exclude.png",
+          "image_size": 150,
+          "left_nav": "",
+          "right_nav": "",
+          "action_cutton_color": "#ffffff",
+          "action_cutton_bg_color": "#d43636",
+          "svgs_color": "#1a1a1a",
+          "svgs_color_transparent": "#ffffff"
+        }
+      },
+      "cart-drawer-section": {
+        "type": "cart-drawer-section",
+        "settings": {
+          "cart_primary_color": "#1a1a1a",
+          "cart_secondary_color": "#ffffff"
+        }
+      },
+      "annoncement-bar-section": {
+        "type": "annoncement-bar-section",
+        "blocks": {
+          "annoncement_aRjfUp": {
+            "type": "Annoncement",
+            "settings": {
+              "annonce_text": "🛵 Buy 1 Get 1 Free"
+            }
+          },
+          "annoncement_HJN3ta": {
+            "type": "Annoncement",
+            "settings": {
+              "annonce_text": "🛵 Free 3X payment available available available available with Klarna  with Klarna  with Klarna  with Klarna"
+            }
+          }
+        },
+        "block_order": [
+          "annoncement_aRjfUp",
+          "annoncement_HJN3ta"
+        ],
+        "settings": {
+          "bg_primary_color": "#1a1a1a",
+          "text_color": "#ffffff"
+        }
+      },
+      "footer-section": {
+        "type": "footer-section",
+        "blocks": {
+          "social_media_block_rrV4EX": {
+            "type": "social_media_block",
+            "settings": {
+              "social_media_img": "shopify:\/\/shop_images\/facebook-icon.png",
+              "social_media_url": "https:\/\/instagram.com"
+            }
+          },
+          "social_media_block_gdqYwp": {
+            "type": "social_media_block",
+            "settings": {
+              "social_media_img": "shopify:\/\/shop_images\/tiktok-icon.png",
+              "social_media_url": "https:\/\/instagram.com"
+            }
+          },
+          "social_media_block_a6Nc3g": {
+            "type": "social_media_block",
+            "settings": {
+              "social_media_img": "shopify:\/\/shop_images\/youtube-icon.png",
+              "social_media_url": "https:\/\/instagram.com"
+            }
+          },
+          "social_media_block_9ejpHX": {
+            "type": "social_media_block",
+            "settings": {
+              "social_media_img": "shopify:\/\/shop_images\/instagram-icon.png",
+              "social_media_url": "https:\/\/instagram.com"
+            }
+          }
+        },
+        "block_order": [
+          "social_media_block_rrV4EX",
+          "social_media_block_gdqYwp",
+          "social_media_block_a6Nc3g",
+          "social_media_block_9ejpHX"
+        ],
+        "settings": {
+          "background_color_section": "#000000",
+          "text_color": "#ffffff",
+          "availabality_text": "We’re here to help! We are available 7 days a week from 8:00AM to 7:00PM PT*.",
+          "privacy_policy_text": "*Your interactions with us may be stored for future reference, and we may use 3rd party services to assist with these interactions and with storage. Your initiation of an interaction is deemed to be your consent. Please see our Privacy Policy for more information.",
+          "info_text": "189 East Brandon Boulevard, Brandon, FL 33511 - Tel: (323)  287 5672",
+          "copyrights_text": "Copyright 2024 © Bloomy silk® owned and operated by Beno Brands LLC Group of companies."
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
+  "presets": {
+    "Default": {
+    }
+  }
+}

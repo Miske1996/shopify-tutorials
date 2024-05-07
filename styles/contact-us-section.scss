@@ -1,0 +1,193 @@
+.contact_us_section_container{
+    width: 100vw;
+  
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    & > * {
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
+  
+    .from_container{
+        width: 90%;
+        align-self: center;
+        margin-top: 5vw;
+        display: flex;
+        justify-content: center;
+        input:focus{
+            outline: none;
+        }
+        textarea:focus{
+            outline: none;
+        }
+        .input_div textarea{
+            border: 2px solid #EBEBEC;
+            color: black;
+            font-size: 1.5vw;
+            width: 80vw;
+            height: 3vw;
+            margin-top: 1vw;
+            padding-top: 0.3vw;
+            height: 10vw;
+            padding-left: 1vw;
+
+        }
+        .input_div label{
+            margin-top: 1vw;
+            font-size: 1.5vw;
+        }
+        .inputs_container{ 
+            width: 80vw;
+            display: flex;
+            justify-content: space-between;
+            .name input,.email input{
+                width: 39vw;
+                height: 3vw;
+                font-size: 1.5vw;
+                padding-top: 0.3vw;
+                padding-left: 1vw;
+
+            }
+            .input_div label{
+            font-size: 1.5vw;
+                
+            }
+            .input_div input{
+                border: 2px solid #EBEBEC;
+                color: black;
+                padding-left: 1vw;
+            }
+        }
+
+        .submit input{
+            background: none;
+            border: none;
+            width: 5vw;
+            height: 3vw;
+            text-align: center;
+            color: white;
+            background-color: #4C4C4B;
+            margin-top: 2vw;
+            cursor: pointer;
+        }
+    }
+    h2 span, h2 b{
+        font-weight: 600 !important;
+        font-size: 3vw;
+        
+    }
+  
+    ul li, ul li span ,p,p span,p b,p span a{
+        font-size: 1.5vw;
+        color: inherit;
+        
+    }
+    ul li span,ul li b, ol li span,ol li b{
+        font-size: 1.5vw;
+    }
+    h3 b, h3 span{
+        font-weight: 500 !important;
+        font-size: 3vw;
+    }
+    h1 b, h1 span{
+        font-weight: 700 !important;
+        font-size: 3vw;
+    }
+
+   
+}
+@media screen and (max-width: 770px) { 
+   .contact_us_section_container{
+        
+
+    padding-top: 3vw;
+
+    .from_container{
+        width: 90%;
+        align-self: center;
+        margin-top: 9vw;
+        display: flex;
+        justify-content: center;
+        input:focus{
+            outline: none;
+        }
+        textarea:focus{
+            outline: none;
+        }
+        .input_div textarea{
+            font-size: 4.5vw;
+            width: 90vw;
+            height: 6vw;
+            margin-top: 3vw;
+            padding-top: 0.9vw;
+            height: 20vw;
+            padding-left: 3vw;
+
+        }
+        .input_div label{
+            margin-top: 3vw;
+            font-size: 4.5vw;
+        }
+        .inputs_container{ 
+            width: 90vw;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            .name input,.email input{
+                width: 100%;
+                height: 9vw;
+                font-size: 4.5vw;
+                padding-top: 0.9vw;
+                padding-left: 2vw;
+
+            }
+            .input_div label{
+            font-size: 4.5vw;
+                
+            }
+            .input_div input{
+                border: 2px solid #EBEBEC;
+                color: black;
+                padding-left: 1vw;
+            }
+        }
+
+        .submit input{
+            background: none;
+            border: none;
+            width: 15vw;
+            height: 9vw;
+            text-align: center;
+            color: white;
+            background-color: #4C4C4B;
+            margin-top: 2vw;
+            cursor: pointer;
+        }
+    }
+    & > * {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+     ul li , ul li span,p,p span,p b,p span a{
+        font-size: 3.5vw;
+        color: inherit; 
+    }
+    h3 b, h3 span{
+        font-weight: 500 !important;
+        font-size: 5vw;
+    }
+    h1 b, h1 span{
+        font-weight: 700 !important;
+        font-size: 5vw;
+    }
+    h2 span, h2 b{
+        font-weight: 600 !important;
+        font-size: 5vw;
+        color: inherit; 
+       
+    }
+   } 
+}

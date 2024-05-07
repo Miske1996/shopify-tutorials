@@ -1,0 +1,135 @@
+{{ 'menu-drawer-section.css' | asset_url | stylesheet_tag }}
+<menu-drawer>
+  <div class="menu_drawer_section_container" >
+    <div class="drawer_menu_inner" style="background-color: {{ section.settings.background }};">
+      <div class="close_icon_container">
+        <img src="{{ 'close_icon.png' |  asset_url }}" alt="">
+      </div>
+      <div class="main_links_container">
+        {% for link in section.settings.main_list.links %}
+          <div
+            class="nav_drawer_main_link">
+            {% if link.levels > 0 %}
+              <div class="inner_link inner_link_subtree">
+                <span class="main_title_link_span" style="color: {{ section.settings.color_text }};">{{ link.title }}</span><img
+                  class="arrow_img"
+                  src="{{ 'right-arrow.png' |  asset_url }}"
+                  alt="">
+              </div>
+              <div class="submenu_container">
+                {% for sub_link in link.links %}
+                  <div class="sub_link_parent_1">
+                    <span class="sub_link_parent_1_span" style="color: {{ section.settings.color_text }};">{{ sub_link.title }}</span>
+                    {% for sub_link2 in sub_link.links %}
+                      <a class="sub_link2_link" style="color: {{ section.settings.color_text }};" href="{{ sub_link2.url }}">{{ sub_link2.title }}</a>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+                {% assign collection_name = link.title %}
+                {% assign collection_title = collections[collection_name].metafields.custom.text_collection_title %}
+                {% assign collection_img = collections[collection_name].metafields.custom.image_collection %}
+                {% assign collection_url = collections[collection_name].url %}
+                <div class="collection_menu">
+                  <img
+                    src="{{ collection_img |  file_url }}"
+                    alt=""
+                    class="bg_img">
+                  <a href="{{ collection_url }}" style="color: {{ section.settings.color_text }};" class="go_to_collection_container">
+                    <span style="color: {{ section.settings.color_text }};">{{ collection_title }}</span>
+                    <img
+                      src="{{ 'arrow_right.png' |  asset_url }}"
+                      alt=""
+                      class="img_arrow">
+                  </a>
+                </div>
+
+              </div>
+            {% else %}
+              {% if forloop.index == 1 %}
+                <div class="inner_link">
+                  <span class="main_title_link_span"  style="color: {{ section.settings.color_text }};">{{ link.title }}</span>
+                </div>
+              {% else %}
+                <div class="inner_link">
+                  <span class="main_title_link_span" style="color: {{ section.settings.color_text }};">{{ link.title }}</span>
+                </div>
+              {% endif %}
+
+            {% endif %}
+          </div>
+        {% endfor %}
+        
+      
+        {% for link in section.settings.info_list.links %}
+          {% if forloop.index == 1 %}
+            <a
+              class="drawr_menu_3_link"
+              style="margin-top: 18px;"
+              href="{{ link.url }}">
+              <span class="drawr_menu_3_link_span" style="color: {{ section.settings.color_text }};">{{ link.title }}</span>
+            </a>
+          {% else %}
+            <a class="drawr_menu_3_link" href="{{ link.url }}">
+              <span class="drawr_menu_3_link_span" style="color: {{ section.settings.color_text }};">{{ link.title }}</span>
+            </a>
+          {% endif %}
+
+
+        {% endfor %}
+
+        {% for link in section.settings.social_media_list.links %}
+          {% if forloop.index == 1 %}
+            <a
+              class="drawr_menu_3_link"
+              style="margin-top: 18px;"
+              href="{{ link.url }}">
+              <span class="drawr_menu_3_link_span" style="color: {{ section.settings.color_text }};">{{ link.title }}</span>
+            </a>
+          {% else %}
+            <a class="drawr_menu_3_link" href="{{ link.url }}">
+              <span class="drawr_menu_3_link_span" style="color: {{ section.settings.color_text }};">{{ link.title }}</span>
+            </a>
+          {% endif %}
+
+
+        {% endfor %}
+      </div>
+    </div>
+    <div class="drawer_menu_overlay"></div>
+  </div>
+</menu-drawer>
+{{ 'menu-drawer.js' |  asset_url |  script_tag }}
+{% schema %}
+{
+  "name": "Drawer Menu",
+  "settings": [
+    {
+      "type":"color",
+      "id": "background",
+      "label": "Background Color",
+      "default": "#ffffff"
+  },
+  {
+    "type": "color",
+    "id": "color_text",
+    "label": "Text Color",
+    "default": "#152F4E"
+  },
+    {
+      "type": "link_list",
+      "id": "main_list",
+      "label": "Big Nav Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "info_list",
+      "label": "Info Nav Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "social_media_list",
+      "label": "Social Media Nav Menu"
+    }
+    ]
+}
+{% endschema %}

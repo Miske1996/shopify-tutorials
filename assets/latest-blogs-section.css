@@ -1,0 +1,9 @@
+.latest_blogs_section_container {
+  width: 100vw;
+  height: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}

@@ -1,0 +1,127 @@
+.description_image_text_section_container{
+    width: 100vw;
+    height: 38vw;
+    display: flex;justify-content: center;
+    align-items: center;
+    .gift_card_wrapper{
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        .gift_image_container{
+            width: 38vw;
+            height: 100%;
+            display: flex;
+            align-self: center;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+ 
+        .main_gift_content{
+            width: 45vw;
+            gap: 2vw;
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            margin-top: auto;
+            margin-bottom: auto;
+            .title_content{
+                font-size: 4.3vw;
+                font-weight: 700;
+                letter-spacing: -.05em;
+            }
+         
+            p{
+                font-size: 1.5vw;
+                text-overflow: ellipsis;
+            }
+
+            .action_button_collection_gift_card {
+                width: 50%;
+                padding-top: 1.2vw;
+                padding-bottom: 1.2vw;
+                font-size: 1vw;
+                text-decoration: none;
+                cursor: pointer;
+                text-align: center;
+                font-weight: 700;
+                // &:hover{
+                //     background-color: transparent;
+                // }
+            }
+        }
+    }
+    .gift_card_wrapper.reverse{
+        flex-direction: row-reverse;
+    }
+}
+@media screen and (max-width: 600px) {
+    .description_image_text_section_container{
+        height: fit-content;
+        padding-bottom: 0;
+        padding-top: 0;
+        .gift_card_wrapper{
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            .gift_image_container{
+                width: 100%;
+                height: 90vw;
+            }
+            .main_gift_content{
+                width: 100%;
+                height: 90vw;
+                gap: 2vw;
+                align-items: center;
+                margin-top: 3vw;
+                justify-content: center;
+                .title_content{
+                    width: 90%;
+                    font-size: 4rem;
+                    line-height: 4rem;
+                    text-align: center;
+                }
+                .action_button_collection_gift_card{
+                    padding-top: 3.2vw;
+                    padding-bottom: 3.2vw;
+                    font-size: 3vw;
+                }
+                p,h1,h2,h3,h4,h5,h6{
+                    display: block;
+                    font-size: inherit;
+                    color: inherit;
+                    cursor: default;
+                    pointer-events: all;
+                    margin: 0;
+                    width: 90%;
+                    font-size: 1.45rem;
+                    line-height: 2.1rem;
+                    text-align: center;
+                }
+                span,li{
+                    display: block;
+                    font-size:inherit;
+                    color: inherit;
+                    cursor: default;
+                    pointer-events: all; 
+                    width: 90%;
+                    font-size: 1.45rem;
+                    line-height: 2.1rem;
+                    text-align: center;
+                }
+                .paragraph{
+                   
+                }
+                
+            }
+        }
+        .gift_card_wrapper.reverse{ 
+            flex-direction: column;
+        }
+    }
+}
+

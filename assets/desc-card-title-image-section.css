@@ -1,0 +1,65 @@
+.desc_card_title_image_section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desc_card_title_image_section .title_section {
+  font-size: 3.3vw;
+  font-weight: bold;
+  margin-top: 3vw;
+  width: 80%;
+  text-align: center;
+}
+.desc_card_title_image_section .row {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+}
+.desc_card_title_image_section .row img {
+  width: 34vw;
+  height: 34vw;
+  object-fit: cover;
+}
+.desc_card_title_image_section .row .titles_container {
+  width: 40vw;
+  height: 38vw;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+}
+.desc_card_title_image_section .row .titles_container .text_title {
+  font-size: 2.8vw;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+.desc_card_title_image_section .right {
+  flex-direction: row-reverse;
+}
+
+@media screen and (max-width: 770px) {
+  .desc_card_title_image_section .title_section {
+    font-size: 6.3vw;
+  }
+  .desc_card_title_image_section .row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .desc_card_title_image_section .row img {
+    width: 60vw;
+    height: 60vw;
+  }
+  .desc_card_title_image_section .row .titles_container {
+    width: 90vw;
+    margin-top: 3vh;
+  }
+  .desc_card_title_image_section .row .titles_container .text_title {
+    font-size: 4.5vw;
+  }
+  .desc_card_title_image_section .right {
+    flex-direction: column-reverse;
+  }
+}

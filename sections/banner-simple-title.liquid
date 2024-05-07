@@ -1,0 +1,34 @@
+{{ 'banner-simple-title.css' |  asset_url |  stylesheet_tag }}
+<div class="banner_simple_title_container" style="background-color: {{ section.settings.background_color }};">
+    <h5 style="color: {{ section.settings.text_color }};">{{ section.settings.text_title  }}</h5>
+</div>
+{% schema %}
+    {
+        "name": "Banner Simple Section",
+        "settings": [
+                {
+                "type": "text",
+                "id": "text_title",
+                "label": "Banner Simple Title",
+                "default": "We were frustrated with inferior silk, so we designed better ones–and invented thicker silk, too."
+                },
+                {
+                "type": "color",
+                "id": "text_color",
+                "label": "Banner Simple Text Color",
+                "default": "#000000"
+                },
+                {
+                "type": "color",
+                "id": "background_color",
+                "label": "Banner Simple Title Background Color",
+                "default": "#D5D9DA"
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Banner Simple"
+                }
+            ]
+    }
+    {% endschema %}

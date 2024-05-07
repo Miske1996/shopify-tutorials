@@ -1,0 +1,97 @@
+.reviews_list_scroll_section {
+  width: 100vw;
+  height: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reviews_list_scroll_section .title_section {
+  margin-top: 5vw;
+  font-size: 5vw;
+  font-weight: bold;
+  width: 65%;
+  text-align: center;
+}
+.reviews_list_scroll_section .reviews_wrapper {
+  width: 65%;
+  height: 22vw;
+  margin-top: 3vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.reviews_list_scroll_section .reviews_wrapper .review {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.reviews_list_scroll_section .reviews_wrapper .review .title_review {
+  font-size: 3vw;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+.reviews_list_scroll_section .reviews_wrapper .review .text_review {
+  font-size: 1.6vw;
+  text-align: center;
+  color: black;
+  font-weight: 500;
+  width: 80%;
+}
+.reviews_list_scroll_section .reviews_wrapper .review .text_review p, .reviews_list_scroll_section .reviews_wrapper .review .text_review h1, .reviews_list_scroll_section .reviews_wrapper .review .text_review h2, .reviews_list_scroll_section .reviews_wrapper .review .text_review h3, .reviews_list_scroll_section .reviews_wrapper .review .text_review h4, .reviews_list_scroll_section .reviews_wrapper .review .text_review h5, .reviews_list_scroll_section .reviews_wrapper .review .text_review h6 {
+  display: block;
+  font-size: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: default;
+  pointer-events: all;
+  margin: 0;
+}
+.reviews_list_scroll_section .reviews_wrapper .review .text_review span, .reviews_list_scroll_section .reviews_wrapper .review .text_review li {
+  display: block;
+  font-size: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: default;
+  pointer-events: all;
+}
+.reviews_list_scroll_section .tabs_container {
+  display: flex;
+  gap: 1vw;
+  height: 7px;
+  margin-top: 3.5vw;
+}
+.reviews_list_scroll_section .tabs_container .tab {
+  cursor: pointer;
+  width: 7px;
+  height: 7px;
+  background-color: white;
+}
+
+@media screen and (max-width: 770px) {
+  .reviews_list_scroll_section {
+    height: 50vh;
+  }
+  .reviews_list_scroll_section .title_section {
+    width: 90%;
+    text-align: center;
+    font-size: 6.3vw;
+  }
+  .reviews_list_scroll_section .reviews_wrapper {
+    width: 90%;
+    height: 30vh;
+    margin-top: 3vh;
+  }
+  .reviews_list_scroll_section .reviews_wrapper .review .title_review {
+    font-size: 6.3vw;
+  }
+  .reviews_list_scroll_section .reviews_wrapper .review .text_review {
+    font-size: 4vw;
+  }
+}

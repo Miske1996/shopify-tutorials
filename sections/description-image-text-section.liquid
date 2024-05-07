@@ -1,0 +1,105 @@
+{{ 'description-image-text-section.css' |  asset_url |  stylesheet_tag }}
+<div class="description_image_text_section_container" style="background-color: {{ section.settings.background  }};">
+    <div  {% if section.settings.row_direction == "reverse" %}
+        class="gift_card_wrapper reverse"
+        {% else %}
+        class="gift_card_wrapper" 
+    {% endif %}>
+        <div class="gift_image_container">
+            <img src="{{ section.settings.image_desc |  image_url }}" alt="">
+        </div>
+        <div class="main_gift_content" style="color: {{ section.settings.color_paragraph }};">
+            
+            <h1 class="title_content" style="color: {{ section.settings.color_text }};">{{ section.settings.title }}
+            </h1>
+            <p class="paragraph" style="color: {{ section.setting.color_text }};">{{ section.settings.paragraph }}</p>
+            <a style="color:{{ section.settings.cta_text_color }} ;background-color:{{ section.settings.cta_bg_color }};" class="action_button_collection_gift_card" href="{{ section.settings.collection_id.url }}">{{ section.settings.text_cta_1 }}</a>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Description Section",
+    "tag": "section",
+    "settings": [
+        {
+        "type": "radio",
+        "label": "Select Row Direction",
+        "id": "row_direction",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Standard"
+          }, {
+            "value": "reverse",
+            "label": "reverse"
+          }
+        ],
+        "default": "standard"
+      },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Our Mission for Better Silk"
+        },
+        {
+            "type": "collection",
+            "id": "collection_id",
+            "label": "Collection"
+        },
+        {
+            "type":"image_picker",
+            "id": "image_desc",
+            "label": "Section Image"
+        },
+        {
+            "type": "richtext",
+            "id": "paragraph",
+            "label": "Paragraph"
+        },
+        {
+                "type":"color",
+                "id": "color_paragraph",
+                "label": "Text Color Paragraph",
+                "default": "#000000"
+            },
+        {
+            "type":"color",
+            "id": "color_text",
+            "label": "Text Color",
+            "default": "#000000"
+        },
+        {
+            "type":"color",
+            "id": "background",
+            "label": "Background Color",
+            "default": "#BFC3C9"
+        },
+        {
+            "type": "text",
+            "id": "text_cta_1",
+            "label": "Text CTA Button",
+            "default": "Shop our selection"
+        },
+        {
+            "type": "color",
+            "id": "cta_bg_color",
+            "label": "CTA Button Background",
+            "default": "#000000"
+        },
+        {
+            "type": "color",
+            "id": "cta_text_color",
+            "label": "CTA Button Text Color",
+            "default": "#ffffff"
+        }
+        ],
+        "presets": [
+            {
+                "name": "Description Section"
+            }
+        ]
+}
+{% endschema %}

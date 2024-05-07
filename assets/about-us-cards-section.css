@@ -1,0 +1,90 @@
+.about_us_cards_section {
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+.about_us_cards_section .card_about_us {
+  width: 45vw;
+  height: 45vw;
+  margin-top: 24vh;
+  position: relative;
+  z-index: 1;
+}
+.about_us_cards_section .card_about_us img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.about_us_cards_section .card_about_us .main_content {
+  width: 29vw;
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-left: 7vw;
+  margin-top: 9vw;
+}
+.about_us_cards_section .card_about_us .main_content .title_content {
+  font-size: 6.4rem;
+  line-height: 6.4rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+.about_us_cards_section .card_about_us .main_content .paragraph {
+  font-size: 1.7rem;
+  line-height: 2.4rem;
+  margin-top: 4vh;
+}
+.about_us_cards_section .card_about_us .main_content .action_button_collection {
+  width: 50%;
+  padding: 1.2rem 2.4rem 1.4rem;
+  border-radius: 6.8rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  margin-top: auto;
+  margin-bottom: 3vh;
+  text-decoration: none;
+}
+.about_us_cards_section .card_about_us .main_content .action_button_collection:hover {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1080px) {
+  .about_us_cards_section {
+    flex-direction: column;
+    height: fit-content;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+  }
+  .about_us_cards_section .card_about_us {
+    width: 95vw;
+    margin-top: 0 !important;
+    height: fit-content;
+    margin-bottom: 2vh;
+  }
+  .about_us_cards_section .card_about_us .main_content {
+    width: 90%;
+    align-items: center;
+  }
+  .about_us_cards_section .card_about_us .main_content .title_content {
+    text-align: center;
+    font-size: 5rem;
+  }
+  .about_us_cards_section .card_about_us .main_content .paragraph {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+  .about_us_cards_section .card_about_us .main_content .action_button_collection {
+    margin-top: 17vh;
+  }
+}

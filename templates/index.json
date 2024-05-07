@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-section",
+      "blocks": {
+        "0fbdae27-20e5-4536-9dfe-5b69d9f3b960": {
+          "type": "heroButton",
+          "settings": {
+            "hero_btn": "jackets-collection",
+            "url_hero": "\/pages\/gift-finder",
+            "title_hero_btn": "Gift Finder"
+          }
+        }
+      },
+      "block_order": [
+        "0fbdae27-20e5-4536-9dfe-5b69d9f3b960"
+      ],
+      "settings": {
+        "title_hero": "",
+        "hero_text_color": "#ffffff",
+        "hero_btn_text_color_no_hover": "#ffffff",
+        "hero_btn_background_color_no_hover": "#1a1a1a",
+        "hero_btn_text_color_hover": "#1a1a1a",
+        "hero_btn_background_color_hover": "#ffffff",
+        "image_hero": "shopify:\/\/shop_images\/Aesop_IFT_2024_Web_Homepage_3_GL_Secondary_Mid_Desktop_2560x1440px.png"
+      }
+    },
+    "collectionListFilter": {
+      "type": "collection-list-filter-section",
+      "custom_css": [
+        ".collection_list_filter_section .collection_tabs_container .collection_tab {cursor: pointer; font-weight: 700; font-size: 1.5rem; line-height: 2rem;"
+      ],
+      "settings": {
+        "variant_collection_list": "collection_title",
+        "top_title": "Experience Bloomy",
+        "bottom_title": "Like our content ?  Check us out!",
+        "card_size": "compact",
+        "show_all_variants": "main_variant",
+        "collection_id": "weekly-selection",
+        "check_color": false,
+        "check_type": false,
+        "background_section": "#ffffff",
+        "title_color": "#1a1a1a",
+        "types_filter_text_color": "#1a1a1a",
+        "product_desc_text_color": "#1a1a1a",
+        "product_desc_text_color_secondary": "#1a1a1a",
+        "cta_text": "SHOP THE SILK SELECTION",
+        "cta_text_color_no_hover": "#ffffff",
+        "cta_background_color_no_hover": "#1a1a1a",
+        "cta_text_color_hover": "#1a1a1a",
+        "cta_background_color_hover": "#ffffff",
+        "card_price": "#a81815",
+        "card_price_compare": "#1a1a1a"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "collectionListFilter"
+  ]
+}

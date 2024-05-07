@@ -1,0 +1,44 @@
+{{ 'list-as-seen-on-section.css' | asset_url | stylesheet_tag }}
+<div class="list_as_seen_on_section" style="background-color: {{ section.settings.bg_color }}">
+  <div class="inner_wrapper">
+    {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'image_block' -%}
+            <img src="{{ block.settings.image_block |  image_url  }}" alt="">
+          {%- endcase -%}
+        {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "List As seen on",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "default": "#ffffff",
+      "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Image Block",
+      "type": "image_block",
+      "settings": [
+        {
+          "type":"image_picker",
+          "id": "image_block",
+          "label": "Select Image Block"
+        }
+      ]
+    }
+  ],
+  "presets": [
+      {
+        "name": "As Seen On Images"
+      }
+    ]
+}
+{% endschema %}

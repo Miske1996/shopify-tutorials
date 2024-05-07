@@ -1,0 +1,115 @@
+{{ 'blog-card-section.css' |  asset_url |  stylesheet_tag }}
+<blogs-component ctaHoverBg="{{ section.settings.cta_background_color_hover }}" ctaHoverColor="{{ section.settings.cta_text_color_hover }}" ctaNoHoverBg="{{ section.settings.cta_background_color_no_hover }}" ctaNoHoverColor="{{ section.settings.cta_text_color_no_hover }}">
+<div class="blog_card_section" style="background: {{ section.settings.background }};" >
+    <div class="main_blog">
+        <a class="blog_img" href="{{ section.settings.blog_main.url }}"><img src="{{ section.settings.blog_main.image |  image_url }}" alt=""></a>
+        <div class="blog_textual_container" style="color: {{ section.settings.color_text }};">
+            <a class="title" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_main.title }}</a>
+            {% comment %} <p class="paragraph" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_main.content }}</p> {% endcomment %}
+            <a class="read_more" href="{{ section.settings.blog_main.url }}" style="color: {{ section.settings.color_text }};">READ MORE</a>
+        </div>
+    </div>
+    <div class="blogs_list">
+
+        <div class="blog_item" style="color: {{ section.settings.color_text }};">
+            <a class="blog_img" href="{{ section.settings.blog_1.url}}"><img src="{{ section.settings.blog_1.image |  image_url }}" alt=""></a>
+            <div class="date" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_1.published_at | date: "%d %B %Y"}}</div>
+            <a class="title" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_1.title}}</a>
+            {% comment %} <p class="paragraph" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_1.content}}</p> {% endcomment %}
+            <a class="read_more" href="{{ section.settings.blog_1.url}}" style="color: {{ section.settings.color_text }};">READ MORE</a>
+        </div>
+        <div class="blog_item" style="color: {{ section.settings.color_text }};">
+            <a class="blog_img" href="{{ section.settings.blog_2.url}}"><img src="{{ section.settings.blog_2.image |  image_url }}" alt=""></a>
+            <div class="date" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_2.published_at | date: "%d %B %Y"}}</div>
+            <div class="title" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_2.title}}</div>
+            {% comment %} <p class="paragraph" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_2.content}}</p> {% endcomment %}
+            <a class="read_more" style="color: {{ section.settings.color_text }};" href="{{ section.settings.blog_2.url}}">READ MORE</a>
+        </div>
+        <div class="blog_item" style="color: {{ section.settings.color_text }};">
+            <a class="blog_img" href="{{ section.settings.blog_3.url}}"><img src="{{ section.settings.blog_3.image |  image_url }}" alt=""></a>
+            <div class="date" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_3.published_at | date: "%d %B %Y"}}</div>
+            <div class="title" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_3.title}}</div>
+            {% comment %} <p class="paragraph" style="color: {{ section.settings.color_text }};">{{ section.settings.blog_3.content}}</p> {% endcomment %}
+            <a class="read_more" style="color: {{ section.settings.color_text }};" href="{{ section.settings.blog_3.url}}">READ MORE</a>
+        </div>
+
+    </div>
+    <a class="action_button_blog" href="{{  section.settings.url_cta }}">{{ section.settings.cta_text }}</a>
+</div>
+</blogs-component>
+{{ 'blogs.js' |  asset_url  |  script_tag}}
+{% schema %}
+{
+    "name": "Blog Card",
+    "settings": [
+        {
+            "type": "article",
+            "id": "blog_main",
+            "label": "Main Blog"
+        },
+        {
+            "type": "article",
+            "id": "blog_1",
+            "label": "Blog 1"
+        },
+        {
+            "type": "article",
+            "id": "blog_2",
+            "label": "Blog 2"
+        },
+        {
+            "type": "article",
+            "id": "blog_3",
+            "label": "Blog 3"
+        } ,
+        {
+            "type":"color",
+            "id": "color_text",
+            "label": "Text Color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type":"color",
+            "id": "background",
+            "label": "Background Color",
+            "default": "#000000"
+        },
+        {
+        "type": "text",
+        "id": "url_cta",
+        "label": "CTA URL",
+        "default": "blogs/bloomy-blogs"
+      },
+        {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA button text",
+        "default": "READ MORE"
+      },
+      {
+        "type": "color",
+        "id": "cta_text_color_no_hover",
+        "label": "CTA Text Color Without hover",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "cta_background_color_no_hover",
+        "label": "CTA Background Color Without hover",
+        "default": "#152f4e"
+      }, {
+        "type": "color",
+        "id": "cta_text_color_hover",
+        "label": "CTA Text Color  hover",
+        "default": "#152f4e"
+      }, {
+        "type": "color",
+        "id": "cta_background_color_hover",
+        "label": "CTA Background Color  hover",
+      "default": "#ffffff"}
+        ],
+        "presets": [{
+            "name": "Blog Card"
+        }]
+}
+{% endschema %}

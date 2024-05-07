@@ -1,0 +1,50 @@
+{{ 'list-features-section.css' | asset_url | stylesheet_tag }}
+<div class="list_features_section" style="background-color: {{ section.settings.bg_color }}">
+  <div class="inner_wrapper">
+    {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'text_block' -%}
+            <h1  style="color: {{ block.settings.text_block_color }};">{{ block.settings.text_block }}</h1>
+          {%- endcase -%}
+        {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "List Features",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "default": "#000000",
+      "label": "Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Text Block",
+      "type": "text_block",
+      "settings": [
+        {
+          "type":"text",
+          "id": "text_block",
+          "label": "Text Feature Block"
+        },
+        {
+          "type":"color",
+          "id": "text_block_color",
+          "label": "Text Feature Color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+      {
+        "name": "Features Text List"
+      }
+    ]
+}
+{% endschema %}

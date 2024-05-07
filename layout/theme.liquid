@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    
+
+    <title></title>
+    {{ content_for_header }}
+    {{ 'global.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body>
+    {% section 'annoncement-bar-section' %}
+    {% section 'menu-drawer-section' %}
+    {% section 'cart-drawer-section' %}
+    {% section 'header-section' %}
+
+    {{ content_for_layout }}
+        
+    {% section 'footer-section' %}
+
+    <script>
+      //minor fix for ... in the pagination
+      document.addEventListener("DOMContentLoaded",  () => {
+          let links = document.querySelectorAll(".pagination_link");
+          if(links.length>0){
+              links.forEach((link) => {
+                  if(link.innerHTML == "…"){
+                      link.style.borderBottom = "none";
+                  }
+              })
+          }
+        });
+        window.shopUrl = '{{ routes.root_url }}';
+        window.routes = {
+          cart_add_url: '{{ routes.cart_add_url }}',
+          cart_change_url: '{{ routes.cart_change_url }}',
+          cart_update_url: '{{ routes.cart_update_url }}',
+          cart_url: '{{ routes.cart_url }}',
+          predictive_search_url: '{{ routes.predictive_search_url }}',
+        }; 
+        window.currency = '{{ shop.currency }}';
+    </script>
+    
+    {{ 'cart-drawer-item.js' | asset_url | script_tag }}
+  </body>
+  
+</html> 

@@ -1,0 +1,17 @@
+{
+  "sections": {
+      "banner-hero-title": {
+          "type": "banner-hero-title",
+          "settings": {
+            "text_title": "Contact us",
+            "text_color": "#ffffff",
+            "background_color": "#162d4d"
+          }
+        },
+      "contact-us-section":{"type": "contact-us-section"}
+  },
+  "order": [
+   "banner-hero-title",
+   "contact-us-section"
+  ]
+}

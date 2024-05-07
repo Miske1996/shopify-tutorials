@@ -1,0 +1,137 @@
+{{ 'article-section.css' | asset_url | stylesheet_tag }}
+<article class="article_section_container" style="color: {{ section.settings.text_color }};">
+    <div class="divider"></div>
+    <h5 class="date_article">{{ article.created_at | date: "%A, %B %d, %Y" }}</h5>
+    <h1 class="article_title">{{ article.title }}</h1>
+    <div class="divider"></div>
+    <div class="main_section_article">
+        <div class="article_container">
+            <div class="author_info_article">
+                <div class="author_img"><img {% if article.user.image %} src="{{ article.user.image |  image_url  }}" {%
+                        else %} src="{{ " author.png" | asset_url }}" {% endif %} alt=""></div>
+                <span class="author_name"><strong>Author: </strong> {{ article.author }}</span>
+            </div>
+            <div class="select_input_container">
+                <div class="selected_value_container">
+                    <span class="selected_value">
+                        Table of Contents
+                    </span>
+                    <img src="{{ 'arrow_drop_down.png' |  asset_url }}" alt="">
+                </div>
+                <div class="values_container">
+
+                </div>
+            </div>
+            <div class="article_content_container">{{ article.content }}</div>
+        </div>
+        <div class="additional_info_container">
+            <div class="table_of_contents">
+                <h3 class="table_of_contents_title">Table of Contents</h3>
+            </div>
+            <div class="about_author_column">
+                <h3 class="about_the_author_title">About the Author</h3>
+                <div class="author_info_article">
+                    <div class="author_img"><img {% if article.user.image %}
+                            src="{{ article.user.image |  image_url  }}" {% else %} src="{{ " author.png" | asset_url
+                            }}" {% endif %} alt=""></div>
+                    <span class="author_name"><strong>{{ article.author }}</strong></span>
+                </div>
+                <p class="bio_author">{{ article.user.bio }}</p>
+            </div>
+        </div>
+    </div>
+</article>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the container for article content
+        var contentContainer = document.querySelector(".article_content_container");
+
+        // Initialize an empty array to store the generated <a> links
+        var links = [];
+
+        // Find all <h2> tags inside the content container
+        var h2Tags = contentContainer.querySelectorAll("h2");
+
+        // Iterate over each <h2> tag
+        h2Tags.forEach(function (h2, index) {
+            // Set an id for the <h2> if it doesn't have one
+            if (!h2.id) {
+                h2.id = "heading-" + index;
+            }
+
+            // Find <span> or <b> tags inside the <h2>
+            var spansAndBs = h2.querySelectorAll("span, b");
+
+            // Iterate over each <span> or <b> tag
+            spansAndBs.forEach(function (spanOrB, spanIndex) {
+                // Create a new <a> link
+                var link = document.createElement("a");
+                link.classList.add("content_link")
+
+                // Set the href attribute to link to the respective <h2>
+                link.href = "#" + h2.id;
+
+                // Set the text content of the <a> link to the text content of <span> or <b>
+                link.textContent = spanOrB.textContent;
+
+                // Push the <a> link to the links array
+                links.push(link);
+            });
+        });
+
+        // Get the container for table of contents
+        var tableOfContents = document.querySelector(".table_of_contents");
+        var values_container = document.querySelector(".values_container");
+        var input_selection = document.querySelector('.selected_value_container');
+        var selected_value = document.querySelector(".selected_value")
+        if (input_selection) {
+            input_selection.addEventListener('click', () => {
+                values_container.classList.toggle('active_selection');
+            });
+            document.addEventListener('click', (event) => {
+                const isClickInsideSelectionList = values_container.contains(event.target);
+                const isClickInsideInput = input_selection.contains(event.target);
+
+                if (!isClickInsideSelectionList && !isClickInsideInput) {
+                    values_container.classList.remove('active_selection');
+                }
+            });
+        }
+        // Append all the generated <a> links to the values_container
+        var clonedLinks = links.map(function (link) {
+            return link.cloneNode(true);
+        });
+
+        clonedLinks.forEach(function (link) {
+            values_container.appendChild(link);
+            link.addEventListener("click", () => {
+                values_container.classList.remove("active_selection")
+                // selected_value.innerHTML = link.innerHTML
+            })
+        });
+
+        // Append all the generated <a> links to the table of contents container
+        links.forEach(function (link) {
+            tableOfContents.appendChild(link.cloneNode(true));
+        });
+    })
+
+</script>
+{% schema %}
+    {
+        "name": "Article Section",
+        "settings": [
+                {
+                "type": "color",
+                "id": "text_color",
+                "label": "Article Text Color",
+                "default": "#000000"
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Article"
+                }
+            ]
+    }
+    {% endschema %}

@@ -1,0 +1,73 @@
+{{ 'info-cards-section.css' |  asset_url | stylesheet_tag }}
+<div class="info_cards_section_container" style="background-color: {{ section.settings.background_color }};">
+    <h1 class="title_info_cards" style="color: {{ section.settings.text_color }};">{{ section.settings.text_title  }}</h1>
+    <div class="cards_container">
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when '@app' -%}
+                    {% render block %}
+                {%- when 'info_card' -%}
+                    <div class="info_card">
+                        <div class="info_card_image_container">
+                            <img src="{{ block.settings.info_card_image |  image_url  }}" alt="">
+                        </div>
+                        <h5 class="info_title" style="color: {{ section.settings.text_color }};">{{ block.settings.info_card_title }}</h5>
+                        <h6 class="info_subtitle" style="color: {{ section.settings.text_color }};">{{ block.settings.info_card_subtitle }}</h5>
+                    </div>
+            {%- endcase -%}
+        {%- endfor -%}
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "Info Cards Section",
+        "settings": [
+                {
+                "type": "text",
+                "id": "text_title",
+                "label": "Info Cards Title",
+                "default": "Why Bloomy"
+                },
+                {
+                "type": "color",
+                "id": "text_color",
+                "label": "Info Cards Text Color",
+                "default": "#000000"
+                },
+                {
+                "type": "color",
+                "id": "background_color",
+                "label": "Info Cards Title Background Color",
+                "default": "#D5D9DA"
+                }
+            ],
+            "blocks": [
+                {
+                    "name": "Info Card",
+                    "type": "info_card",
+                    "settings": [
+                        {
+                            "type": "image_picker",
+                            "id": "info_card_image",
+                            "label": "Info Card Image"
+                        },
+                        {
+                            "type": "text",
+                            "id": "info_card_title",
+                            "label": "Info Card Title"
+                        },
+                        {
+                            "type": "text",
+                            "id": "info_card_subtitle",
+                            "label": "Info Card Subtitle"
+                        }
+                    ]
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Info Cards"
+                }
+            ]
+    }
+    {% endschema %}

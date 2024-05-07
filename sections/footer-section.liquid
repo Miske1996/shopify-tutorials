@@ -1,0 +1,192 @@
+{{ 'footer-section.css' | asset_url | stylesheet_tag }}
+<footer-component>
+<footer class="footer_section_container" style="background-color: {{ section.settings.background_color_section }};">
+    <div class="footer_top_container">
+        <div class="contact_part_container">
+            <h1 class="title_contact" style="color: {{ section.settings.text_color }};">Contact US</h1>
+            <h2 class="availability_part" style="color: {{ section.settings.text_color }};">{{ section.settings.availabality_text  }}</h2>
+            <div class="logo_with_title_container">
+                <div class="img_logo"><img src="{{ 'email-icon.png' | asset_url }}" alt=""></div>
+                <span class="span_title" style="color: {{ section.settings.text_color }};">Open Ticket</span>
+            </div>
+            <p class="text_block" style="color: {{ section.settings.text_color }};">{{ section.settings.privacy_policy_text }}</p>
+        </div>
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when '@app' -%}
+                    {% render block %}
+                {%- when 'nav_block' -%}
+                    <!-- Add your code for nav_block here -->
+                    <div class="nav_block_container">
+                        <h1 class="nav_title" style="color: {{ section.settings.text_color }};">{{ block.settings.navigation_list.title }}</h1>
+                        {% for link in block.settings.navigation_list.links %}
+                            <a class="nav_link" href="{{ link.url }}" style="text-decoration:none;color: {{ section.settings.text_color }};" >{{ link.title }}</a>
+                        {% endfor %}
+                    </div> 
+            {%- endcase -%}
+        {%- endfor -%}
+    </div>  
+    <div class="footer_bottom_container">
+      <div class="contact_info_copyrights_container">
+        <h2 class="contact_info_container" style="color: {{ section.settings.text_color }};">{{ section.settings.info_text }}</h2>
+        <h2 class="copyrights_container" style="color: {{ section.settings.text_color }};"> {{ section.settings.copyrights_text }} </h2>
+      </div>
+      <div class="social_media_container">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+              {%- when '@app' -%}
+                  {% render block %}
+              {%- when 'social_media_block' -%}
+                  <!-- Add your code for nav_block here -->
+                  <a class="social_media_link" href="{{ block.settings.social_media_url }}">
+                     <img src="{{ block.settings.social_media_img |  image_url  }}" alt="">
+                  </a> 
+          {%- endcase -%}
+      {%- endfor -%}
+      </div>
+    </div>
+</footer> 
+</footer-component>
+<script>
+  if (!customElements.get('footer-component')) {
+    customElements.define(
+      'footer-component',
+      class FooterComponent extends HTMLElement {
+        constructor() {
+          super();
+          this.navTitleElements = document.querySelectorAll('.nav_title');
+
+          // Add event listeners to each nav title
+          this.navTitleElements.forEach(navTitle => {
+            navTitle.parentElement.addEventListener('click', () => {
+              if (window.innerWidth < 700) {
+                 // Check if the clicked nav title is already active
+              const isActive = navTitle.classList.contains('active');
+              this.navTitleElements.forEach(title => {
+                  title.parentElement.scrollTop = 0;
+                  title.classList.remove('active');
+                  title.parentElement.style.height = '10vw';
+                  title.parentElement.style.overflowY = 'hidden';
+
+                }); 
+              // If it's active, remove active class and collapse the container
+              if (isActive) {
+                // Scroll to the top of the container
+                navTitle.parentElement.scrollTop = 0;
+                navTitle.classList.remove('active');
+                navTitle.parentElement.style.height = '10vw';
+                navTitle.parentElement.style.overflowY = 'hidden';
+
+              } else {
+                // Otherwise, collapse all containers and remove active class from all titles
+                this.navTitleElements.forEach(title => {
+                  title.parentElement.scrollTop = 0;
+                  title.classList.remove('active');
+                  title.parentElement.style.height = '10vw';
+                  title.parentElement.style.overflowY = 'hidden';
+
+                });
+
+                navTitle.classList.add('active');
+                navTitle.parentElement.style.height = '40vw';
+                navTitle.parentElement.style.overflowY = 'auto';
+              }
+              }
+             
+            });
+          });
+
+          // Add event listener to window resize
+          window.addEventListener('resize', () => {
+          if (window.innerWidth >= 700) {
+            // If window width surpasses 700px, remove active class and adjust styles
+            this.navTitleElements.forEach(navTitle => {
+              navTitle.classList.remove('active');
+              navTitle.parentElement.style.height = 'fit-content';
+              navTitle.parentElement.style.overflowY = 'auto';
+            });
+          }
+        });
+        }
+      }
+    );
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Footer Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color_section",
+      "default": "#000000",
+      "label": "Choose Section Background"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "default": "#ffffff",
+      "label": "Choose Text Color"
+    },
+    {
+      "type": "text",
+      "id": "availabality_text",
+      "default": "We’re here to help! We are available 7 days a week from 8:00AM to 7:00PM PT*.",
+      "label": "Availablity Text"
+    }
+    ,{
+      "type": "text",
+      "id": "privacy_policy_text",
+      "default": "*Your interactions with us may be stored for future reference, and we may use 3rd party services to assist with these interactions and with storage. Your initiation of an interaction is deemed to be your consent. Please see our Privacy Policy for more information.",
+      "label": "Privacy Policy Text"
+    },
+    {
+      "type": "text",
+      "id": "info_text",
+      "default": "189 East Brandon Boulevard, Brandon, FL 33511 - Tel: (323)  287 5672",
+      "label": "Info Text"
+    },
+    {
+      "type": "text",
+      "id": "copyrights_text",
+      "default": "Copyright 2024 © Bloomy silk® owned and operated by Beno Brands LLC Group of companies.",
+      "label": "Copyrights Text"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Navigation Block",
+      "type": "nav_block",
+      "settings": [
+        {
+          "type":"link_list",
+          "id": "navigation_list",
+          "label": "Choose Menu"
+        }  
+      ]
+    },
+    {
+      "name": "Social Media Block",
+      "type": "social_media_block",
+      "settings": [
+        {
+          "type":"image_picker",
+          "id": "social_media_img",
+          "label": "Social Media Image"
+        } ,
+        {
+          "type":"text",
+          "id": "social_media_url",
+          "label": "Social Media Url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Section"
+    }
+  ]
+}
+{% endschema %}

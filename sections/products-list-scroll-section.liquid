@@ -1,0 +1,72 @@
+{{ 'products-list-scroll-section.css' | asset_url | stylesheet_tag }}
+<product-list-scroll id="product-list-scroll-{{ section.id }}">
+<div id="product-list-scroll-container-{{ section.id }}" class="products_list_scroll_section">
+  <div class="seperator"></div>
+  <h1 class="title_section" style="color: {{ section.settings.title_color }};">{{ section.settings.title }}</h1>
+  {% if section.settings.collection_product_list_scroll %}
+    <div class="button_previous"><img src="{{ 'left-chevron.png' |  asset_url }}" alt=""></div>
+    <div class="button_next"><img src="{{ 'left-chevron.png' |  asset_url }}" alt=""></div>
+    <div class="products_container">
+      {% for p in section.settings.collection_product_list_scroll.products %}
+        <div class="product_card">
+          <a class="product_images_container" href="{{ p.url }}">
+            <img
+              src="{{ p.images[0] |  image_url  }}"
+              alt=""
+              class="top"
+            >
+            <img
+              src="{{ p.images[1] |  image_url  }}"
+              alt=""
+              class="bottom"
+            >
+          </a>
+          <a class="product_title" style="color: {{ section.settings.text_color }};text-decoration:none;" href="{{ p.url }}">{{ p.title }}</a>
+          
+          <span class="price_product" style="color: {{ section.settings.text_color }};">{{ p.price |  money }}</span>
+          
+        </div> 
+      {% endfor %}        
+    </div>
+    <div class="seperator"></div>
+  </div>
+  {% endif %}
+ 
+</product-list-scroll>
+{{ 'product-list-scroll.js' |  asset_url |  script_tag }}
+{% schema %}
+{
+  "name": "Product List Scroll",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection_product_list_scroll",
+      "label": "Select Collection"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color Price+Name",
+      "default": "#152f4e"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collection Title"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#152f4e"
+    }
+    ],
+    "presets": [
+      {
+        "name": "Product List Scroll"
+      }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,95 @@
+.git_card_section {
+  width: 100vw;
+  height: 53vw;
+  background-color: #4a7077;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.git_card_section .gift_card_wrapper {
+  width: 92%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.git_card_section .gift_card_wrapper .gift_image_container {
+  width: 45vw;
+  height: 45vw;
+  display: flex;
+  align-self: center;
+}
+.git_card_section .gift_card_wrapper .gift_image_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.git_card_section .gift_card_wrapper .main_gift_content {
+  width: 29vw;
+  gap: 4vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 7vw;
+  margin-top: 9vw;
+}
+.git_card_section .gift_card_wrapper .main_gift_content .title_content {
+  color: white;
+  font-size: 6.4rem;
+  line-height: 6.4rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+.git_card_section .gift_card_wrapper .main_gift_content .paragraph {
+  font-size: 1.7rem;
+  line-height: 2.4rem;
+  color: white;
+}
+.git_card_section .gift_card_wrapper .main_gift_content .action_button_collection {
+  background-color: white;
+  color: #152F4E;
+  width: 50%;
+  padding: 1.2rem 2.4rem 1.4rem;
+  border-radius: 6.8rem;
+  border: 0.2rem solid transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+}
+.git_card_section .gift_card_wrapper .main_gift_content .action_button_collection:hover {
+  border-color: white;
+  background-color: transparent;
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .git_card_section {
+    height: fit-content;
+    padding-bottom: 3vh;
+    padding-top: 3vh;
+  }
+  .git_card_section .gift_card_wrapper {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .git_card_section .gift_card_wrapper .gift_image_container {
+    width: 90vw;
+    height: 90vw;
+  }
+  .git_card_section .gift_card_wrapper .main_gift_content {
+    width: 100%;
+    gap: 1.5vh;
+    align-items: center;
+  }
+  .git_card_section .gift_card_wrapper .main_gift_content .title_content {
+    width: 90%;
+    font-size: 4rem;
+    line-height: 4rem;
+    text-align: center;
+  }
+  .git_card_section .gift_card_wrapper .main_gift_content .paragraph {
+    width: 90%;
+    font-size: 1.45rem;
+    line-height: 2.1rem;
+    text-align: center;
+  }
+}

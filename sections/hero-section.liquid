@@ -1,0 +1,115 @@
+{{ 'hero-section.css' | asset_url | stylesheet_tag }}
+<div class="hero_section_container">
+  <div class="img_container"><img src="{{ section.settings.image_hero |  image_url  }}" alt=""></div>
+  <div class="main_content">
+    <h1 class="hero_title" style="color: {{ section.settings.hero_text_color  }};">{{ section.settings.title_hero }}</h1>
+    <div class="buttons_hero_container">
+      {% for block in section.blocks %}
+        <a class="btn" href="{{ block.settings.url_hero }}">
+          <span>{{ block.settings.title_hero_btn }}</span>
+        </a>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+{% style %}
+  .btn {
+    background-color: {{ section.settings.hero_btn_background_color_no_hover }};
+    border: 2px solid {{ section.settings.hero_btn_background_color_no_hover }};
+  }
+  .btn span {
+    color: {{ section.settings.hero_btn_text_color_no_hover }};
+  }
+  .btn:hover {
+    background-color: {{ section.settings.hero_btn_background_color_hover }};
+
+  }
+  .btn:hover span {
+    color: {{ section.settings.hero_btn_text_color_hover }};
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "hero",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_hero",
+        "label": "Hero Label",
+        "default": "Christmas Selection"
+      },
+      {
+        "type": "color",
+        "id": "hero_text_color",
+        "label": "Hero Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "hero_btn_text_color_no_hover",
+        "label": "Hero Button Text Color Without hover",
+        "default": "#152f4e"
+      },
+      {
+        "type": "color",
+        "id": "hero_btn_background_color_no_hover",
+        "label": "Hero Button Background Color Without hover",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "hero_btn_text_color_hover",
+        "label": "Hero Button Text Color  hover",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "hero_btn_background_color_hover",
+        "label": "Hero Button Background Color  hover",
+        "default": "#152f4e"
+      }, {
+        "type": "image_picker",
+        "id": "image_hero",
+        "label": "Hero Image"
+      }
+
+    ],
+    "blocks": [
+      {
+        "name": "Hero button",
+        "type": "heroButton",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "collection",
+            "id": "hero_btn",
+            "label": "Hero Button"
+          },
+          {
+            "type": "text",
+            "id":"url_hero",
+            "label": "Select The Hero Button URL"
+          },
+          {
+            "type": "text",
+            "id":"title_hero_btn",
+            "label": "Select The Hero Button Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero",
+        "blocks": [
+          {
+            "type": "heroButton"
+          }, {
+            "type": "heroButton"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

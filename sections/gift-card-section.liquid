@@ -1,0 +1,103 @@
+{{ 'gift-card-section.css' |  asset_url |  stylesheet_tag }}
+<div class="gift_card_section" style="background-color: {{ section.settings.background  }};">
+    <div class="gift_card_wrapper">
+        <div class="gift_image_container">
+            <img src="{{ section.settings.image_gift |  image_url }}" alt="">
+        </div>
+        <div class="main_gift_content" style="color: {{ section.settings.color_paragraph }};">
+            
+            <h1 class="title_content" style="color: {{ section.settings.color_text }};">{{ section.settings.title }}
+            </h1>
+            <p class="paragraph" >{{ section.settings.paragraph }}</p>
+            <a class="action_button_collection_gift_card" id="{{ section.id }}-cta" href="{{ section.settings.collection_id.url }}">{{ section.settings.text_cta_1 }}</a>
+        </div>
+    </div>
+</div>
+{% style %}
+     #{{ section.id }}-cta{
+        background-color: {{ section.settings.cta_bg_color }};
+        color: {{ section.settings.cta_text_color  }};
+        border: 0.2rem solid transparent;
+    }
+     #{{ section.id }}-cta:hover{
+        color: {{ section.settings.cta_text_color_hover }};
+        border-color: {{ section.settings.cta_bg_color }};
+        background:transparent;
+    }
+{% endstyle %}
+{% schema %}
+{
+    "name": "Gift Card",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Your gifts up to 20% off"
+        },
+        {
+            "type": "collection",
+            "id": "collection_id",
+            "label": "Collection"
+        },
+        {
+            "type":"image_picker",
+            "id": "image_gift",
+            "label": "Gift Card Image"
+        },
+        {
+            "type": "richtext",
+            "id": "paragraph",
+            "label": "Paragraph"
+        },
+        {
+                "type":"color",
+                "id": "color_paragraph",
+                "label": "Text Color Paragraph",
+                "default": "#FFFFFF"
+            },
+        {
+            "type":"color",
+            "id": "color_text",
+            "label": "Text Color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type":"color",
+            "id": "background",
+            "label": "Background Color",
+            "default": "#4a7077"
+        },
+        {
+            "type": "text",
+            "id": "text_cta_1",
+            "label": "Text CTA Button 1",
+            "default": "SEE THE SELECTION"
+        },
+        {
+            "type": "color",
+            "id": "cta_bg_color",
+            "label": "CTA Button Background",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "cta_text_color",
+            "label": "CTA Button Text Color",
+            "default": "#152f4e"
+        },
+        {
+            "type": "color",
+            "id": "cta_text_color_hover",
+            "label": "CTA Button Text Color Hover",
+            "default": "#ffffff"
+        }
+        ],
+        "presets": [
+            {
+                "name": "Gift Card"
+            }
+        ]
+}
+{% endschema %}

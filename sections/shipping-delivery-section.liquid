@@ -1,0 +1,37 @@
+{{ 'shipping-delivery-section.css' |  asset_url |  stylesheet_tag }}
+<div class="shipping_delivery_section_container" style="color: {{ section.settings.text_color }};">
+    {{ page.content }}
+    <div class="contact_container" style="background-color: {{ section.settings.bg_color }}">
+        <h1 class="question">Still have a question ?</h1>
+        <div class="contact_container">
+            <a class="link_contact" style="background-color: #ffffff;">CONTACT US</a>
+            <a class="link_contact" href="/" style="background-color: #ffffff;">
+                GO SHOPPING 
+            </a>
+        </div> 
+    </div>
+</div>
+{% schema %}
+    {
+      "name": "Shipping Info Section", 
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "default": "#D5D9DA",
+          "label": "Background Color Contact"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "default": "#000000",
+          "label": "Text Color"
+        }
+      ],
+      "presets": [
+          {
+            "name": "Shipping Info Section"
+          }
+        ]
+    }
+{% endschema %}

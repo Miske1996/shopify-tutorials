@@ -1,0 +1,380 @@
+{{ 'product-section.css' | asset_url | stylesheet_tag }}
+<product-form id="produt-form-{{ section.id }}">
+  <script type="application/json" id="product-data">
+    {
+      "product": {{ product | json }},
+      "metafields": {{ product.metafields.custom | json }},
+      "text_primary_color" : "{{ section.settings.text_primary_color}}",
+      "currency" : "{{ "0" |  money}}"
+    }
+  </script>
+  <div class="product_section_container">
+    <div class="preview_images_container">
+      <div class="header_perview">
+        <div class="count_images" style="visibility: hidden;"> 
+          <span class="current_image" style="color:{{ section.settings.text_primary_color }};">1</span>
+          <span class="total_image" style="color:{{ section.settings.text_primary_color }};">
+            {{- product.images.size -}}
+          </span>
+        </div>
+
+        <div class="right_container">
+          {% comment %} <img src="{{ 'zoom_in.png' |  asset_url }}" alt="" class="zoom"> {% endcomment %}
+          <img src="{{ 'close_x.png' |  asset_url }}" alt="" class="close">
+        </div>
+      </div>
+      <div class="images_container">
+        <div class="left_arrow"><img src="{{ 'left_preview_arrow.png' |  asset_url  }}" alt=""></div>
+        <div class="right_arrow"><img src="{{ 'right_preview_arrow.png' |  asset_url  }}" alt=""></div>
+        {% for img in product.images %}
+          <div class="image_preview_card"> 
+            <img src="{{ img |  image_url  }}" alt="">
+          </div>
+        {% endfor %}
+       
+      </div>
+    </div>
+    <div class="product_images_container">
+      <div class="main_image_container">
+        <div class="bg_img">
+          {% assign s = section.settings.background_img_main |  size %}
+          <img
+            src="{% if s == 0  %}//jott.com/cdn/shop/files/noos-perm-saisoniers.jpg?v=1688460911 {% else %} {{ section.settings.background_img_main |  image_url  }} {% endif %}"
+          >
+        </div> 
+        <div class="display_img_desktop">
+          <img
+          src="{{ product.images[0] |  image_url  }}"
+        > 
+        </div>
+        <div class="main_img"> 
+          <div class="scroll_images_container">
+            {% for img in product.images %}
+              <div class="img_wrap">
+                <img
+                src="{{ img |  image_url  }}"
+              > 
+              </div>
+            {% endfor %}
+          </div>
+        <div class="dots_navigation_container">
+          {% for img in product.images %}
+           <div class="dot" style="background-color: {{ section.settings.text_primary_color }};opacity:0.5;"></div>
+    
+        {% endfor %}
+        </div>
+
+        </div>
+      </div>
+      <div class="grid_images_container">
+        {% for img in product.images %}
+          {% if forloop.index > 1 and forloop.index<=7 %}
+            <div class="grid_img">
+              <img
+                src="{{ img |  image_url  }}"
+              >
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="main_product_section">
+      <div class="tags_section">
+        {% assign cleanedTagsString = product.metafields.custom.tags | remove: '["' | remove: ']' %}
+
+      {% assign tagsArray = cleanedTagsString | split: '","' %}
+
+      {% for tag in tagsArray %}
+        {% assign tagValues = tag | split: ',' %}
+        {% if tagValues[2] %}
+          <span
+          class="badge_product"
+          style="padding-left:1vw;padding-right:1vw;border-radius:3px;display:block;width:fit-content;color: {{ tagValues[1] | default: 'black' }};background-color:{{ tagValues[2] |  default:"none" }}"
+        >
+          {{- tagValues[0] | default: '' -}}
+        </span> 
+        {% else %}
+        <span
+        class="badge_product"
+        style="display:block;width:fit-content;color: {{ tagValues[1] | default: 'black' }};background-color:{{ tagValues[2] |  default:"none" }}"
+      >
+        {{- tagValues[0] | default: '' -}}
+      </span> 
+        {% endif %}
+        
+      {% endfor %}
+      </div>
+      
+
+      <div class="title_price_row">
+        <h1 class="title_product" style="color:{{ section.settings.text_primary_color }};">{{ product.title }}</h1>
+
+        <div class="prices_container">
+          <span class="price_product" style="color:{{ section.settings.text_primary_color }};">
+            {{- product.price | money -}}
+          </span>
+          <span class="compared_at_price" style="color: {{ section.settings.compared_at_price_color }};">{{ product.compare_at_price | money }}</span>
+        </div>
+      </div>
+
+      {% comment %} 
+        below I added the loox review stars widget
+        and commented out the see description text:
+      {% endcomment %}
+      <a class="see_description" id="see-description">See description</a>
+
+      <a href="#looxReviews">
+        <div
+          class="loox-rating"
+          data-id="{{ product.id }}"
+          data-rating="{{ product.metafields.loox.avg_rating }}"
+          data-raters="{{ product.metafields.loox.num_reviews }}"
+          data-pattern="[count] Reviews"
+          style="font-size: 16px"
+        >
+        </div>
+      </a>
+
+      {% assign haveCollection = false %}
+
+      <div class="select_product_container">
+        <div class="name_product_selector">
+          {% assign colorTypes = product.metafields.custom.product_color_type | split: ',' %}
+
+          {% for collection in collections %}
+            {% if collection.title == colorTypes[0] %}
+              {% assign currentCollection = collection %}
+              {% assign haveCollection = true %}
+
+              <span class="product_txt">{{ collection.title }} PRODUCTS</span>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if haveCollection %}
+          <div class="select_input_container">
+            <div class="selected_value_container">
+              {% assign currentType = product.metafields.custom.product_color_type | split: ',' %}
+              <span class="selected_value" style="color:{{ section.settings.text_primary_color }};">
+                {{- currentType[1] -}}
+              </span>
+              <img src="{{ 'arrow_drop_down.png' |  asset_url }}" alt="">
+            </div>
+            <div class="values_container">
+              {% for p in currentCollection.products %}
+                {% assign v = p.metafields.custom.product_color_type | split: ',' %}
+                <a class="value_product" style="color:{{ section.settings.text_primary_color }};" href="{{ p.url }}">
+                  {{- v[1] -}}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="color_selector_container">
+        <div class="name_color_selector">
+          <span class="color_txt">COLOR - <span style="color: {{ section.settings.text_primary_color }};font-wight:bold;" class="specific_current_color"></span></span>
+        </div>
+
+        <div class="colors_selection" style="color: {{ section.settings.text_primary_color }};"></div>
+      </div>
+
+      <div class="sizes_wraper">
+        <div class="name_size_selector">
+          <span class="size_txt">SIZE</span>
+        </div>
+        <div class="size_container"></div>
+      </div>
+
+      <div class="qtes_wraper disabled">
+        <div class="name_qte_selector">
+          <span class="qte_txt">QUANTITY</span>
+        </div>
+        <div class="qte_container">
+          <h5 class="qte_minus" style="color:{{ section.settings.text_primary_color }};">-</h5>
+          <h5 class="qte_text_amount" style="color:{{ section.settings.text_primary_color }};">1</h5>
+          <h5 class="qte_plus" style="color:{{ section.settings.text_primary_color }};">+</h5>      
+        </div> 
+        <h5 class="error_quantity hide_error">cannot add this quantity.</h5>
+      </div>
+      
+      
+      <div class="buy_button_container">ADD TO CART - {{ product.price | money }}</div>
+      <deliverr data-component="BadgeWithCountdown"></deliverr>
+      <div class="buy_button_fixed_version disabled">
+        <div class="title_price_container">
+          <span class="title_p" style="color:{{ section.settings.text_primary_color }};">{{ product.title }}</span>
+          <div class="prices_col">
+            <span class="price_p" style="color:{{ section.settings.text_primary_color }};">
+              {{- product.price | money -}}
+            </span>
+            <span class="price_p_compare" style="color:{{ section.settings.compared_at_price_color }};">
+              {{- product.compare_at_price | money -}}
+            </span>
+          </div>
+        
+        </div>
+        <a class="add_cart_scroll_to_button" style="background-color:{{ section.settings.text_primary_color }};text-decoration:none;" >
+          <span> ADD TO CART</span>
+        </a>
+      </div>
+      <div id="SproutProductBadgeVintage" class="SproutProductBadgeVintage"></div>
+      {% comment %}
+        DESCRIPTION PART
+      {% endcomment %}
+      <div class="description_container" id="description">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'text_description_block' -%}
+              <div class="textual_desc_container" style="color:{{ section.settings.text_primary_color }};">
+                {{ block.settings.text_id }}
+              </div>
+            {%- when 'badge_block' -%}
+              <div class="badge_list_desc_container">
+                <div class="badge_row">
+                  <div class="badge_img_container">
+                    <img src="{{ block.settings.image_badge |  image_url  }}" alt="">
+                  </div>
+                  <span class="title_bage" style="color:{{ section.settings.text_primary_color }};">
+                    {{- block.settings.text_badge -}}
+                  </span>
+                </div>
+              </div>
+            {%- when 'collapsible_content' -%}
+              <div class="dropdown_item">
+                <div class="dropdown_title">
+                  <span class="title_text_dropdown" style="color:{{ section.settings.text_primary_color }};">
+                    {{- block.settings.title_block -}}
+                  </span>
+                  <img src="{{ 'right_drop_down_arrow.png' |  asset_url }}" alt="">
+                </div>
+                <div class="text_dropdown_desc" style="color:{{ section.settings.text_primary_color }};">
+                  {{ block.settings.textual_content }}
+                </div>
+              </div>
+            {%- when 'bullet_point' -%}
+              <div class="bullet_point_container" style="color:{{ section.settings.text_primary_color }};font-weight:bold;font-size:1.3rem;">{{ block.settings.bullet_point }}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</product-form>
+{{ 'product.js' | asset_url | script_tag }}
+{% style %}
+  #shopify-section-{{ section.id }}{
+    position:relative;
+    z-index:2;
+  }
+  #shopify-section-{{ section.id }} .bullet_point_container li::marker{
+    color: #A92521; 
+  }
+  #shopify-section-{{ section.id }} .buy_button_container{
+    background-color:{{ section.settings.add_to_cart_bg_color }};
+    border: 2px solid {{ section.settings.add_to_cart_bg_color }};
+    color: {{ section.settings.add_to_cart_text_color }};
+    transition : all .2s ease-in;
+  }
+  #shopify-section-{{ section.id }} .buy_button_container:hover{
+    background-color: {{ section.settings.add_to_cart_text_color }};
+    color: {{ section.settings.add_to_cart_bg_color }};
+  }
+{% endstyle %}
+{% schema %}
+{
+  "name": "Product Page",
+  "settings": [
+    {
+      "type": "color",
+      "id": "text_primary_color",
+      "label": "Select Primary Text Color",
+      "default": "#152f4e"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_text_color",
+      "label": "Select ADD to cart Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "add_to_cart_bg_color",
+      "label": "Select ADD to cart Text Color BG Color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_img_main",
+      "label": "Add default Background to the Main Image"
+    },
+    {
+      "type": "color",
+      "id" : "compared_at_price_color",
+      "label": "Compared At Price Color",
+      "default": "#152f4e"
+    }
+  ],
+  "blocks": [
+     
+  {
+      "name": "Bullet Point Block",
+      "type": "bullet_point",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "bullet_point",
+          "label": "Add Bullet Point Block"
+        }
+      ]
+    },
+    {
+      "name": "Text Description Block",
+      "type": "text_description_block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text_id",
+          "label": "Add the Textual Content"
+        }
+      ]
+    },
+    {
+      "name": "Badge Description Block",
+      "type": "badge_block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_badge",
+          "label": "Add Image Badge"
+        },
+        {
+          "type": "text",
+          "id": "text_badge",
+          "label": "Add Text Badge"
+        }
+      ]
+    },
+    {
+      "name": "Collapsible Content Block",
+      "type": "collapsible_content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title_block",
+          "label": "Title Collapsible Content"
+        },
+        {
+          "type": "richtext",
+          "id": "textual_content",
+          "label": "Add the Textual Content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

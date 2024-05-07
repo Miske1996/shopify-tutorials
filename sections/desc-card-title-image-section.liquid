@@ -1,0 +1,89 @@
+{{ 'desc-card-title-image-section.css' |  asset_url |  stylesheet_tag }}
+<div class="desc_card_title_image_section" style="background-color: {{ section.settings.background_color }};">
+    <h1 class="title_section" style="color: {{ section.settings.title_color }};">{{ section.settings.title_section }}</h1>
+    <div class="row {{ section.settings.image_position }}">
+        <img src="{{ section.settings.section_image |  image_url  }}" alt="">
+        <div class="titles_container">
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                  {%- when '@app' -%}
+                    {% render block %}
+                  {%- when 'title_block' -%}
+                    <h1 class="text_title" style="color: {{ block.settings.title_color_block}} ;">
+                      {{ block.settings.title_block }}
+                    </h1>
+                  {%- endcase -%}
+                {%- endfor -%}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "Desc Card+Titles+Image",
+    "tag": "section",
+    "settings": [
+        {
+        "type": "radio",
+        "label": "Select Image Position",
+        "id": "image_position",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          }, {
+            "value": "right",
+            "label": "right"
+          }
+        ],
+        "default": "left"
+      },
+        {
+            "type": "text",
+            "id": "title_section",
+            "label": "Title Section",
+            "default": "Wake Up To Shining Hair and Glowing Skin"
+        },
+        {
+            "type": "image_picker",
+            "id": "section_image",
+            "label": "Image Card"
+        },
+        {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title Section Color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#000000"
+        }
+        ],
+        "blocks": [
+      {
+        "name": "Title Block",
+        "type": "title_block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_block",
+            "label": "Title Content"
+          },
+          {
+            "type": "color",
+            "id": "title_color_block",
+            "label": "Title Color",
+            "default": "#ffffff"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Card+Titles+Image"
+      }
+    ]
+}
+{% endschema %}

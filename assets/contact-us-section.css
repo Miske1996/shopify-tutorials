@@ -1,0 +1,174 @@
+.contact_us_section_container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+}
+.contact_us_section_container > * {
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+.contact_us_section_container .from_container {
+  width: 90%;
+  align-self: center;
+  margin-top: 5vw;
+  display: flex;
+  justify-content: center;
+}
+.contact_us_section_container .from_container input:focus {
+  outline: none;
+}
+.contact_us_section_container .from_container textarea:focus {
+  outline: none;
+}
+.contact_us_section_container .from_container .input_div textarea {
+  border: 2px solid #EBEBEC;
+  color: black;
+  font-size: 1.5vw;
+  width: 80vw;
+  height: 3vw;
+  margin-top: 1vw;
+  padding-top: 0.3vw;
+  height: 10vw;
+  padding-left: 1vw;
+}
+.contact_us_section_container .from_container .input_div label {
+  margin-top: 1vw;
+  font-size: 1.5vw;
+}
+.contact_us_section_container .from_container .inputs_container {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+}
+.contact_us_section_container .from_container .inputs_container .name input, .contact_us_section_container .from_container .inputs_container .email input {
+  width: 39vw;
+  height: 3vw;
+  font-size: 1.5vw;
+  padding-top: 0.3vw;
+  padding-left: 1vw;
+}
+.contact_us_section_container .from_container .inputs_container .input_div label {
+  font-size: 1.5vw;
+}
+.contact_us_section_container .from_container .inputs_container .input_div input {
+  border: 2px solid #EBEBEC;
+  color: black;
+  padding-left: 1vw;
+}
+.contact_us_section_container .from_container .submit input {
+  background: none;
+  border: none;
+  width: 5vw;
+  height: 3vw;
+  text-align: center;
+  color: white;
+  background-color: #4C4C4B;
+  margin-top: 2vw;
+  cursor: pointer;
+}
+.contact_us_section_container h2 span, .contact_us_section_container h2 b {
+  font-weight: 600 !important;
+  font-size: 3vw;
+}
+.contact_us_section_container ul li, .contact_us_section_container ul li span, .contact_us_section_container p, .contact_us_section_container p span, .contact_us_section_container p b, .contact_us_section_container p span a {
+  font-size: 1.5vw;
+  color: inherit;
+}
+.contact_us_section_container ul li span, .contact_us_section_container ul li b, .contact_us_section_container ol li span, .contact_us_section_container ol li b {
+  font-size: 1.5vw;
+}
+.contact_us_section_container h3 b, .contact_us_section_container h3 span {
+  font-weight: 500 !important;
+  font-size: 3vw;
+}
+.contact_us_section_container h1 b, .contact_us_section_container h1 span {
+  font-weight: 700 !important;
+  font-size: 3vw;
+}
+
+@media screen and (max-width: 770px) {
+  .contact_us_section_container {
+    padding-top: 3vw;
+  }
+  .contact_us_section_container .from_container {
+    width: 90%;
+    align-self: center;
+    margin-top: 9vw;
+    display: flex;
+    justify-content: center;
+  }
+  .contact_us_section_container .from_container input:focus {
+    outline: none;
+  }
+  .contact_us_section_container .from_container textarea:focus {
+    outline: none;
+  }
+  .contact_us_section_container .from_container .input_div textarea {
+    font-size: 4.5vw;
+    width: 90vw;
+    height: 6vw;
+    margin-top: 3vw;
+    padding-top: 0.9vw;
+    height: 20vw;
+    padding-left: 3vw;
+  }
+  .contact_us_section_container .from_container .input_div label {
+    margin-top: 3vw;
+    font-size: 4.5vw;
+  }
+  .contact_us_section_container .from_container .inputs_container {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .contact_us_section_container .from_container .inputs_container .name input, .contact_us_section_container .from_container .inputs_container .email input {
+    width: 100%;
+    height: 9vw;
+    font-size: 4.5vw;
+    padding-top: 0.9vw;
+    padding-left: 2vw;
+  }
+  .contact_us_section_container .from_container .inputs_container .input_div label {
+    font-size: 4.5vw;
+  }
+  .contact_us_section_container .from_container .inputs_container .input_div input {
+    border: 2px solid #EBEBEC;
+    color: black;
+    padding-left: 1vw;
+  }
+  .contact_us_section_container .from_container .submit input {
+    background: none;
+    border: none;
+    width: 15vw;
+    height: 9vw;
+    text-align: center;
+    color: white;
+    background-color: #4C4C4B;
+    margin-top: 2vw;
+    cursor: pointer;
+  }
+  .contact_us_section_container > * {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+  .contact_us_section_container ul li, .contact_us_section_container ul li span, .contact_us_section_container p, .contact_us_section_container p span, .contact_us_section_container p b, .contact_us_section_container p span a {
+    font-size: 3.5vw;
+    color: inherit;
+  }
+  .contact_us_section_container h3 b, .contact_us_section_container h3 span {
+    font-weight: 500 !important;
+    font-size: 5vw;
+  }
+  .contact_us_section_container h1 b, .contact_us_section_container h1 span {
+    font-weight: 700 !important;
+    font-size: 5vw;
+  }
+  .contact_us_section_container h2 span, .contact_us_section_container h2 b {
+    font-weight: 600 !important;
+    font-size: 5vw;
+    color: inherit;
+  }
+}

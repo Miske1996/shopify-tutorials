@@ -1,0 +1,118 @@
+.git_card_section{
+    width: 100vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .gift_card_wrapper{
+        width: 92%;
+        height: 90%;
+        display: flex;
+        justify-content: space-between;
+        
+        .gift_image_container{
+            width: 45vw;
+            height: 45vw;
+            display: flex;
+            align-self: center;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .main_gift_content{
+            width: 29vw;
+            gap: 4vh;
+            display: flex;
+            flex-direction: column;
+            margin-left: 7vw;
+            margin-top: 9vw;
+            .title_content{
+                font-size: 6.4rem;
+                line-height: 6.4rem;
+                font-weight: 700;
+                letter-spacing: -.05em;
+            }
+
+            p{
+                font-size: 1.9rem;
+                line-height: 2.4rem;
+            }
+
+            .action_button_collection_gift_card_reverse {
+                text-decoration: none;
+                width: 50%;
+                padding: 1.2rem 2.4rem 1.4rem;
+                border-radius: 6.8rem;
+                border: 0.2rem solid transparent;
+                font-size: 1.5rem;
+                cursor: pointer;
+                text-align: center;
+                font-weight: 700;
+                &:hover{
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1080px) {
+    .git_card_section{
+        height: fit-content;
+        padding-bottom: 3vh;
+        padding-top: 3vh;
+        .gift_card_wrapper{
+            flex-direction: column-reverse;
+            align-items: center;
+            .gift_image_container{
+                width: 90vw;
+                height: 90vw;
+            }
+            .main_gift_content{
+                width: 100%;
+                gap: 1.5vh;
+                align-items: center;
+                .title_content{
+                    width: 90%;
+                    font-size: 4rem;
+                    line-height: 4rem;
+                    text-align: center;
+                }
+                p,h1,h2,h3,h4,h5,h6{
+                    display: block;
+                    font-size: inherit;
+                    color: inherit;
+                    cursor: default;
+                    pointer-events: all;
+                    margin: 0;
+                    width: 90%;
+                    font-size: 1.45rem;
+                    line-height: 2.1rem;
+                    text-align: center;
+                }
+                span,li{
+                    display: block;
+                    font-size:inherit;
+                    color: inherit;
+                    cursor: default;
+                    pointer-events: all; 
+                    width: 90%;
+                    font-size: 1.45rem;
+                    line-height: 2.1rem;
+                    text-align: center;
+                }
+                .paragraph{
+                    
+
+                   
+                }
+                .action_button_collection{
+                    // align-self: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,99 @@
+{{ "blogs-hero-section.css" | asset_url | stylesheet_tag }}
+<blog-hero>
+<div class="blogs_hero_section_container" style="background-color: {{ section.settings.bg_hero }};">
+  <div class="text_content_container">
+    <h1 class="main_title" style="color: {{ section.settings.color_text_hero }};">{{ section.settings.title_hero }}</h1>
+    <h2 class="subtitle" style="color: {{ section.settings.color_text_hero }};">{{ section.settings.hero_subtitle }}</h2>
+    <p class="paragraph_hero" style="color: {{ section.settings.color_text_hero }};">{{ section.settings.hero_paragraph }}</p>
+  </div>
+  <div class="img_hero">
+    <img src="{{ section.settings.img_hero_blog |  image_url }}" alt="">
+  </div>
+</div>
+</blog-hero>
+<script>
+  if(!customElements.get('blog-hero')){
+    customElements.define(
+    'blog-hero',
+    class BlogHero extends HTMLElement {
+    constructor() {
+        super();
+        window.addEventListener('resize', 
+        () => {
+    if (window.innerWidth < 580) {
+        const imgHero = this.querySelector('.img_hero');
+        const textContentContainer = this.querySelector('.text_content_container');
+        const subtitle = this.querySelector('.subtitle');
+        
+        if (imgHero && textContentContainer && subtitle) {
+            // Remove the image hero from its current position
+            imgHero.remove();
+            // Append the image hero inside the text content container after the subtitle
+            textContentContainer.insertBefore(imgHero, subtitle.nextSibling);
+        }
+    } else {
+        // If the window size is not under 480px, revert the changes
+        const imgHero = document.querySelector('.img_hero');
+        const blogsHeroSection = document.querySelector('.blogs_hero_section_container');
+        
+        if (imgHero && blogsHeroSection) {
+            // Append the image hero back to its original position inside the blogs hero section container
+            blogsHeroSection.appendChild(imgHero);
+        }
+    }
+  });
+  
+  // Trigger the resize event initially to handle the initial state
+  window.dispatchEvent(new Event('resize'));
+  
+           
+    }
+  
+  })
+  }
+</script>
+{% schema %}
+  {
+    "name": "Hero Blog",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_hero",
+        "label": "Hero Blog Title",
+        "default": "HERO TITLE HERE"
+      },
+      {
+        "type": "text",
+        "id": "hero_subtitle",
+        "label": "Hero Blog Subtitle",
+        "default": "HERO SUBTITLE HERE"
+      },
+      {
+        "type": "text",
+        "id": "hero_paragraph",
+        "label": "Hero Blog Paragraph",
+        "default": "this is one a paragraph: Have you ever wondered when’s the right time to replace your pillowcase? And what about silk helps your hair and skin? If so, you found the right place! The Blissy Editors are here to ease your nighttime woes with nifty tips and tricks to achieve the perfect sleep. So get cozy. Ready your reading glasses. And lay back... as we uncover hidden truths behind silk, wellness, beauty, and more."
+      },
+      {
+        "type": "color",
+        "id": "bg_hero",
+        "label": "Hero Blog Section Background",
+        "default": "#000000"
+      }, {
+        "type": "color",
+        "id": "color_text_hero",
+        "label": "Hero Blog Section Text Color",
+        "default": "#ffffff"
+      }, {
+        "type": "image_picker",
+        "id": "img_hero_blog",
+        "label": "Image Hero Blog"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Blog"
+      }
+    ]
+  }
+{% endschema %}

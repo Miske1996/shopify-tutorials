@@ -1,0 +1,24 @@
+{{ 'links-navigation-section.css' |  asset_url |  stylesheet_tag }}
+<div class="links_navigation_section_container">
+    <a href="/" class="link" style="color: {{ section.settings.color_links }};">Shop Bloomy</a>
+    <a href="/blogs/bloomy-blogs" class="link" style="color: {{ section.settings.color_links }};">Blog Posts</a>
+    <a href="#" class="link" style="color: {{ section.settings.color_links }};">Customer Support</a>
+</div>
+{% schema %}
+    {
+        "name": "Links Navigation Section",
+        "settings": [
+                {
+                "type": "color",
+                "id": "color_links",
+                "label": "Links Color",
+                "default": "#000000"
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Links Navigation Section"
+                }
+            ]
+    }
+    {% endschema %}

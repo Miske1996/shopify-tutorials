@@ -1,0 +1,34 @@
+{{ "simple-title-section.css" |  asset_url |  stylesheet_tag }}
+<div class="simple_title_section" style="background-color: {{ section.settings.bg_color }};">
+ <h1 style="color: {{ section.settings.text_color }};">{{ section.settings.text_section }}</h1>
+</div>
+{% schema %}
+    {
+      "name": "Simple Text Section",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "default": "#ffffff",
+          "label": "Background Color"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "default": "#000000",
+          "label": "Text Color"
+        },
+        {
+          "type": "text",
+          "id": "text_section",
+          "default": "CONTRARY TO STANDARD FABRIC LIKE COTTON AND SATIN WHICH DRAW MOISTURE, SILK IS GENTEL ON YOUR SKIN AND HAIR",
+          "label": "Text Section"
+        }
+      ],
+      "presets": [
+          {
+            "name": "Simple Text Section"
+          }
+        ]
+    }
+    {% endschema %}

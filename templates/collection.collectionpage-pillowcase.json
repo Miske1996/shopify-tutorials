@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "collection": {
+      "type": "collection-section",
+      "settings": {
+        "title_section": "SHOP PURE SILK",
+        "show_title": "show",
+        "background": "#ffffff",
+        "collection_list_linked": [
+          "beige-pillowcases",
+          "black-pillowcases",
+          "blue-pillowcases",
+          "grey-pillowcases",
+          "pink-pillowcases",
+          "red-pillowcases",
+          "best-selling-pillowcases"
+        ],
+        "primary_color": "#1a1a1a",
+        "secondary_color": "#ffffff",
+        "title_collection_color": "#ffffff",
+        "background_img_main": "shopify:\/\/shop_images\/Add_a_heading_2.png",
+        "product_desc_text_color": "#1a1a1a",
+        "card_price": "#1A1A1A",
+        "card_price_compare": "#A92521"
+      }
+    }
+  },
+  "order": [
+    "collection"
+  ]
+}

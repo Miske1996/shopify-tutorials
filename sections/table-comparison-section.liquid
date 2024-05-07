@@ -1,0 +1,237 @@
+{{ 'table-comparison-section.css' | asset_url | stylesheet_tag }}
+<table-comparison>
+  <div class="table_comparison_section" style="background-color: {{ section.settings.background_color_section  }};">
+    {% comment %}
+      TABLE PART
+    {% endcomment %}
+    <h1 class="title_table" style="color: {{ section.settings.title_color_table }};">{{ section.settings.title_table }}</h1>
+    <h1 class="sub_title_table" style="color: {{ section.settings.subtitle_color_table }};">{{ section.settings.subtitle_table }}</h1>
+    <div class="container_table"></div>
+  </div>
+</table-comparison>
+<script>
+    if (!customElements.get('table-comparison')) {
+    customElements.define(
+        'table-comparison',
+        class TableComparison extends HTMLElement {
+            constructor() {
+                super();
+                this.initTable();
+            }
+            initTable(){
+                let x_labels = `{{ section.settings.x_labels }}`;
+                x_labels = x_labels.split(',');
+                let col_num = x_labels.length + 1;
+              
+                let y_labels = `{{ section.settings.y_labels }}`;
+                y_labels = y_labels.split(',');
+                let row_num = y_labels.length + 1;
+              
+                let true_false_values = `{{ section.settings.values_table }}`;
+                true_false_values = true_false_values.split(',');
+                true_false_values = this.convertTo2DArrayWithIndices(true_false_values,row_num - 1,col_num - 1);
+                
+              
+                let item_width = 16.5;
+                let item_height = 7;
+              
+                let container_table = this.querySelector('.container_table');
+                container_table.style.width = item_width * col_num + 'vw';
+                container_table.style.height = item_height * row_num  + 'vw';
+                for (let i = 0; i < row_num; i++) {
+                  for (let j = 0; j < col_num; j++) {
+                    const container = document.createElement('div');
+                    container.style.width = 16.5 + 'vw';
+                    container.style.height = 7 + 'vw';
+                    if (i === 0 && j === 0) {
+                      container.innerHTML = `<span></span>`;
+                      container.style.backgroundColor =  `{{ section.settings.bg_x_labels }}`;
+                      container_table.appendChild(container);
+                    } else if (j < col_num && i === 0) {
+                      container.innerHTML = '<span style="color:{{ section.settings.text_x_color }};">' + x_labels[j - 1] + '</span>';
+                      container.style.backgroundColor =  `{{ section.settings.bg_x_labels }}`;
+                      if(j==1){
+                          container.style.backgroundColor =  `{{ section.settings.chosen_x_label }}`;
+                      }
+                      container_table.appendChild(container);
+                    } else if (j === 0 && i > 0) {
+                      
+                      container.innerHTML = '<span style="color:{{ section.settings.text_y_color }};">' + y_labels[i - 1] + '</span>';
+                      if(i % 2 != 0){
+                          container.style.backgroundColor =  `{{ section.settings.bg_odd }}`;
+                      }else{
+                          container.style.backgroundColor =  `{{ section.settings.bg_even }}`;
+                      }
+                      container_table.appendChild(container);
+                    } else {
+                      if(i % 2 != 0){ 
+                          container.style.backgroundColor =  `{{ section.settings.bg_odd }}`;
+                          if(j==1){
+                          container.style.backgroundColor =  `{{ section.settings.chosen_odd }}`;
+                          }
+                      }else{
+                          container.style.backgroundColor =  `{{ section.settings.bg_even }}`;
+                          if(j==1){
+                          container.style.backgroundColor =  `{{ section.settings.chosen_even }}`;
+                          }
+                      }
+              
+                     
+                      if (true_false_values[i-1][j-1]["value"] == 'yes') {
+                        container.innerHTML = '<img style="width:{{ section.settings.size_yes_image }}vw;height:{{ section.settings.size_yes_image }}vw;"  src = {{ section.settings.true_image |  image_url  }}>';
+                      } else {
+                        container.innerHTML = '<img style="width:{{ section.settings.size_no_image }}vw;height:{{ section.settings.size_no_image }}vw;"  src = {{ section.settings.false_image |  image_url  }}>';
+                      }
+                      container_table.appendChild(container);
+                    }
+                  }
+                }
+                 
+            }
+
+            convertTo2DArrayWithIndices(oneDArray, numRows, numCols) {
+                const twoDArray = [];
+                let index = 0;
+            
+                for (let i = 0; i < numRows; i++) {
+                  twoDArray[i] = [];
+            
+                  for (let j = 0; j < numCols; j++) {
+                    twoDArray[i][j] = {
+                      value: oneDArray[index],
+                      row: i,
+                      col: j,
+                    };
+            
+                    index++;
+                  }
+                }
+            
+                return twoDArray;
+            }
+        }
+    )
+  }
+</script>
+{% schema %}
+  {
+    "name": "Table Comparison",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color_section",
+        "label": "Section Background Color",
+        "default": "#000000"
+      },
+      {
+        "type": "text",
+        "id": "title_table",
+        "default": "Does Silk Really Work?",
+        "label": "Table Title"
+      },
+      {
+        "type": "color",
+        "id": "title_color_table",
+        "default": "#ffffff",
+        "label": "Table Title Color"
+      },
+
+      {
+        "type": "richtext",
+        "id": "subtitle_table",
+        "label": "Table Subtitle"   
+      }, {
+        "type": "color",
+        "id": "subtitle_color_table",
+        "default": "#ffffff",
+        "label": "Table subtitle Color"
+      }, {
+        "type": "text",
+        "id": "x_labels",
+        "label": "X/HORIZONTAL Labels"
+      }, {
+        "type": "text",
+        "id": "y_labels",
+        "label": "Y/VERTICAL Labels"
+      }, {
+        "type": "text",
+        "id": "values_table",
+        "label": "Table Values"
+      }, {
+        "type": "image_picker",
+        "id": "true_image",
+        "label": "Yes Image"
+      }, 
+      {
+        "type": "range",
+        "min": 3,
+        "max": 6,
+        "step": 0.5,
+        "id": "size_yes_image",
+        "default": 3.5, 
+        "label": "Select Size Yes Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "false_image",
+        "label": "No Image"
+      }, 
+      {
+        "type": "range",
+        "min": 3,
+        "max": 6,
+        "step": 0.5,
+        "id": "size_no_image",
+        "default": 3.5, 
+        "label": "Select Size No Image"
+      },
+      {
+        "type": "color",
+        "id": "text_x_color",
+        "label": "Text Color X Values"
+      }, {
+        "type": "color",
+        "id": "text_y_color",
+        "label": "Text Color Y Values"
+      }, {
+        "type": "color",
+        "id": "bg_x_labels",
+        "label": "X labels Background Color",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "bg_odd",
+        "label": "Odd Rows Background Color",
+        "default": "#D9D9D9"
+      }, {
+        "type": "color",
+        "id": "bg_even",
+        "label": "Even Rows Background Color",
+        "default": "#B4B4B4"
+      }, {
+        "type": "color",
+        "id": "chosen_x_label",
+        "label": "Chosen Label Background Color",
+        "default": "#E5E5E5"
+      }, {
+        "type": "color",
+        "id": "chosen_odd",
+        "label": "Chosen Odd Background Color",
+        "default": "#C3C3C3"
+      }, {
+        "type": "color",
+        "id": "chosen_even",
+        "label": "Chosen Even Background Color",
+        "default": "#A2A2A2"
+      }
+
+    ],
+    "presets": [
+      {
+        "name": "Table Comparison"
+      }
+    ]
+
+  }
+{% endschema %}

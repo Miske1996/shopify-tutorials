@@ -1,0 +1,132 @@
+.shipping_delivery_section_container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3vw;
+}
+.shipping_delivery_section_container > * {
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+.shipping_delivery_section_container h2 span, .shipping_delivery_section_container h2 b {
+  font-weight: 600 !important;
+  font-size: 3vw;
+}
+.shipping_delivery_section_container ul li, .shipping_delivery_section_container ul li span, .shipping_delivery_section_container p, .shipping_delivery_section_container p span, .shipping_delivery_section_container p b, .shipping_delivery_section_container p span a {
+  font-size: 1.5vw;
+  color: inherit;
+}
+.shipping_delivery_section_container ul li span, .shipping_delivery_section_container ul li b, .shipping_delivery_section_container ol li span, .shipping_delivery_section_container ol li b {
+  font-size: 1.5vw;
+}
+.shipping_delivery_section_container h3 b, .shipping_delivery_section_container h3 span {
+  font-weight: 500 !important;
+  font-size: 3vw;
+}
+.shipping_delivery_section_container h1 b, .shipping_delivery_section_container h1 span {
+  font-weight: 700 !important;
+  font-size: 3vw;
+}
+.shipping_delivery_section_container .contact_container {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 3vw;
+  width: 100%;
+  padding-top: 1.2vw;
+  padding-bottom: 1.2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+.shipping_delivery_section_container .contact_container .question {
+  display: flex;
+  font-size: 4.5vw;
+  text-align: center;
+  font-weight: 700;
+}
+.shipping_delivery_section_container .contact_container .contact_container {
+  width: 80%;
+  display: flex;
+  gap: 4vw;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 0;
+}
+.shipping_delivery_section_container .contact_container .contact_container .link_contact {
+  text-decoration: none;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  padding-top: 0.8vw;
+  padding-bottom: 0.5vw;
+  text-align: center;
+  font-size: 2.8vw;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 770px) {
+  .shipping_delivery_section_container {
+    padding-top: 3vw;
+  }
+  .shipping_delivery_section_container .contact_container {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5vw;
+    width: 100%;
+    padding-top: 2.1vw;
+    padding-bottom: 2.1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+  }
+  .shipping_delivery_section_container .contact_container .question {
+    display: flex;
+    font-size: 8vw;
+    text-align: center;
+    font-weight: 700;
+  }
+  .shipping_delivery_section_container .contact_container .contact_container {
+    width: 80%;
+    display: flex;
+    gap: 4vw;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .shipping_delivery_section_container .contact_container .contact_container .link_contact {
+    text-decoration: none;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    text-align: center;
+    font-size: 5vw;
+    color: inherit;
+    cursor: pointer;
+    width: 80%;
+  }
+  .shipping_delivery_section_container > * {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+  .shipping_delivery_section_container ul li, .shipping_delivery_section_container ul li span, .shipping_delivery_section_container p, .shipping_delivery_section_container p span, .shipping_delivery_section_container p b, .shipping_delivery_section_container p span a {
+    font-size: 3.5vw;
+    color: inherit;
+  }
+  .shipping_delivery_section_container h3 b, .shipping_delivery_section_container h3 span {
+    font-weight: 500 !important;
+    font-size: 5vw;
+  }
+  .shipping_delivery_section_container h1 b, .shipping_delivery_section_container h1 span {
+    font-weight: 700 !important;
+    font-size: 5vw;
+  }
+  .shipping_delivery_section_container h2 span, .shipping_delivery_section_container h2 b {
+    font-weight: 600 !important;
+    font-size: 5vw;
+    color: inherit;
+  }
+}

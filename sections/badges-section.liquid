@@ -1,0 +1,199 @@
+{{ 'badges-section.css' |  asset_url |  stylesheet_tag }}
+<badge-section>
+<div class="badges_section" style="background-color:{{ section.settings.background }};">
+    {% for block in section.blocks %} 
+        <div class="badge_container">
+        
+        {% comment %} <img src="{{ block.settings.badge_image |  image_url  }}" alt=""> {% endcomment %}
+        <span class="badge_main_title" style="color: {{ section.settings.color_svg }};">{{ block.settings.badge_title_id }}
+            </span>
+        <span class="badge_sub_title" style="color: {{ section.settings.color_svg }};">{{ block.settings.badge_subtitle_id }}
+        </span>
+    </div> 
+    {% endfor %}
+</div>
+</badge-section>
+<script>
+if(!customElements.get('badge-section')){
+    customElements.define(
+    'badge-section',
+    class Badge extends HTMLElement {
+    constructor() {
+        super();
+        this.scrollContainer = this.querySelector('.badges_section');
+        this.isSnapping = false;
+        this.scrollInterval = null;
+        this.scrollDuration = 3000; // 3 seconds
+        this.badge_container_all = this.querySelectorAll(".badge_container");
+        // Bind event listener methods
+        this.handleScroll = this.handleScroll.bind(this);
+        this.snapToBadge = this.snapToBadge.bind(this);
+        let svgElmts = Array();
+        let boolFinishedFetch = false;
+        let promise = null;
+        let promises = [];
+
+        {% for block in section.blocks %}
+            var svgURL = "{{ block.settings.badge_image |  image_url  }}";
+            
+            // Fetch SVG file and push the promise into the array
+             promise = fetch(svgURL)
+                .then(response => response.text())
+                .then(svgString => {
+                    // Parse the SVG string into an SVG document
+                    var parser = new DOMParser();
+                    var svgDoc = parser.parseFromString(svgString, 'image/svg+xml');
+                     
+                    // Manipulate the SVG (for example, change the fill color)
+                    var pathElements = svgDoc.querySelectorAll('path');
+                    pathElements.forEach(function(path) {
+                        path.style.fill = '{{ section.settings.color_svg }}';
+                    });
+
+                    // Get the SVG element
+                    var svgElement = svgDoc.documentElement;
+                    svgElmts.push(svgElement);
+
+                    // If this is the last fetch, set boolFinishedFetch to true
+                    boolFinishedFetch = true;
+                })
+                .catch(error => {
+                    console.error('Error fetching SVG:', error);
+                });
+                
+            promises.push(promise);
+        {% endfor %}
+        
+        // Wait for all fetch operations to complete
+        Promise.all(promises)
+            .then(() => {
+                if (boolFinishedFetch) {
+                    for (let index = 0; index < svgElmts.length; index++) {
+                        this.querySelectorAll(".badge_container")[index].prepend(svgElmts[index])    
+                    }
+                }
+            });
+           
+    }
+    
+    connectedCallback() {
+        document.addEventListener("DOMContentLoaded",  () => {
+            // Get the scroll container element
+            this.scrollContainer = this.querySelector('.badges_section');
+
+            // Add event listener for scroll
+            this.scrollContainer.addEventListener('scroll', this.handleScroll);
+
+            // Set up the auto scroll interval
+            this.scrollInterval = setInterval(this.snapToBadge, this.scrollDuration);
+        })
+    
+    }
+
+    disconnectedCallback() {
+        // Clean up when the element is removed
+        this.scrollContainer.removeEventListener('scroll', this.handleScroll);
+        clearInterval(this.scrollInterval);
+    }
+
+    handleScroll() {
+        // Check if snapping is in progress, if so, ignore the scroll event
+        if (this.isSnapping) {
+            return;
+        }
+
+        // Calculate the scroll width of each badge container
+        const badgeWidth = this.scrollContainer.offsetWidth;
+
+        // Calculate the index of the currently visible badge
+        const currentBadgeIndex = Math.round(this.scrollContainer.scrollLeft / badgeWidth);
+
+        // Calculate the target scroll position based on the current index
+        const targetScrollLeft = currentBadgeIndex * badgeWidth;
+
+        // Snap to the target position with a smooth scroll
+        this.isSnapping = true;
+        this.scrollContainer.scrollTo({
+            left: targetScrollLeft,
+            behavior: 'smooth',
+        });
+
+        // Reset the snapping flag after a short delay to prevent interference with manual scrolling
+        setTimeout(() => {
+            this.isSnapping = false;
+        }, 300);
+    }
+
+    snapToBadge() {
+        // Calculate the next badge index
+        const nextBadgeIndex = (Math.round(this.scrollContainer.scrollLeft / this.scrollContainer.offsetWidth) + 1) % this.scrollContainer.childElementCount;
+
+        // Snap to the next badge with a smooth scroll
+        this.isSnapping = true;
+        this.scrollContainer.scrollTo({
+            left: nextBadgeIndex * this.scrollContainer.offsetWidth,
+            behavior: 'smooth',
+        });
+
+        // Reset the snapping flag after a short delay to prevent interference with manual scrolling
+        setTimeout(() => {
+            this.isSnapping = false;
+        }, 300);
+    }
+    
+})
+}
+
+
+
+</script>
+{% schema %}
+{
+    "name": "Badge",
+    "settings": [
+       
+        {
+            "type":"color",
+            "id": "background",
+            "label": "Background Color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"color",
+            "id": "color_svg",
+            "label": "Choose Color SVG",
+            "default": "#000000"
+        }
+        ],
+    "blocks": [
+        {
+            "name": "Badge",
+            "type": "badge",
+            "limit": 4,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "badge_title_id",
+                    "label": "Badge Title"
+                },
+                {
+                    "type": "text",
+                    "id": "badge_subtitle_id",
+                    "label": "Badge Subtitle"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "badge_image",
+                    "label": "Badge Image"
+                }
+
+            ]
+        }
+    ],
+        "presets": [
+            {
+                "name": "Badges"
+            }
+        ]
+}
+{% endschema %}

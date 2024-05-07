@@ -1,0 +1,86 @@
+{{ 'cart-section.css' |  asset_url |  stylesheet_tag }}
+<div class="cart_section_container">
+    <div class="title_cart_container">
+        <h5 class="cart_txt_title">Your cart</h5>
+        <h5 class="item_total">{{ cart.item_count }} {% if cart.item_count > 1 %}
+            items
+            {% else %}
+            items
+        {% endif %}</h5>
+    </div> 
+    <div class="main_content_cart">
+        <div class="cart_items">
+            {% if cart.item_count == 0 %}
+            {% else %}
+                    <div class="inner_products_cart">
+                        {% for item in cart.items %}   
+                            <cart-drawer-item line={{ forloop.index }} id={{ item.id }} quantity={{ item.quantity }} quantity_max="{{ item.variant.quantity_rule.max }}" quantity_min="{{ item.variant.quantity_rule.min}}">
+                            <div class="cart_product_item">
+                                <div class="product_img"><img
+                                        src="{{ item.image |  image_url  }}"
+                                        alt=""></div>
+                                <div class="desc_section">
+                                    <a href="{{ item.url }}" class="link_product_title">{{ item.title }}</a>
+                                    {% assign get_the_size_list = item.title |  split:  '/' %}
+                                    {% assign sp  =  get_the_size_list[0] |  split: "-" %}
+                                    {% assign length_sp  =  sp.size |  minus: 1 %}      
+                                    {% assign size  =  sp[length_sp]%}
+
+                                    {% if size %}
+                                        <h5 class="size">Size : {{ size }}</h5>      
+                                    {% endif %}
+                                    {% assign c_list = item.options_with_values[1].value |  split:  "|" %}
+                                    {% assign c = c_list |  last %}
+                                    {% if c %}
+                                     <h5 class="color">Color : - {{ c  }}</h5>
+                                    {% endif %}
+                                    <div class="qte_container">
+                                        <h5 class="qte_minus" style="color:{{ section.settings.text_primary_color }};">-</h5>
+                                        <h5 class="qte_text_amount" style="color:{{ section.settings.text_primary_color }};">{{ item.quantity }}</h5>
+                                        <h5 class="qte_plus" style="color:{{ section.settings.text_primary_color }};">+</h5>      
+                                      </div> 
+                                    <h5 class="error_quantity hide_error">cannot add this quantity.</h5>
+                                </div>
+                                <div class="price_section_cart">
+                                    <img src="{{ 'x_cart.png' |  asset_url }}" alt="" class="remove_item remove_item_x">
+                                    <h5 class="item_price">{{ item.price |  money }}
+        
+                                    </h5>
+                                </div>
+                            </div> 
+                            </cart-drawer-item>
+                        {% endfor %}
+                        
+                  
+                        </div>
+             
+           
+        </div>
+        <div class="cart_footer">
+            <div class="cart_total_container">
+                <h5 class="cart_total_title">Cart total ({{ cart.item_count }})</h5>
+                <h5 class="cart_total_price">{{ cart.total_price | money  }}</h5>
+            </div>
+            <form action="{{ routes.cart_url }}" method="post">
+                <button class="payment_button" name="checkout">
+                <h5 class="payment_button_txt">Proceed to payment</h5>
+                </button>
+            </form>
+            
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% schema %}
+{
+    "name": "Cart-Section",
+    "settings": [
+                {
+            "type": "color",
+            "id": "text_primary_color",
+            "label": "Select Primary Text Color",
+            "default": "#152f4e"
+            }
+        ]
+}
+{% endschema %}

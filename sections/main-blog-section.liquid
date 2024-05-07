@@ -1,0 +1,44 @@
+{{ 'main-blog-section.css' |  asset_url |  stylesheet_tag }}
+{% paginate blogs['bloomy-blogs'].articles by 12 %}
+    <div class="main_blog_section_container">
+        {% if paginate.current_page > 1 %}
+        {% else %}
+            {% render 'latest-blogs-snippet' %}          
+        {% endif %}
+        <h1 class="posts_title">All Posts</h1>     
+        <div class="main_blogs">
+        {% for post in blogs['bloomy-blogs'].articles %}
+            <div class="blog_card">
+                <a class="image_blog"  href="{{ post.url }}">
+                <img src="{{ post.image.src |  image_url }}" alt="{{ post.title }}">
+                </a>
+                <div class="info_blog">
+                <h2 class="date_blog">{{ post.published_at | date: "%B %d, %Y" }}</h2>
+                {% assign words_per_minute = 200 %}
+                {% assign content_words = post.content | split: "" | size %}
+                {% assign minutes_reads = content_words | divided_by: words_per_minute %}
+                <h3 class="min_reads">3 min read</h3>
+                </div>
+                <a href="{{ post.url }}" class="blog_title" style="text-decoration: none;">{{ post.title }}</a>
+            </div> 
+        {% endfor %}
+        </div>
+        <div class="pagination">
+            {%- if paginate.pages > 1 -%}
+                {%- if paginate.parts.size > 0 -%}
+                    {% for part in paginate.parts %}
+                        {% if part.is_link %}
+                          <a  href="{{ part.url }}" class="pagination_link_current" >{{ part.title }}</a>   
+                          {% else %}
+                          <a  href="{{ part.url }}"
+                            style="border-bottom: 2px solid {{ section.settings.primary_color }};color:{{ section.settings.primary_color }};"
+                            class="pagination_link" >{{ part.title }}</a>   
+                        {% endif %}
+                          
+                    {% endfor %}
+                {% endif %}
+            {%- endif -%}
+        </div>
+    </div>
+{% endpaginate %} 
+    

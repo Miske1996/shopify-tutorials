@@ -1,0 +1,18 @@
+{
+    "sections": {
+        "banner-hero-title": {
+            "type": "banner-hero-title",
+            "settings": {
+              "text_title": "SHIPPING AND DELIVERY",
+              "text_color": "#ffffff",
+              "background_color": "#162d4d"
+            }
+          },
+          "shipping-delivery-section":{"type": "shipping-delivery-section"}
+    },
+    "order": [
+     "banner-hero-title",
+     "shipping-delivery-section"
+    ]
+  }
+  

@@ -1,0 +1,544 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-section",
+      "blocks": {
+        "text_description_block_PDNQKe": {
+          "type": "text_description_block",
+          "settings": {
+            "text_id": "<p>Are you looking to boost your hair care routine with a simple, all-natural, and rejuvenating hair accessory that effortlessly works with you to amplify your hair care routine?<\/p><p>Say Hi to<strong> Bloomy silk bonnet <\/strong>! Made of 100% Mulberry silk, It’s designed to boost your hair hydration, works great for taming Frizz, and help upgrade your night care routine to an unforgettable feel-good moment. <\/p><p><strong>The bloomy silk turban <\/strong>is perfect for a simple, no-fuss elegance, if you are looking for an effortless solution to boost your hair care routine. It provides a good hold, and works wonders keeping your hair smooth while you sleep.<\/p>"
+          }
+        },
+        "collapsible_content_CFUixe": {
+          "type": "collapsible_content",
+          "settings": {
+            "title_block": "FEATURES",
+            "textual_content": "<p>- Product Size: One size fit all<\/p><p>- 100% Mulberry Silk, both sides<\/p><p>- Comfort fit elastic band<\/p>"
+          }
+        },
+        "collapsible_content_ntTXwN": {
+          "type": "collapsible_content",
+          "settings": {
+            "title_block": "COMPOSITION & CARE",
+            "textual_content": "<p>- Material: 100% silk<\/p><p>- Grade 6A - Mulberry silk<\/p><p>- Composition: 22 Momme<\/p><p><strong>- <\/strong>Wash in cold water, hand wash or gentle cycle. Do not tumble dry, do not iron.<\/p>"
+          }
+        },
+        "collapsible_content_h63VMp": {
+          "type": "collapsible_content",
+          "settings": {
+            "title_block": "DELIVERY & RETURNS",
+            "textual_content": "<p>- This item qualify for free shipping within the US. Bloomy will cover your standard shipping (You save up to $9.99).<\/p><p>- International orders do not qualify for free shipping.<\/p><p>- Delivery time is between 3 to 5 days from dispatch date.<\/p><p>- You have 60 days to change your mind. All returns must be returned in their original package. <\/p>"
+          }
+        },
+        "badge_block_EaQDTh": {
+          "type": "badge_block",
+          "settings": {
+            "image_badge": "shopify:\/\/shop_images\/credit-card.svg",
+            "text_badge": "Secured & Encrypted Checkout"
+          }
+        },
+        "badge_block_mEYWqj": {
+          "type": "badge_block",
+          "settings": {
+            "image_badge": "shopify:\/\/shop_images\/60-days.svg",
+            "text_badge": "60 Days Risk-free Shopping"
+          }
+        },
+        "badge_block_3GcAyM": {
+          "type": "badge_block",
+          "settings": {
+            "image_badge": "shopify:\/\/shop_images\/package.svg",
+            "text_badge": "Free & Fast Shipping"
+          }
+        }
+      },
+      "block_order": [
+        "text_description_block_PDNQKe",
+        "collapsible_content_CFUixe",
+        "collapsible_content_ntTXwN",
+        "collapsible_content_h63VMp",
+        "badge_block_EaQDTh",
+        "badge_block_mEYWqj",
+        "badge_block_3GcAyM"
+      ],
+      "settings": {
+        "text_primary_color": "#152f4e",
+        "add_to_cart_text_color": "#ffffff",
+        "add_to_cart_bg_color": "#a81815",
+        "background_img_main": "shopify:\/\/shop_images\/noos-perm-saisoniers.jpg",
+        "compared_at_price_color": "#152f4e"
+      }
+    },
+    "product-list-scroll": {
+      "type": "products-list-scroll-section",
+      "settings": {
+        "collection_product_list_scroll": "pob-on-beige-bonnet",
+        "text_color": "#1a1a1a",
+        "title": "People Also Bought",
+        "title_color": "#1a1a1a"
+      }
+    },
+    "simple-title": {
+      "type": "simple-title-section",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#1a1a1a",
+        "text_section": "CONTRARY TO STANDARD FABRIC LIKE COTTON AND SATIN WHICH DRAW MOISTURE, SILK IS GENTLE ON YOUR SKIN AND HAIR"
+      }
+    },
+    "desc-card-title-image": {
+      "type": "desc-card-title-image-section",
+      "blocks": {
+        "title_block_DkHRLn": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "No More Frizz and Friction",
+            "title_color_block": "#ffffff"
+          }
+        },
+        "title_block_gyYdMb": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "Prevent Split Ends and Tangles",
+            "title_color_block": "#ffffff"
+          }
+        },
+        "title_block_mWVUPr": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "No More Hair Dryness",
+            "title_color_block": "#ffffff"
+          }
+        },
+        "title_block_RUwzX9": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "Keep your hair hydrated",
+            "title_color_block": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "title_block_DkHRLn",
+        "title_block_gyYdMb",
+        "title_block_mWVUPr",
+        "title_block_RUwzX9"
+      ],
+      "settings": {
+        "image_position": "right",
+        "title_section": "Wake up to your Absolute A-Game Everyday",
+        "section_image": "shopify:\/\/shop_images\/women-wearing-bloomy-silk-bonnet.webp",
+        "title_color": "#ffffff",
+        "background_color": "#000000"
+      }
+    },
+    "as-seen-on-list": {
+      "type": "list-as-seen-on-section",
+      "blocks": {
+        "image_block_MLXNtC": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/allure-logo_82de2df8-af25-4416-a953-536d93ca1e31.png"
+          }
+        },
+        "image_block_4P4i4m": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/business-insider-logo_dcea2de0-c4e2-48be-b72c-5fd941dde410.png"
+          }
+        },
+        "image_block_K7CGDB": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/byrdie-logo_3e1133ed-07e8-44d9-a431-010f50fe0b9a.png"
+          }
+        },
+        "image_block_pcX3FQ": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/cosmopolitan-logo_8eb63cfa-0f7b-4928-ac5b-8821b3a19bd5.png"
+          }
+        },
+        "image_block_cRcVfz": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/glamour-logo_de355f58-2da9-48e8-a82d-6dbc46ad79c0.png"
+          }
+        },
+        "image_block_wTx9BJ": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/good-housekeeping-logo_bbf300d1-57d8-467f-97d4-eb68925b13d5.png"
+          }
+        },
+        "image_block_ce7fg8": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/marie-claire-logo_e6bc75fe-b63d-4206-8357-3ca9f5c39c94.png"
+          }
+        },
+        "image_block_AMiJAg": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/mashable-logo_39b2ece5-b2d8-49c9-b3d2-a916fbf9b46e.png"
+          }
+        },
+        "image_block_HKP6hF": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/parade-logo_b2ed6e22-41f7-4a2b-ac81-2dbdb6a4f84d.png"
+          }
+        },
+        "image_block_dfRTyX": {
+          "type": "image_block",
+          "settings": {
+            "image_block": "shopify:\/\/shop_images\/wwd-logo_e97df926-3342-4fa0-a97b-98d3192efaab.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_MLXNtC",
+        "image_block_4P4i4m",
+        "image_block_K7CGDB",
+        "image_block_pcX3FQ",
+        "image_block_cRcVfz",
+        "image_block_wTx9BJ",
+        "image_block_ce7fg8",
+        "image_block_AMiJAg",
+        "image_block_HKP6hF",
+        "image_block_dfRTyX"
+      ],
+      "settings": {
+        "bg_color": "#ffffff"
+      }
+    },
+    "desc_card_title_image_section_GwQmaQ": {
+      "type": "desc-card-title-image-section",
+      "blocks": {
+        "title_block_jAd7mM": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "No More Creases",
+            "title_color_block": "#ffffff"
+          }
+        },
+        "title_block_qFVqzP": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "No More Creases",
+            "title_color_block": "#ffffff"
+          }
+        },
+        "title_block_y7Vdkf": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "No More Creases",
+            "title_color_block": "#ffffff"
+          }
+        },
+        "title_block_R98wPb": {
+          "type": "title_block",
+          "settings": {
+            "title_block": "No More Creases",
+            "title_color_block": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "title_block_jAd7mM",
+        "title_block_qFVqzP",
+        "title_block_y7Vdkf",
+        "title_block_R98wPb"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_position": "right",
+        "title_section": "Wake Up To Shining Hair and Glowing Skin",
+        "title_color": "#ffffff",
+        "background_color": "#000000"
+      }
+    },
+    "card-desc-incline-image": {
+      "type": "card-desc-incline-image-section",
+      "settings": {
+        "image_rotation": "normal",
+        "image_position": "right",
+        "bg_color_section": "#ffffff",
+        "title_section": "\"BLOOMY SILK BONNET HAS BEEN SUPER EFFECTIVE TO PREVENT FRIZZ IN MY DENSE WAVY HAIR\"",
+        "image_section": "shopify:\/\/shop_images\/bloomy-mulberry-silk-bonnet.webp",
+        "text_section": "<p>The <strong>Bloomy Silk Bonnet<\/strong> is crafted to effortlessly preserve your hairstyle while offering protection against friction and tangles. Handmade with care (& love!), this silk hair turban not only safeguards your locks but also aids in maintaining curls, while preventing split ends.<\/p>",
+        "title_color": "#000000",
+        "text_color": "#000000"
+      }
+    },
+    "list-features": {
+      "type": "list-features-section",
+      "blocks": {
+        "text_block_MaUmBW": {
+          "type": "text_block",
+          "settings": {
+            "text_block": "ANTI-FRIZZ",
+            "text_block_color": "#ffffff"
+          }
+        },
+        "text_block_83ykzE": {
+          "type": "text_block",
+          "settings": {
+            "text_block": "HYDRATING",
+            "text_block_color": "#ffffff"
+          }
+        },
+        "text_block_en63kr": {
+          "type": "text_block",
+          "settings": {
+            "text_block": "MOISTURING",
+            "text_block_color": "#ffffff"
+          }
+        },
+        "text_block_T3bHMC": {
+          "type": "text_block",
+          "settings": {
+            "text_block": "ANTI-SPLIT ENDS",
+            "text_block_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_MaUmBW",
+        "text_block_83ykzE",
+        "text_block_en63kr",
+        "text_block_T3bHMC"
+      ],
+      "settings": {
+        "bg_color": "#1a1a1a"
+      }
+    },
+    "card_desc_incline_image_section_BKRDne": {
+      "type": "card-desc-incline-image-section",
+      "settings": {
+        "image_rotation": "normal",
+        "image_position": "left",
+        "bg_color_section": "#ffffff",
+        "title_section": "\"BLOOMY SILK BONNET MADE A TOTAL DIFFERENCE TO MY SUPER FINE STRAIGHT HAIR\"",
+        "image_section": "shopify:\/\/shop_images\/women-wearing-bloomy-silk-bonnet_5cfa3dd6-47e7-4dbc-980f-ed6b12800eed.webp",
+        "text_section": "<p>You wish you had someone to care for your hair as much as you do? <strong>Bloomy Silk Bonnet <\/strong>is just that! ...and more! With its soft, all-natural 100% Mulberry silk fabric, Bloomy Silk Bonnet effortlessly shield your hair from breakage and unwanted frizz while you sleep. It seals your hair’s natural oils for the perfect morning glow. It’s super comfortable and stay put all night, help you keep your hair moisturized, shiny, bed head free, while effortlessly maintaining your desired hairstyle. Suitable for all hair types, this gentle hair wrap is a boon for curly, thick, natural, or extension-adorned locks, offering a nourishing conditioning treatment as you slumber.<\/p>",
+        "title_color": "#000000",
+        "text_color": "#000000"
+      }
+    },
+    "table": {
+      "type": "table-comparison-section",
+      "settings": {
+        "background_color_section": "#000000",
+        "title_table": "Switch to Silk and See the Benefits Today!",
+        "title_color_table": "#ffffff",
+        "subtitle_table": "<p>Bloomy silk products cause less friction and prevent flare-ups. The anti-absorbent properties of silk are known to improve your hair and skin. Plus, Silk is cooler than any other fabric out there.Try it Today!<\/p>",
+        "subtitle_color_table": "#ffffff",
+        "x_labels": "BLOOMY SILK BONNET,COTTON, SATIN SILK",
+        "y_labels": "Anti-Tangle,Anti-Frizz,Anti-Split ends, Anti-Breakage, Moisturizing, Hypoallergenic",
+        "values_table": "yes,no,yes,yes,no,yes,yes,no,no,yes,no,no,yes,no,no,yes,no,no",
+        "true_image": "shopify:\/\/shop_images\/check_arrow.png",
+        "size_yes_image": 3,
+        "false_image": "shopify:\/\/shop_images\/letter-x.png",
+        "size_no_image": 3,
+        "text_x_color": "",
+        "text_y_color": "#ffffff",
+        "bg_x_labels": "#ffffff",
+        "bg_odd": "#d9d9d9",
+        "bg_even": "#b4b4b4",
+        "chosen_x_label": "#e5e5e5",
+        "chosen_odd": "#c3c3c3",
+        "chosen_even": "#a2a2a2"
+      }
+    },
+    "feature-with-subtitle": {
+      "type": "feature-with-subtitle-section",
+      "blocks": {
+        "feature_block_UYLRxk": {
+          "type": "feature_block",
+          "settings": {
+            "title_block": "AUTHENTIC GRADE 6A MULBERRY SILK",
+            "feature_block_color": "#ffffff",
+            "feature_block_bg_color": "#1a1a1a",
+            "sub_title_block": "The highest quality of Mulberry silk available on the market",
+            "subtitle_feature_block_color": "#000000",
+            "subtitle_bold": "normal"
+          }
+        },
+        "feature_block_wwA9EV": {
+          "type": "feature_block",
+          "settings": {
+            "title_block": "FAIR PRICING & MEMBERS-ONLY DISCOUNTS",
+            "feature_block_color": "#ffffff",
+            "feature_block_bg_color": "#1a1a1a",
+            "sub_title_block": "20+ years in the silk business. Certified Standard 100.",
+            "subtitle_feature_block_color": "#000000",
+            "subtitle_bold": "normal"
+          }
+        },
+        "feature_block_tqM9kR": {
+          "type": "feature_block",
+          "settings": {
+            "title_block": "YOUR BLOOMY = A TREE PLANTED",
+            "feature_block_color": "#ffffff",
+            "feature_block_bg_color": "#1a1a1a",
+            "sub_title_block": "We are making a difference, one Bloomy at a time in partnership with the Eden Reforestation Project",
+            "subtitle_feature_block_color": "#000000",
+            "subtitle_bold": "normal"
+          }
+        }
+      },
+      "block_order": [
+        "feature_block_UYLRxk",
+        "feature_block_wwA9EV",
+        "feature_block_tqM9kR"
+      ],
+      "settings": {
+        "background_section": "#ffffff",
+        "section_title": "Why Choose Bloomy™ ?",
+        "color_title_section": "#1a1a1a"
+      }
+    },
+    "reviews-list-scroll": {
+      "type": "reviews-list-scroll-section",
+      "blocks": {
+        "review_block_36bKG4": {
+          "type": "review_block",
+          "settings": {
+            "title_block": "\"Just love my Bloomy\"",
+            "text_review_block": "<p>Not only their products are 100% Mulberry silk, they provide an absolute cool comfort and transformed the way I feel about my hair and skin. Total confidence booster.<\/p>",
+            "subtitle_color_table": "#ffffff",
+            "text_block_color": "#000000",
+            "review_bg_color": "#ffffff"
+          }
+        },
+        "review_block_66tAzW": {
+          "type": "review_block",
+          "settings": {
+            "title_block": "\"I can't live without Bloomy\"",
+            "text_review_block": "<p>Bloomy silk is my go-to brand for anything silk. Love how my hair and skin feels using their products. I can't live without silk anymore.<\/p>",
+            "subtitle_color_table": "#ffffff",
+            "text_block_color": "#000000",
+            "review_bg_color": "#ffffff"
+          }
+        },
+        "review_block_UUgCkA": {
+          "type": "review_block",
+          "settings": {
+            "title_block": "\"I totally recommend Bloomy silk\"",
+            "text_review_block": "<p>I let my hair grow super long,and with length comes the struggle of nightly tangles and persistent frizz. Bloomy made all of that disapear in just few nights. Not only did my hair NOT tangle, but It got a beautiful smooth wave to it. Love it!<\/p>",
+            "subtitle_color_table": "#ffffff",
+            "text_block_color": "#000000",
+            "review_bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "review_block_36bKG4",
+        "review_block_66tAzW",
+        "review_block_UUgCkA"
+      ],
+      "settings": {
+        "background_color_section": "#000000",
+        "title_section": "Join the 10K+ Bloomies",
+        "title_section_color": "#ffffff",
+        "tabs_color": "#ffffff"
+      }
+    },
+    "1706951744ce5fc319": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_fmN9FK": {
+          "type": "shopify:\/\/apps\/loox-reviews\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_fmN9FK"
+      ],
+      "settings": {
+      }
+    },
+    "products_list_scroll_section_r8tRDx": {
+      "type": "products-list-scroll-section",
+      "settings": {
+        "collection_product_list_scroll": "silk-pillowcases",
+        "text_color": "#1a1a1a",
+        "title": "You Might Also Like",
+        "title_color": "#1a1a1a"
+      }
+    },
+    "badges_section_XCYYFR": {
+      "type": "badges-section",
+      "blocks": {
+        "badge_wW8dg3": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "TRY IT FOR 60 NIGHTS!",
+            "badge_subtitle_id": "You'll love it, else send it back <3",
+            "badge_image": "shopify:\/\/shop_images\/clock.svg"
+          }
+        },
+        "badge_4NEpEg": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "WE PAY YOUR SHIPPING",
+            "badge_subtitle_id": "Your US shipping is on us!*",
+            "badge_image": "shopify:\/\/shop_images\/box.svg"
+          }
+        },
+        "badge_tizF7V": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "BLOOMY CARE+",
+            "badge_subtitle_id": "Easy Returns & After Sales",
+            "badge_image": "shopify:\/\/shop_images\/giftbox.svg"
+          }
+        },
+        "badge_nFMwqU": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "A TREE PLANTED FOR EACH BLOOMY",
+            "badge_subtitle_id": "In partnership with the Eden Deforestation Project",
+            "badge_image": "shopify:\/\/shop_images\/tree_56a036ac-ed77-4a7f-9dc5-07be40dec981.svg"
+          }
+        }
+      },
+      "block_order": [
+        "badge_wW8dg3",
+        "badge_4NEpEg",
+        "badge_tizF7V",
+        "badge_nFMwqU"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "color_svg": "#1a1a1a"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-list-scroll",
+    "simple-title",
+    "desc-card-title-image",
+    "as-seen-on-list",
+    "desc_card_title_image_section_GwQmaQ",
+    "card-desc-incline-image",
+    "list-features",
+    "card_desc_incline_image_section_BKRDne",
+    "table",
+    "feature-with-subtitle",
+    "reviews-list-scroll",
+    "1706951744ce5fc319",
+    "products_list_scroll_section_r8tRDx",
+    "badges_section_XCYYFR"
+  ]
+}

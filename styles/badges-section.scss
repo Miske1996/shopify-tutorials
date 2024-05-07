@@ -1,0 +1,69 @@
+.badges_section {
+    width: 100vw;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    & {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .badge_container {
+        width: 18%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+
+        }
+        svg{
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+        }
+
+        .badge_main_title {
+            margin-top: 1.6rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 2rem;
+            color: #152f4e;
+            text-align: center;
+        }
+
+        .badge_sub_title {
+            font-weight: 400;
+            color: #152f4e;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+    }
+
+}
+
+@media screen and (max-width: 1080px) {
+    .badges_section {
+        gap: 0;
+        justify-content: start;
+        .badge_container {
+            width: 100%;
+        }
+    }
+}

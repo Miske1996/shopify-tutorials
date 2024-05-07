@@ -1,0 +1,236 @@
+{{ 'collection-list-filter-section.css' | asset_url | stylesheet_tag }}
+{% assign currency_symbol = '' %}
+{% if shop.currency == 'USD' %}
+  {% assign currency_symbol = '$' %}
+{% elsif shop.currency == 'EUR' %}
+  {% assign currency_symbol = '€' %}
+{% elsif shop.currency == 'GBP' %}
+  {% assign currency_symbol = '£' %}
+{% else %}
+  {% assign currency_symbol = shop.currency %}
+{% endif %}
+<collection-list-filter id="collection_list_filter-{{ section.id }}" curreny="{{ currency_symbol }}" showVariants="{{ section.settings.show_all_variants }}" typescolor="{{ section.settings.types_filter_text_color }}" productCardPrimaryColor="{{ section.settings.product_desc_text_color }}" productCardSecondaryColor="{{ section.settings.product_desc_text_color_secondary }}" ctaHoverBg="{{ section.settings.cta_background_color_hover }}" ctaHoverColor="{{ section.settings.cta_text_color_hover }}" ctaNoHoverBg="{{ section.settings.cta_background_color_no_hover }}" ctaNoHoverColor="{{ section.settings.cta_text_color_no_hover }}">
+  <div class="collection_list_filter_section" id="collection_list_filter-container-{{ section.id }}" style="background-color: {{ section.settings.background_section  }};">
+    <script type="application/json">
+      [
+        {% for p in section.settings.collection_id.products %}
+          {
+            "id": {{ p.id }},
+            "title": "{{ p.title }}",
+            "color": "{{ p.metafields.custom.color }}",
+            "variant": "{{ p.metafields.custom.variant_id }}",
+            "price": "{{ p.price | money }}",
+            "url": "{{ p.url }}",
+            "front_image": "{{ p.images[0] | image_url }}",
+            "back_image": "{{ p.images[1] | image_url }}",
+            "variants": {{ p.variants |  json }}, 
+            "type": "{{ p.metafields.custom.type_collection }}",
+            "tags": [{{ p.metafields.custom.tags }}], 
+            "collection": "{{ section.settings.collection_id.title }}",
+            "type_tag": [{{ p.metafields.custom.collections_tags }}],
+            "data_rating" : "{{ p.metafields.loox.avg_rating }}",
+            "data_raters" : "{{ p.metafields.loox.num_reviews }}"
+          }{% if forloop.last %}{% else %},{% endif %}
+        {% endfor %}
+      ]
+    </script>
+    {% if section.settings.variant_collection_list == "check_us" %}
+      <div class="titles_container">
+        <h1 style="color: {{ section.settings.title_color }};">{{ section.settings.top_title }}</h1>
+        <h2 style="color: {{ section.settings.title_color }};">{{ section.settings.bottom_title }}</h2>
+      </div>
+      {% else %}
+      <h1 class="title_section" style="color: {{ section.settings.title_color }};">{{ section.settings.collection_id.title }}</h1>     
+    {% endif %}
+    <div class="filter_container">
+      <div
+        class="colors_picker"
+        {% if section.settings.check_color %}
+        style="visibility:hidden;"
+        {% endif %}>
+        <div class="colors_picker_wrapper"></div>
+      </div>
+      <div
+        class="collection_tabs_container"
+        {% if section.settings.check_type %}
+        style="visibility:hidden;"
+        {% endif %}></div>
+    </div>
+  
+      <div class="button_previous"><img src="{{ 'left-chevron.png' |  asset_url }}" alt=""></div>
+      <div class="button_next"><img src="{{ 'left-chevron.png' |  asset_url }}" alt=""></div>
+    
+    <div class="products_container {{ section.settings.card_size }}">
+      <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+    </div>
+
+    <a class="action_button_collection_filter" href="{{  section.settings.collection_id.url }}">{{ section.settings.cta_text }}</a>
+  </div>
+</collection-list-filter>
+{% style %}
+        .collection_tab {
+    color: {{ section.settings.types_filter_text_color }};
+  }
+  #shopify-section-{{ section.id }}   .price_product{
+    color:{{ section.settings.card_price }}  
+  }
+
+  #shopify-section-{{ section.id }}  .price_product_compare{
+    color:{{ section.settings.card_price_compare }}  
+      }
+{% endstyle %}
+
+{{ 'collection-list-filter.js' | asset_url | script_tag }}
+
+
+{% schema %}
+  {
+    "name": "Collection List Filter",
+    "settings": [
+      {
+        "type": "radio",
+        "label": "Select Collection Filter Variant",
+        "id": "variant_collection_list",
+        "options": [
+          {
+            "value": "collection_title",
+            "label": "Collection Title"
+          }, {
+            "value": "check_us",
+            "label": "Check Us Out"
+          }
+        ],
+        "default": "collection_title"
+      },
+      {
+        "type": "text",
+        "id": "top_title",
+        "label": "Variant Check Us out Top Title",
+        "default": "Experience Bloomy"
+      },
+      {
+        "type": "text",
+        "id": "bottom_title",
+        "label": "Variant Check Us out Bottom Title",
+        "default": "Like our content ?  Check us out!"
+      },
+      {
+        "type": "radio",
+        "label": "Select Card Size",
+        "id": "card_size",
+        "options": [
+          {
+            "value": "standard",
+            "label": "Standard"
+          }, {
+            "value": "compact",
+            "label": "Compact"
+          }
+        ],
+        "default": "standard"
+      },
+      {
+        "type": "radio",
+        "label": "Show All Variants",
+        "id": "show_all_variants",
+        "options": [
+          {
+            "value": "all_variants",
+            "label": "All Variants"
+          }, {
+            "value": "main_variant",
+            "label": "Main Variant"
+          }
+        ],
+        "default": "main_variant"
+      },
+      {
+        "type": "collection",
+        "id": "collection_id",
+        "label": "Choose the Collection"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_color",
+        "label": "Hide Color Filter"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_type",
+        "label": "Hide Types Filter"
+      },
+      {
+        "type": "color",
+        "id": "background_section",
+        "label": "Section Background Color",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "title_color",
+        "label": "Section Title Color",
+        "default": "#000000"
+      }, {
+        "type": "color",
+        "id": "types_filter_text_color",
+        "label": "Types Filter Text Color",
+        "default": "#152f4e"
+      },
+      {
+        "type": "color",
+        "id": "product_desc_text_color",
+        "label": "Product Card Text Color Primary",
+        "default": "#152f4e"
+      },
+      {
+        "type": "color",
+        "id": "product_desc_text_color_secondary",
+        "label": "Product Card Text Color Secondary",
+        "default": "#152f4e"
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA button text",
+        "default": "SHOP ALL"
+      },
+      {
+        "type": "color",
+        "id": "cta_text_color_no_hover",
+        "label": "CTA Text Color Without hover",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "cta_background_color_no_hover",
+        "label": "CTA Background Color Without hover",
+        "default": "#152f4e"
+      }, {
+        "type": "color",
+        "id": "cta_text_color_hover",
+        "label": "CTA Text Color  hover",
+        "default": "#152f4e"
+      }, {
+        "type": "color",
+        "id": "cta_background_color_hover",
+        "label": "CTA Background Color  hover",
+      "default": "#ffffff"}
+      ,{
+        "type": "color",
+        "id": "card_price",
+        "label": "Card Price Color",
+      "default": "#1A1A1A"},
+      {
+        "type": "color",
+        "id": "card_price_compare",
+        "label": "Card Price Compare At Color",
+      "default": "#A92521"}
+       
+       
+    ],
+    "presets": [
+      {
+        "name": "Collection List"
+      }
+    ]
+  }
+{% endschema %}

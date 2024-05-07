@@ -1,0 +1,112 @@
+{{ 'cart-drawer-section.css' | asset_url | stylesheet_tag }}
+<cart-drawer id="cart-drawer">
+    <div class="cart_drawer_section_container">
+        <div class="drawer_menu_overlay"></div>
+
+        <div class="drawer_menu_inner" style="background-color: {{ section.settings.background }};">
+            <div class="close_icon_container">
+                <h5 class="cart_txt_title" style="color: {{ section.settings.cart_primary_color }};">Your cart</h5>
+                <h5 class="item_total">{{ cart.item_count }} {% if cart.item_count > 1 %}
+            items
+            {% else %}
+            item
+        {% endif %}</h5>
+                <img src="{{ 'x_cart.png' |  asset_url }}" alt="">
+            </div>
+            {% comment %} <div class="delivery_amount_container">
+                <h5 class="delivery_amount">Only 15,00 € to enjoy free delivery.
+                </h5>
+                <div class="progress_bar">
+                    <div class="progress_container"></div>
+                </div>
+            </div> {% endcomment %}
+            {% if cart.item_count == 0 %}
+                <h1 class="empty_cart" style="color: {{ section.settings.cart_primary_color }};">Empty Cart</h1>
+            {% else %}
+                <div class="products_cart_section">
+                    <div class="inner_products_cart">
+                        {% for item in cart.items %}
+                            
+                            <cart-drawer-item line={{ forloop.index }} id={{ item.id }} quantity={{ item.quantity }} quantity_max="{{ item.variant.quantity_rule.max }}" quantity_min="{{ item.variant.quantity_rule.min}}">
+                            <div class="cart_product_item">
+                                <div class="product_img"><img
+                                        src="{{ item.image |  image_url  }}"
+                                        alt=""></div>
+                                <div class="desc_section">
+                                    <a href="{{ item.url }}" class="link_product_title" style="color: {{ section.settings.cart_primary_color }};">{{ item.product.title }}</a>
+                                    {% assign get_the_size_list = item.title |  split:  '/' %}
+                                    {% assign sp  =  get_the_size_list[0] |  split: "-" %}
+                                    {% assign length_sp  =  sp.size |  minus: 1 %}
+                                    {% assign size  =  sp[length_sp]%}
+
+                                    {% if size %}
+                                        <h5 class="size" style="color: {{ section.settings.cart_primary_color }};">Size : {{ size }}</h5>      
+                                    {% endif %}
+                                    {% assign c_list = item.options_with_values[1].value |  split:  "|" %}
+                                    {% assign c = c_list |  last %}
+                                    {% if c %}
+                                     <h5 class="color" style="color: {{ section.settings.cart_primary_color }};">Color : - {{ c  }}</h5>
+                                    {% endif %}
+                                    <div class="qte_container">
+                                            <h5 class="qte_minus" style="color: {{ section.settings.cart_primary_color }};">-</h5>
+                                            <h5 class="qte_text_amount" style="color: {{ section.settings.cart_primary_color }};">{{ item.quantity }}</h5>
+                                            <h5 class="qte_plus" style="color: {{ section.settings.cart_primary_color }};">+</h5>  
+                                    </div> 
+                                    <h5 class="error_quantity hide_error">cannot add this quantity.</h5>
+                                </div>
+                                <div class="price_section_cart">
+                                    <img src="{{ 'x_cart.png' |  asset_url }}" alt="" class="remove_item remove_item_x">
+                                    <h5 class="compared_at_price" style="color: {{ section.settings.cart_primary_color }};">{{ item.variant.compare_at_price |  money }}
+        
+                                    </h5>
+                                    <h5 class="item_price" style="color: {{ section.settings.cart_primary_color }};">{{ item.price |  money }}
+        
+                                    </h5>
+                                  
+                                </div>
+                            </div> 
+                            </cart-drawer-item>
+                        {% endfor %}
+              
+                  <div id="SproutCartBadgeVintage" class="SproutCartBadgeVintage"></div>
+                    </div>
+                </div>
+                <div class="cart_footer" style="background-color: {{ section.settings.cart_primary_color }};">
+                    <div class="cart_total_container">
+                        <h5 class="cart_total_title" style="color: {{ section.settings.cart_secondary_color }};">Cart total ({{ cart.item_count }})</h5>
+                        <h5 class="cart_total_price" style="color: {{ section.settings.cart_secondary_color }};">{{ cart.total_price | money  }}</h5>
+                    </div>
+                    <form action="{{ routes.cart_url }}" method="post">
+                        <button class="payment_button" name="checkout" style="background-color: {{ section.settings.cart_secondary_color }};">
+                        <h5 class="payment_button_txt" style="color: {{ section.settings.cart_primary_color }};">Proceed to payment</h5>
+                        </button>
+                    </form>
+
+                </div>
+            {% endif %}
+       
+
+        </div>
+    </div>
+</cart-drawer>
+
+{{ 'cart-drawer.js' | asset_url | script_tag }}
+{% schema %}
+    {
+        "name": "Cart-Drawer-Section",
+        "settings": [
+                    {
+                "type": "color",
+                "id": "cart_primary_color",
+                "label": "Select Primary Cart Color",
+                "default": "#152f4e"
+                },
+                {
+                "type": "color",
+                "id": "cart_secondary_color",
+                "label": "Select Secondary Cart Color",
+                "default": "#ffffff"
+                }
+            ]
+    }
+    {% endschema %}

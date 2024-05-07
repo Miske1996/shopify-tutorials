@@ -1,0 +1,29 @@
+.links_navigation_section_container{
+    width: 100vw;
+    height: 7vw;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+
+    .link{
+        font-size: 1.4vw;
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+    } 
+    .link:hover{
+        text-decoration: underline;  
+    }
+}
+@media screen and (max-width: 500px) {
+    .links_navigation_section_container{
+        height: 20vw;
+        gap: 7vw;
+        .link{
+            font-size: 4.2vw;
+        } 
+   
+    }
+}

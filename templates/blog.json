@@ -1,0 +1,105 @@
+{
+  "sections": {
+    "heroBlog": {
+      "type": "blogs-hero-section",
+      "settings": {
+        "title_hero": "HERO TITLE HERE",
+        "hero_subtitle": "HERO SUBTITLE HERE",
+        "hero_paragraph": "Have you ever wondered when’s the right time to replace your pillowcase? And what about silk helps your hair and skin? If so, you found the right place! The Blissy Editors are here to ease your nighttime woes with nifty tips and tricks to achieve the perfect sleep. So get cozy. Ready your reading glasses. And lay back... as we uncover hidden truths behind silk, wellness, beauty, and more.",
+        "bg_hero": "#000000",
+        "color_text_hero": "#ffffff",
+        "img_hero_blog": "shopify:\/\/shop_images\/bloomy-silk-pillowcases.png"
+      }
+    },
+    "linksNavigation": {
+      "type": "links-navigation-section",
+      "settings": {
+        "color_links": "#000000"
+      }
+    },
+    "MainBlogSection": {
+      "type": "main-blog-section",
+      "settings": {
+      }
+    },
+    "collectionListFilter": {
+      "type": "collection-list-filter-section",
+      "settings": {
+        "variant_collection_list": "check_us",
+        "top_title": "Experience Bloomy",
+        "bottom_title": "Like our content ?  Check us out!",
+        "card_size": "compact",
+        "show_all_variants": "main_variant",
+        "collection_id": "jackets-collection",
+        "check_color": false,
+        "check_type": false,
+        "background_section": "#ffffff",
+        "title_color": "#1a1a1a",
+        "types_filter_text_color": "#152f4e",
+        "product_desc_text_color": "#152f4e",
+        "product_desc_text_color_secondary": "#152f4e",
+        "cta_text": "SHOP ALL",
+        "cta_text_color_no_hover": "#ffffff",
+        "cta_background_color_no_hover": "#152f4e",
+        "cta_text_color_hover": "#152f4e",
+        "cta_background_color_hover": "#ffffff",
+        "card_price": "#1a1a1a",
+        "card_price_compare": "#a92521"
+      }
+    },
+    "badges_section_jKtVqQ": {
+      "type": "badges-section",
+      "blocks": {
+        "badge_aNVjUC": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "TRY IT FOR  60 NIGHTS",
+            "badge_subtitle_id": "You'll love it, else send it back <3",
+            "badge_image": "shopify:\/\/shop_images\/clock.svg"
+          }
+        },
+        "badge_MVKLDg": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "WE PAY YOUR SHIPPING",
+            "badge_subtitle_id": "Your US shipping is on us!",
+            "badge_image": "shopify:\/\/shop_images\/box.svg"
+          }
+        },
+        "badge_qHPyWm": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "BLOOMY CARE+",
+            "badge_subtitle_id": "Easy Returns & After Sales",
+            "badge_image": "shopify:\/\/shop_images\/giftbox.svg"
+          }
+        },
+        "badge_cQiLUi": {
+          "type": "badge",
+          "settings": {
+            "badge_title_id": "BLOOMY = 1 TREE PLANTED",
+            "badge_subtitle_id": "Bloomy x the Eden Deforestation Project",
+            "badge_image": "shopify:\/\/shop_images\/tree-icon.svg"
+          }
+        }
+      },
+      "block_order": [
+        "badge_aNVjUC",
+        "badge_MVKLDg",
+        "badge_qHPyWm",
+        "badge_cQiLUi"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "color_svg": "#1a1a1a"
+      }
+    }
+  },
+  "order": [
+    "heroBlog",
+    "linksNavigation",
+    "MainBlogSection",
+    "collectionListFilter",
+    "badges_section_jKtVqQ"
+  ]
+}

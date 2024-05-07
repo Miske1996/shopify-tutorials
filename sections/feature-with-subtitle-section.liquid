@@ -1,0 +1,100 @@
+{{ 'feature-with-subtitle-section.css' | asset_url | stylesheet_tag }}
+<div class="feature_with_subtitle_section" style="background-color:{{ section.settings.background_section }}">
+  <h1 class="section_title" style="color: {{ section.settings.color_title_section }};">
+    {{ section.settings.section_title }}
+  </h1>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when '@app' -%}
+        {% render block %}
+      {%- when 'feature_block' -%}
+        <div class="block_container">
+            <h1 class="feature_title" style="color: {{ block.settings.feature_block_color }};background-color: {{ block.settings.feature_block_bg_color }};">{{ block.settings.title_block }}</h1>
+            <h2 class="feature_subtitle" style="color: {{ block.settings.subtitle_feature_block_color }};{% if block.settings.subtitle_bold == 'bold' %}font-weight:bold;{% endif %}">{{ block.settings.sub_title_block }}</h2>   
+        </div>
+      {%- endcase -%}
+    {%- endfor -%}
+</div>
+{% schema %}
+{
+  "name": "Features With Subtitle",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_section",
+      "default": "#ffffff",
+      "label": "Section Background"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "default": "Why Choose Bloomy?",
+      "label": "Section Title"
+    },
+    {
+      "type": "color",
+      "id": "color_title_section",
+      "default": "#000000",
+      "label": "Section Title color"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Feature Block",
+      "type": "feature_block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title_block",
+          "label": "Title Feature Block",
+          "default": "AUTHENTIC GRADE 6A MULBERRY SILK"
+        },
+        {
+          "type": "color",
+          "id": "feature_block_color",
+          "label": "Feature Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "feature_block_bg_color",
+          "label": "Feature Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "text",
+          "id": "sub_title_block",
+          "label": "Subtitle Feature Block",
+          "default": "THE HIGHEST QUALITY OF MULBERRY SILK AVAILABLE ON THE MARKET"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_feature_block_color",
+          "label": "Subtitle Feature Text Color",
+          "default": "#000000"
+        },
+        {
+        "type": "radio",
+        "label": "Subtitle Boldness",
+        "id": "subtitle_bold",
+        "options": [
+          {
+            "value": "bold",
+            "label": "Bold"
+          }, {
+            "value": "normal",
+            "label": "Normal"
+          }
+        ],
+        "default": "normal"
+      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features With Subtitle"
+    }
+  ]
+}
+{% endschema %}

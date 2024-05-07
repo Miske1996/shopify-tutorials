@@ -1,0 +1,36 @@
+.banner_title_subtitle_container {
+  width: 100%;
+  height: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1vw;
+}
+.banner_title_subtitle_container h5 {
+  font-size: 3.4vw;
+  width: 70%;
+  text-align: center;
+}
+.banner_title_subtitle_container h6 {
+  font-size: 1.1vw;
+  width: 70%;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .banner_title_subtitle_container {
+    width: 100%;
+    height: 50vw;
+  }
+  .banner_title_subtitle_container h5 {
+    width: 90%;
+    font-size: 8vw;
+    letter-spacing: 0.05vw;
+  }
+  .banner_title_subtitle_container h6 {
+    width: 90%;
+    font-size: 3.2vw;
+    letter-spacing: 0.05vw;
+  }
+}
