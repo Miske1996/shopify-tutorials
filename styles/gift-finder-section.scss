@@ -147,17 +147,23 @@
         display: flex;
         align-items: center;
 
-        .back_txt{
-            font-size: 4.5vw;
-            display: block;
-            color: #fffef2;
-        }
-        svg{
-            fill: #fffef2;
-            margin-right: 10px;
-            transform: rotate(180deg) scale(1.25) translateY(-1px);
+        .back_btn_wrapper{
+            display: flex;
             margin-left: 15px;
+            align-items: center;
+            opacity: 0;
+            .back_txt{
+                font-size: 4.5vw;
+                display: block;
+                color: #fffef2;
+            }
+            svg{
+                fill: #fffef2;
+                margin-right: 10px;
+                transform: rotate(180deg) scale(1.25) translateY(-1px);
+            }
         }
+       
     }
 
     //Steps progress container
@@ -193,6 +199,8 @@
             gap: 10vw;
             align-items: center;
             transition: all .3s ease;
+            opacity: 0;
+            visibility: hidden;
             .question{
                 font-size: 8vw;
                 color: #333;

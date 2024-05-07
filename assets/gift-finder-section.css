@@ -149,16 +149,21 @@
   display: flex;
   align-items: center;
 }
-.gift_finder_container .navigation_container .back_txt {
+.gift_finder_container .navigation_container .back_btn_wrapper {
+  display: flex;
+  margin-left: 15px;
+  align-items: center;
+  opacity: 0;
+}
+.gift_finder_container .navigation_container .back_btn_wrapper .back_txt {
   font-size: 4.5vw;
   display: block;
   color: #fffef2;
 }
-.gift_finder_container .navigation_container svg {
+.gift_finder_container .navigation_container .back_btn_wrapper svg {
   fill: #fffef2;
   margin-right: 10px;
   transform: rotate(180deg) scale(1.25) translateY(-1px);
-  margin-left: 15px;
 }
 .gift_finder_container .steps_progress_container {
   width: 90%;
@@ -190,6 +195,8 @@
   gap: 10vw;
   align-items: center;
   transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
 }
 .gift_finder_container .steps_container .step_container .question {
   font-size: 8vw;

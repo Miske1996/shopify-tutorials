@@ -1,4 +1,5 @@
 {{ "gift-finder-section.css" | asset_url | stylesheet_tag }}
+<gift-finder>
 <section class="gift_finder_container">
     <div class="starter_spash_screen">
         <div class="main_splash_content">
@@ -39,9 +40,11 @@
             </div>
         </div>
     </div>
-    <div class="navigation_container">
-        <svg aria-labelledby="rightArrow-:R35n6:" class="Icon_base__GKZ58 Icon_dark__IcVZw" data-testid="data-testid-Icon" focusable="false" height="12" role="img" style="height:12px;width:12px" tabindex="-1" viewBox="0 0 50 50" width="12"><title id="rightArrow-:R35n6:">rightArrow</title><g><path d="M30.1,5.3L50,25.1L30.1,45h-6.6l18-17.6H0v-4.8h41.5l-18-17.6h6.6V5.3z"></path></g></svg>
-        <span class="back_txt">Back</span>
+    <div class="navigation_container"> 
+        <div class="back_btn_wrapper">
+            <svg aria-labelledby="rightArrow-:R35n6:" class="Icon_base__GKZ58 Icon_dark__IcVZw" data-testid="data-testid-Icon" focusable="false" height="12" role="img" style="height:12px;width:12px" tabindex="-1" viewBox="0 0 50 50" width="12"><title id="rightArrow-:R35n6:">rightArrow</title><g><path d="M30.1,5.3L50,25.1L30.1,45h-6.6l18-17.6H0v-4.8h41.5l-18-17.6h6.6V5.3z"></path></g></svg>
+            <span class="back_txt">Back</span>
+        </div> 
     </div> 
     <div class="steps_progress_container">
         <div class="step_bar current_step"></div>
@@ -59,8 +62,24 @@
             <button class="btn"><span>Find a gift</span></button>
             <div class="image_container"><img src="https://www.aesop.com/u1nb1km7t5q7/5Ol3w4l9ZQvwnLUs66fcXv/19b306cf60fce2be416005c6e6d280aa/Aesop_Gift_Finder_2023_Web_Option_2_Full_Width_Banner_Tablet_790x320px.png" alt=""></div>
         </div>
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when '@app' -%}
+                    {% render block %}
+                {%- when 'gift_question_answers' -%}
+                    <div class="step_container">
+                        <h1 class="question">{{ block.settings.question }}</h1>
+                        <button class="btn step-{{ forloop.index }}-answer-1"><span>{{ block.settings.answer_1 }}</span></button>
+                        <button class="btn step-{{ forloop.index }}-answer-2"><span>{{ block.settings.answer_2 }}</span></button>
+                        <button class="btn step-{{ forloop.index }}-answer-3"><span>{{ block.settings.answer_3 }}</span></button>
+                        <div class="image_container"><img src="https://www.aesop.com/u1nb1km7t5q7/5Ol3w4l9ZQvwnLUs66fcXv/19b306cf60fce2be416005c6e6d280aa/Aesop_Gift_Finder_2023_Web_Option_2_Full_Width_Banner_Tablet_790x320px.png" alt=""></div>
+                    </div>                 
+            {%- endcase -%}
+        {%- endfor -%}
     </div>
 </section>
+</gift-finder>
+{{ 'gift-finder-section.js' |  asset_url |  script_tag }}
 {% schema %}
 {
     "name": "Gift Finder",
