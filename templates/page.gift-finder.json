@@ -36,11 +36,30 @@
         "gift_question_answers_GDCPqb",
         "gift_question_answers_DqT3Vd"
       ],
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "17151557939950ced9": {
+      "type": "apps",
+      "blocks": {
+        "gift_finder_app_star_rating_pwmiyn": {
+          "type": "shopify:\/\/apps\/gift-finder-app\/blocks\/star_rating\/24c1fe4f-ddb2-4b32-8efe-d2ed1b62e6ea",
+          "settings": {
+            "product": "",
+            "colour": "#ff0000"
+          }
+        }
+      },
+      "block_order": [
+        "gift_finder_app_star_rating_pwmiyn"
+      ],
       "settings": {
       }
     }
   },
   "order": [
-    "gift-finder"
+    "gift-finder",
+    "17151557939950ced9"
   ]
 }
