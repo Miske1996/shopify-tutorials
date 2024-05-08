@@ -2,58 +2,12 @@
   "sections": {
     "gift-finder": {
       "type": "gift-finder-section",
-      "blocks": {
-        "gift_question_answers_i9PrjH": {
-          "type": "gift_question_answers",
-          "settings": {
-            "question": "What is the purpose of this gift?",
-            "answer_1": "To say thanks or show gratitude",
-            "answer_2": "To express affection or admiration",
-            "answer_3": "To prompt a knowing smile"
-          }
-        },
-        "gift_question_answers_GDCPqb": {
-          "type": "gift_question_answers",
-          "settings": {
-            "question": "Who are you buying for?",
-            "answer_1": "The adored or enamoured",
-            "answer_2": "The newly housed or espoused",
-            "answer_3": "The hospitable host"
-          }
-        },
-        "gift_question_answers_DqT3Vd": {
-          "type": "gift_question_answers",
-          "settings": {
-            "question": "Finally, how much would you like to spend?",
-            "answer_1": "$69 or less",
-            "answer_2": "Over $69",
-            "answer_3": "Show all recommendations"
-          }
-        }
-      },
-      "block_order": [
-        "gift_question_answers_i9PrjH",
-        "gift_question_answers_GDCPqb",
-        "gift_question_answers_DqT3Vd"
-      ],
       "disabled": true,
       "settings": {
       }
     },
     "17151557939950ced9": {
       "type": "apps",
-      "blocks": {
-        "gift_finder_app_star_rating_pwmiyn": {
-          "type": "shopify:\/\/apps\/gift-finder-app\/blocks\/star_rating\/24c1fe4f-ddb2-4b32-8efe-d2ed1b62e6ea",
-          "settings": {
-            "product": "",
-            "colour": "#ff0000"
-          }
-        }
-      },
-      "block_order": [
-        "gift_finder_app_star_rating_pwmiyn"
-      ],
       "settings": {
       }
     }
