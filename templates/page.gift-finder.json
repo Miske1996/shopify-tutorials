@@ -10,10 +10,28 @@
       "type": "apps",
       "settings": {
       }
+    },
+    "17151698729dd61b29": {
+      "type": "apps",
+      "blocks": {
+        "gift_finder_app_star_rating_7bCqKk": {
+          "type": "shopify:\/\/apps\/gift-finder-app\/blocks\/star_rating\/24c1fe4f-ddb2-4b32-8efe-d2ed1b62e6ea",
+          "settings": {
+            "product": "",
+            "colour": "#ff0000"
+          }
+        }
+      },
+      "block_order": [
+        "gift_finder_app_star_rating_7bCqKk"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "gift-finder",
-    "1715168979ed9fd53a"
+    "1715168979ed9fd53a",
+    "17151698729dd61b29"
   ]
 }
