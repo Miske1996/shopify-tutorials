@@ -8,14 +8,9 @@
     },
     "1715168979ed9fd53a": {
       "type": "apps",
-      "settings": {
-      }
-    },
-    "17151698729dd61b29": {
-      "type": "apps",
       "blocks": {
-        "gift_finder_app_star_rating_7bCqKk": {
-          "type": "shopify:\/\/apps\/gift-finder-app\/blocks\/star_rating\/24c1fe4f-ddb2-4b32-8efe-d2ed1b62e6ea",
+        "gift_finder_star_rating_gniFg4": {
+          "type": "shopify:\/\/apps\/gift-finder\/blocks\/star_rating\/da059ff7-cc75-4b29-90fd-0b3d331bb52a",
           "settings": {
             "product": "",
             "colour": "#ff0000"
@@ -23,8 +18,13 @@
         }
       },
       "block_order": [
-        "gift_finder_app_star_rating_7bCqKk"
+        "gift_finder_star_rating_gniFg4"
       ],
+      "settings": {
+      }
+    },
+    "17151698729dd61b29": {
+      "type": "apps",
       "settings": {
       }
     }
